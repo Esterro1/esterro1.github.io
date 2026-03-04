@@ -130,6 +130,84 @@
             border: 1px dashed #0f0;
         }
         
+        /* ▼▼▼ СТИЛИ МАГАЗИНА ▼▼▼ */
+        .shop-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #0f0;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: #0f0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .tab-btn.active {
+            border-bottom-color: #0f0;
+            font-weight: bold;
+        }
+        .shop-item {
+            border: 1px solid #0f0;
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .shop-item:hover {
+            background: #0f0;
+            color: #000;
+        }
+
+        .shop-item .price {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-weight: bold;
+            color: #ff0;
+        }
+
+        .shop-item .level {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 5px;
+        }
+
+        .stat-item {
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 3px solid #0f0;
+        }
+
+        .stat-item h3 {
+            margin: 5px 0;
+            color: #0f0;
+        }
+
+        .stat-item p {
+            margin: 5px 0;
+            font-size: 20px;
+            color: #ff0;
+        }
+
+        @media (max-width: 768px) {
+            .shop-item {
+                padding: 10px;
+            }
+            
+            .shop-item .price {
+                position: static;
+                display: block;
+                margin-top: 5px;
+            }
+        }
+        
         @keyframes blink {
             50% { opacity: 0; }
         }
@@ -145,3 +223,71 @@
     </style>
 </head>
 <body>
+    <button id="shopBtn" style="
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        background: black;
+        color: red;
+        border: 2px solid red;
+        padding: 8px 15px;
+        font-family: 'Courier New';
+        z-index: 1000;
+        cursor: pointer;
+    ">МАГАЗИН</button>
+
+    <div class="terminal">
+        <div class="balance-panel">
+            <div class="balance">BALANCE: <span id="balance">1000</span>♂</div>
+            <div class="balance">PENIS в сантиметрах: <span id="bonusCounter">0</span></div>
+            <div class="balance">⏱ <span id="bonusTimer">--:--:--</span></div>
+        </div>
+        
+        <div class="display" id="display">10грн = 100♂</div>
+        
+        <div>
+            <button onclick="spin()">ДЭП (100♂)</button>
+            <button class="payment-btn" onclick="openModal()">ДОДЭП 100$ (10₴)</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно платежа -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">×</span>
+            
+            <!-- Заголовок с стрелкой -->
+            <div class="deposit-header" onclick="closeModal()">
+                <h2>ДОДЭПЧИК 10грн (~$0.25)</h2>
+                <span class="back-arrow">↩️</span>
+            </div>
+            
+            <p class="hint">(←ВЕРНУТЬСЯ К ДЕПУ)</p>
+            
+            <!-- Список криптовалют -->
+            <div class="crypto-option active" onclick="selectCrypto('TON')">
+                <h3>💎 TON Rocket</h3>
+                <p>Комиссии как у моего фимоза</p>
+            </div>
+            
+            <div class="crypto-option" onclick="selectCrypto('USDT_TRC20')">
+                <h3>🦍 USDT (TRC-20)</h3>
+                <p>Стабильный как дед в паровозике</p>
+            </div>
+            
+            <div class="crypto-option" onclick="selectCrypto('USDT_ERC20')">
+                <h3>🦊 MetaMask (USDT-ERC20)</h3>
+                <p>Для тех, кто любит когда ебут жоско</p>
+            </div>
+            
+            <div class="crypto-option" onclick="selectCrypto('BTC')">
+                <h3>₿ Bitcoin</h3>
+                <p>Комиссии - как у отчима</p>
+            </div>
+
+            <div class="qr-code" id="qrCode"></div>
+            <div class="crypto-address" id="cryptoAddress"></div>
+            
+            <button onclick="confirmPayment()">СКИНУЛ БАБКИ 💸</button>
+        </div>
+    </div>
