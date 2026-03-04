@@ -1,4 +1,52 @@
-<!DOCTYPE html>
+            updateBalance();
+            
+            setTimeout(() => {
+                document.getElementById("display").classList.remove("blink");
+            }, 1000);
+        }
+        
+        function updateBalance() {
+            document.getElementById("balance").textContent = balance;
+            document.getElementById("bonusCounter").textContent = 
+                Math.floor(spinCount / 5);
+        }
+    </script>
+  <script>
+    const BONUS_AMOUNT = 500;
+    const BONUS_INTERVAL = 5 * 60 * 60 * 1000; // 5 часов в миллисекундах
+
+    function getRemainingTime() {
+        const lastTime = parseInt(localStorage.getItem("lastBonusTime") || "0");
+        const now = Date.now();
+        const elapsed = now - lastTime;
+        const remaining = BONUS_INTERVAL - elapsed;
+        return remaining > 0 ? remaining : 0;
+    }
+
+    function formatTime(ms) {
+        const totalSeconds = Math.floor(ms / 1000);
+        const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+        const seconds = String(totalSeconds % 60).padStart(2, '0');
+        return ${hours}:${minutes}:${seconds};
+    }
+
+    function updateBonusTimer() {
+        const remaining = getRemainingTime();
+        document.getElementById("bonusTimer").textContent = formatTime(remaining);
+        if (remaining === 0) {
+            balance += BONUS_AMOUNT;
+            updateBalance();
+            localStorage.setItem("lastBonusTime", Date.now().toString());
+        }
+    }
+
+    // обновление каждую секунду
+    setInterval(updateBonusTimer, 1000);
+    updateBonusTimer(); // начальный вызов
+</script>
+</body>
+</html><!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
