@@ -27,13 +27,204 @@ button:active{transform:scale(0.97);}
 .payment-btn{background:#0f0;color:#000;font-weight:bold;}
 .blink{animation:blink 0.6s infinite;}
 @keyframes blink{50%{opacity:0;}}
+
+/* ===== ВЫДВИЖНАЯ ПАНЕЛЬ ===== */
+.slide-toggle-btn {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 300;
+  background: #000;
+  border: 2px solid #0f0;
+  border-left: none;
+  color: #0f0;
+  width: 28px;
+  height: 80px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 3px 0 15px rgba(0,255,0,0.3);
+  font-family: 'Share Tech Mono', monospace;
+}
+.slide-toggle-btn:hover {
+  background: rgba(0,255,0,0.1);
+  box-shadow: 3px 0 25px rgba(0,255,0,0.5);
+}
+.slide-toggle-btn .arrow {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+.slide-panel.open ~ .slide-toggle-btn .arrow,
+body.panel-open .slide-toggle-btn .arrow {
+  transform: rotate(180deg);
+}
+
+.slide-panel {
+  position: fixed;
+  left: -300px;
+  top: 0;
+  height: 100vh;
+  width: 300px;
+  background: #000;
+  border-right: 2px solid #0f0;
+  z-index: 299;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 0 30px rgba(0,255,0,0.2);
+}
+.slide-panel.open {
+  left: 0;
+}
+
+.panel-tabs {
+  display: flex;
+  border-bottom: 1px solid #0f0;
+  flex-shrink: 0;
+}
+.panel-tab {
+  flex: 1;
+  padding: 10px 4px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 9px;
+  color: #0a0;
+  background: none;
+  border: none;
+  border-right: 1px solid #0a0;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  line-height: 1.3;
+}
+.panel-tab:last-child { border-right: none; }
+.panel-tab:hover { color: #0f0; background: rgba(0,255,0,0.05); }
+.panel-tab.active { color: #ff0; background: rgba(255,255,0,0.05); border-bottom: 2px solid #ff0; }
+.panel-tab .tab-icon { font-size: 16px; display: block; margin-bottom: 2px; }
+
+.panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+}
+.panel-content::-webkit-scrollbar { width: 3px; }
+.panel-content::-webkit-scrollbar-thumb { background: #0f0; }
+
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* ЧАТ */
+.chat-messages {
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+  margin-bottom: 10px;
+  padding-right: 4px;
+}
+.chat-messages::-webkit-scrollbar { width: 3px; }
+.chat-messages::-webkit-scrollbar-thumb { background: #0f0; }
+.chat-msg {
+  margin-bottom: 8px;
+  font-size: 11px;
+  border-left: 2px solid #0a0;
+  padding-left: 6px;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+.chat-msg .msg-user { color: #ff0; font-size: 10px; }
+.chat-msg .msg-text { color: #0f0; word-break: break-word; }
+.chat-msg .msg-time { color: #0a0; font-size: 9px; }
+.chat-input-row {
+  display: flex;
+  gap: 6px;
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+}
+.chat-input {
+  flex: 1;
+  background: #000;
+  border: 1px solid #0f0;
+  color: #0f0;
+  padding: 8px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px;
+  outline: none;
+}
+.chat-input:focus { border-color: #ff0; }
+.chat-send {
+  padding: 8px 12px;
+  font-size: 11px;
+  border: 1px solid #0f0;
+}
+
+/* ТАБЛИЦА ЛИДЕРОВ В ПАНЕЛИ */
+.panel-lb-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #0a0;
+  font-size: 11px;
+}
+.panel-lb-rank { color: #ff0; width: 24px; flex-shrink: 0; font-size: 13px; }
+.panel-lb-name { flex: 1; color: #0f0; }
+.panel-lb-penis { color: #ff0; font-size: 13px; font-weight: bold; }
+
+/* ИНВЕНТАРЬ В ПАНЕЛИ */
+.panel-inv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.panel-inv-item {
+  border: 1px solid #0a0;
+  padding: 6px;
+  text-align: center;
+  font-size: 9px;
+}
+.panel-inv-item .pii { font-size: 22px; }
+.panel-inv-item .pin { color: #0f0; font-size: 8px; margin-top: 2px; }
+.panel-inv-item .pip { color: #ff0; font-size: 8px; }
+
+/* РЫНОК В ПАНЕЛИ */
+.market-item {
+  border: 1px solid #0a0;
+  padding: 8px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 10px;
+}
+.market-item:hover { border-color: #0f0; background: rgba(0,255,0,0.04); }
+.market-item .mi-icon { font-size: 24px; flex-shrink: 0; }
+.market-item .mi-info { flex: 1; }
+.market-item .mi-name { color: #0f0; font-size: 10px; }
+.market-item .mi-seller { color: #0a0; font-size: 9px; }
+.market-item .mi-price { color: #ff0; font-weight: bold; font-size: 12px; }
+
+.panel-section-title {
+  color: #ff0;
+  font-size: 11px;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #0a0;
+  letter-spacing: 1px;
+}
+
+/* МОДАЛКИ */
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:200;justify-content:center;align-items:center;padding:10px;}
 .modal.open{display:flex;}
 .modal-content{background:#000;border:2px solid #0f0;padding:22px;max-width:500px;width:100%;position:relative;box-shadow:0 0 40px rgba(0,255,0,0.3);max-height:92vh;overflow-y:auto;}
 .modal-content h2{color:#0f0;margin-bottom:10px;font-size:clamp(15px,4vw,20px);}
 .modal-close{position:absolute;top:10px;right:14px;color:#f00;font-size:26px;cursor:pointer;}
 .modal-close:hover{text-shadow:0 0 10px #f00;}
-/* AUTH */
 .auth-tabs{display:flex;margin-bottom:14px;border-bottom:1px solid #0f0;}
 .auth-tab{flex:1;padding:9px;cursor:pointer;color:#0a0;font-family:'Share Tech Mono',monospace;font-size:13px;background:none;border:none;border-bottom:2px solid transparent;}
 .auth-tab.active{color:#0f0;border-bottom-color:#0f0;}
@@ -63,7 +254,6 @@ button:active{transform:scale(0.97);}
 .inv-item .in{color:#0f0;font-size:9px;margin-top:3px;}
 .inv-item .ip{font-size:9px;color:#ff0;}
 .empty-inv{color:#0a0;font-size:12px;padding:14px;text-align:center;}
-/* SHOP */
 .shop-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
 .shop-tab{padding:7px 12px;cursor:pointer;color:#0a0;border:1px solid #0a0;background:none;font-family:'Share Tech Mono',monospace;font-size:11px;}
 .shop-tab.active{color:#0f0;border-color:#0f0;background:rgba(0,255,0,0.08);}
@@ -90,7 +280,6 @@ button:active{transform:scale(0.97);}
 .rarity-secret .rbadge{color:#f00;border-color:#f00;}
 .owned-badge{position:absolute;top:5px;left:5px;background:#0f0;color:#000;font-size:8px;padding:2px 4px;}
 .secret-locked{opacity:0.5;cursor:default!important;}
-/* LEADERBOARD */
 .lb-list{text-align:left;}
 .lb-item{display:flex;align-items:center;gap:10px;padding:10px;border-bottom:1px solid #0a0;transition:background 0.2s;}
 .lb-item:hover{background:rgba(0,255,0,0.04);}
@@ -100,7 +289,6 @@ button:active{transform:scale(0.97);}
 .lb-stats{color:#0a0;font-size:10px;margin-top:2px;}
 .lb-penis{color:#ff0;font-size:16px;font-weight:bold;}
 .lb-empty{text-align:center;color:#0a0;padding:24px;font-size:13px;}
-/* CRYPTO */
 .hint{color:#0a0;font-size:11px;margin-bottom:14px;cursor:pointer;}
 .hint:hover{color:#0f0;}
 .crypto-option{margin:8px 0;padding:10px;border:1px solid #0f0;cursor:pointer;transition:all 0.2s;text-align:left;}
@@ -110,7 +298,6 @@ button:active{transform:scale(0.97);}
 .qr-code{background:white;padding:7px;margin:14px auto;width:140px;height:140px;display:flex;justify-content:center;align-items:center;}
 .crypto-address{word-break:break-all;margin:12px 0;padding:9px;background:#0a0a0a;border:1px dashed #0f0;font-size:10px;color:#0f0;}
 .confirm-btn{width:100%;margin-top:8px;padding:14px;}
-/* BUY RESULT */
 .buy-result{text-align:center;padding:14px;}
 .buy-icon-big{font-size:56px;margin-bottom:10px;}
 ::-webkit-scrollbar{width:4px;}
@@ -119,6 +306,60 @@ button:active{transform:scale(0.97);}
 </style>
 </head>
 <body>
+
+<!-- ВЫДВИЖНАЯ КНОПКА -->
+<button class="slide-toggle-btn" onclick="togglePanel()" id="slideToggleBtn">
+  <span class="arrow">◀</span>
+</button>
+
+<!-- ВЫДВИЖНАЯ ПАНЕЛЬ -->
+<div class="slide-panel" id="slidePanel">
+  <div class="panel-tabs">
+    <button class="panel-tab active" onclick="switchPanelTab('chat',this)">
+      <span class="tab-icon">💬</span>ЧАТ
+    </button>
+    <button class="panel-tab" onclick="switchPanelTab('top',this)">
+      <span class="tab-icon">🏆</span>ТОП
+    </button>
+    <button class="panel-tab" onclick="switchPanelTab('inv',this)">
+      <span class="tab-icon">🎒</span>ИНВЕНТ
+    </button>
+    <button class="panel-tab" onclick="switchPanelTab('market',this)">
+      <span class="tab-icon">💰</span>РЫНОК
+    </button>
+  </div>
+
+  <div class="panel-content" style="position:relative;">
+    <!-- ЧАТ -->
+    <div class="tab-pane active" id="pane-chat">
+      <div class="panel-section-title">[ МИРОВОЙ ЧАТ ]</div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input-row">
+        <input class="chat-input" id="chatInput" placeholder="напиши что-нибудь..." maxlength="100" onkeydown="if(event.key==='Enter')sendChat()">
+        <button class="chat-send" onclick="sendChat()">▶</button>
+      </div>
+    </div>
+
+    <!-- ТОП -->
+    <div class="tab-pane" id="pane-top">
+      <div class="panel-section-title">[ ТАБЛИЦА ЛИДЕРОВ ]</div>
+      <div id="panelLbList"></div>
+    </div>
+
+    <!-- ИНВЕНТАРЬ -->
+    <div class="tab-pane" id="pane-inv">
+      <div class="panel-section-title">[ МОЙ ИНВЕНТАРЬ ]</div>
+      <div id="panelInvGrid" class="panel-inv-grid"></div>
+    </div>
+
+    <!-- РЫНОК -->
+    <div class="tab-pane" id="pane-market">
+      <div class="panel-section-title">[ РЫНОК ]</div>
+      <div style="color:#0a0;font-size:10px;margin-bottom:10px;">Покупай предметы у других игроков</div>
+      <div id="marketList"></div>
+    </div>
+  </div>
+</div>
 
 <div class="topbar">
   <div style="display:flex;gap:6px;">
@@ -272,6 +513,133 @@ const WIN_P=["пол члена семъи","пидрила но виграл","
 const LOSE_P=["слил","лошок","сасе","членосос","уэбище","подсосал"];
 const SPECIAL={5:"нифуня сибэ",10:"МЕГА ГЕЙ",15:"ПОТУЖНО",30:"ВЕЗУНЧИК",35:"УФФ ДЕНЬГИ",40:"ПОЧТИ НАЕБАЛ КАЗИК!!",55:"ТА ТЫ ШО АХУЭЛ!!!"};
 
+// ===== ВЫДВИЖНАЯ ПАНЕЛЬ =====
+let panelOpen = false;
+
+function togglePanel() {
+  panelOpen = !panelOpen;
+  const panel = document.getElementById('slidePanel');
+  const btn = document.getElementById('slideToggleBtn');
+  if (panelOpen) {
+    panel.classList.add('open');
+    btn.style.left = '300px';
+    btn.querySelector('.arrow').style.transform = 'rotate(180deg)';
+    if (document.getElementById('pane-top').classList.contains('active')) renderPanelLeaderboard();
+    if (document.getElementById('pane-inv').classList.contains('active')) renderPanelInv();
+    if (document.getElementById('pane-market').classList.contains('active')) renderMarket();
+  } else {
+    panel.classList.remove('open');
+    btn.style.left = '0';
+    btn.querySelector('.arrow').style.transform = 'rotate(0deg)';
+  }
+}
+
+function switchPanelTab(tab, el) {
+  document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('pane-' + tab).classList.add('active');
+  if (tab === 'top') renderPanelLeaderboard();
+  if (tab === 'inv') renderPanelInv();
+  if (tab === 'market') renderMarket();
+}
+
+// ===== ЧАТ (локальный демо) =====
+const demoMessages = [
+  {user:'БИЛЛИ_ФАН',text:'привет всем гачи братья',time:'04:20'},
+  {user:'НЕКРОМАНТ',text:'сегодня нафармил 50к',time:'04:21'},
+  {user:'ГЕЙ_ЛОРД',text:'когда будет 3д режим???',time:'04:22'},
+  {user:'АНОНИМУС',text:'купил дракона дилдо наконец',time:'04:23'},
+];
+
+function renderChat() {
+  const container = document.getElementById('chatMessages');
+  container.innerHTML = demoMessages.map(m =>
+    `<div class="chat-msg">
+      <span class="msg-user">${m.user}</span>
+      <span class="msg-time"> [${m.time}]</span>
+      <div class="msg-text">${m.text}</div>
+    </div>`
+  ).join('');
+  container.scrollTop = container.scrollHeight;
+}
+
+function sendChat() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  const user = currentUser ? currentUser.name.toUpperCase() : 'АНОНИМ';
+  const now = new Date();
+  const time = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+  demoMessages.push({user, text, time});
+  if (demoMessages.length > 50) demoMessages.shift();
+  input.value = '';
+  renderChat();
+}
+
+// ===== ТОП В ПАНЕЛИ =====
+function renderPanelLeaderboard() {
+  const us = getUsers();
+  const list = Object.entries(us).map(([name,d]) => ({name, penis: Math.floor((d.spins||0)/5)}));
+  list.sort((a,b) => b.penis - a.penis);
+  const medals = ['🥇','🥈','🥉'];
+  const el = document.getElementById('panelLbList');
+  if (!list.length) { el.innerHTML = '<div style="color:#0a0;font-size:11px;padding:10px;">Пока никого нет</div>'; return; }
+  el.innerHTML = list.slice(0,10).map((p,i) =>
+    `<div class="panel-lb-item">
+      <div class="panel-lb-rank">${medals[i]||'#'+(i+1)}</div>
+      <div class="panel-lb-name">${p.name}</div>
+      <div class="panel-lb-penis">${p.penis} см</div>
+    </div>`
+  ).join('');
+}
+
+// ===== ИНВЕНТАРЬ В ПАНЕЛИ =====
+function renderPanelInv() {
+  const grid = document.getElementById('panelInvGrid');
+  const inv = currentUser?.inventory || [];
+  if (!inv.length) {
+    grid.innerHTML = '<div style="color:#0a0;font-size:11px;padding:10px;grid-column:span 3;">🚫 ИНВЕНТАРЬ ПУСТ<br>Иди в магазин!</div>';
+    return;
+  }
+  grid.innerHTML = inv.map(id => {
+    const it = ITEMS.find(i => i.id === id);
+    if (!it) return '';
+    return `<div class="panel-inv-item"><div class="pii">${it.icon}</div><div class="pin">${it.name}</div><div class="pip">+${it.income}♂/ч</div></div>`;
+  }).join('');
+}
+
+// ===== РЫНОК (демо) =====
+const marketItems = [
+  {icon:'⚔️',name:'МЕЧ БИШОПА',seller:'БИЛЛИ_ФАН',price:1800,rarity:'rare'},
+  {icon:'🦄',name:'РАДУЖНЫЙ КОНЬ',seller:'НЕКРОМАНТ',price:2200,rarity:'rare'},
+  {icon:'👑',name:'КОРОНА АНУСА',seller:'ГЕЙ_ЛОРД',price:5500,rarity:'epic'},
+  {icon:'🧴',name:'ВАЗЕЛИНЧИК',seller:'АНОНИМ228',price:250,rarity:'common'},
+];
+
+function renderMarket() {
+  const el = document.getElementById('marketList');
+  el.innerHTML = marketItems.map((it,i) =>
+    `<div class="market-item" onclick="buyMarketItem(${i})">
+      <div class="mi-icon">${it.icon}</div>
+      <div class="mi-info">
+        <div class="mi-name">${it.name}</div>
+        <div class="mi-seller">от: ${it.seller}</div>
+      </div>
+      <div class="mi-price">${it.price}♂</div>
+    </div>`
+  ).join('');
+}
+
+function buyMarketItem(i) {
+  const it = marketItems[i];
+  if (!currentUser) { alert('ВОЙДИ В АККАУНТ!'); return; }
+  if (balance < it.price) { alert('НЕМА БАБОК ЛОШОК!'); return; }
+  balance -= it.price;
+  updateBalance();
+  alert('КУПИЛ ' + it.name + '!');
+}
+
 // ===== USERS =====
 function getUsers(){try{return JSON.parse(localStorage.getItem('nab_users')||'{}');}catch(e){return{};}}
 function saveUsers(u){localStorage.setItem('nab_users',JSON.stringify(u));}
@@ -280,6 +648,7 @@ function getSession(){try{return JSON.parse(localStorage.getItem('nab_session')|
 function initSession(){
   const s=getSession();
   if(s&&s.u){const us=getUsers();if(us[s.u])doLogin(s.u,us[s.u]);}
+  renderChat();
 }
 
 function doLogin(username,data){
@@ -376,7 +745,6 @@ function renderInv(){
   }).join('');
 }
 
-// ===== ПАССИВНЫЙ ДОХОД =====
 function getPassiveIncome(){
   if(!currentUser?.inventory?.length)return 0;
   return currentUser.inventory.reduce((s,id)=>{const it=ITEMS.find(i=>i.id===id);return s+(it?it.income:0);},0);
@@ -405,12 +773,10 @@ function updatePassiveInfo(){
   else el.textContent='';
 }
 
-// ===== МАГАЗИН =====
 let secretOk=false;
 function checkSecret(){
   const n=new Date();
   secretOk=(n.getDate()===1&&n.getHours()===0);
-  // secretOk=true; // раскомментируй для теста
 }
 
 function renderShop(filter){
@@ -461,7 +827,6 @@ function buyItem(id){
   cm('shopModal');om('buyModal');
 }
 
-// ===== ЛИДЕРБОРД =====
 function renderLeaderboard(){
   const us=getUsers();
   const list=Object.entries(us).map(([name,d])=>({name,penis:Math.floor((d.spins||0)/5),balance:d.balance||0,wins:d.wins||0}));
@@ -472,7 +837,6 @@ function renderLeaderboard(){
   el.innerHTML=list.slice(0,20).map((p,i)=>'<div class="lb-item"><div class="lb-rank">'+(medals[i]||'#'+(i+1))+'</div><div class="lb-info"><div class="lb-name">'+p.name+'</div><div class="lb-stats">Баланс: '+p.balance+'♂ | Побед: '+p.wins+'</div></div><div class="lb-penis">'+p.penis+' см</div></div>').join('');
 }
 
-// ===== МОДАЛКИ =====
 function om(id){document.getElementById(id).classList.add('open');}
 function cm(id){document.getElementById(id).classList.remove('open');}
 function openAuth(){
@@ -484,7 +848,6 @@ function openShop(){renderShop('all');om('shopModal');}
 function openLeaderboard(){renderLeaderboard();om('lbModal');}
 function openPayment(){om('paymentModal');updCrypto();}
 
-// ===== КРИПТА =====
 function selCrypto(k,el){
   selCryptoKey=k;
   document.querySelectorAll('.crypto-option').forEach(e=>e.classList.remove('active'));
@@ -501,7 +864,6 @@ function confirmPay(){
   setTimeout(()=>{balance+=100;updateBalance();d.textContent='+100♂ ADDED!';setTimeout(()=>{d.classList.remove('blink');d.textContent='КРУТИ ЩЁ!';},1500);},3000);
 }
 
-// ===== ИГРА =====
 function spin(){
   if(isSpinning||balance<BET){if(!isSpinning)document.getElementById('display').textContent='НЕМА БАБОК ЛОШОК';return;}
   isSpinning=true;balance-=BET;spinCount++;updateBalance();
@@ -530,7 +892,6 @@ function updateBalance(){
   if(currentUser){currentUser.balance=balance;document.getElementById('statBalance').textContent=balance;document.getElementById('statPenis').textContent=Math.floor(spinCount/5);}
 }
 
-// ===== БОНУС ТАЙМЕР =====
 function getRem(){const r=BONUS_INT-(Date.now()-parseInt(localStorage.getItem('nab_bonus')||'0'));return r>0?r:0;}
 function fmt(ms){const s=Math.floor(ms/1000);return[Math.floor(s/3600),Math.floor((s%3600)/60),s%60].map(n=>String(n).padStart(2,'0')).join(':');}
 function tickTimer(){
@@ -540,7 +901,6 @@ function tickTimer(){
 }
 setInterval(tickTimer,1000);tickTimer();
 
-// ===== INIT =====
 initSession();
 </script>
 </body>
