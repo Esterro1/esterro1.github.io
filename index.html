@@ -429,10 +429,6 @@ button:active{transform:scale(0.97);}
 
     <!-- ТОП -->
     <div class="tab-pane" id="pane-top">
-      <div style="display:flex;gap:6px;margin-bottom:12px;">
-        <button style="flex:1;padding:9px 4px;font-size:11px;" onclick="openShop();togglePanel()">🛒 ШОП</button>
-        <button style="flex:1;padding:9px 4px;font-size:11px;" onclick="openLeaderboard()">🏆 ПОЛНЫЙ ТОП</button>
-      </div>
       <div class="panel-section-title">[ ТАБЛИЦА ЛИДЕРОВ ]</div>
       <div id="panelLbList"></div>
     </div>
@@ -445,16 +441,43 @@ button:active{transform:scale(0.97);}
 
     <!-- МАГАЗИН -->
     <div class="tab-pane" id="pane-market">
-      <div class="panel-section-title">[ МАГАЗИН ]</div>
-      <div id="secretShopTimer" style="text-align:center;margin-bottom:8px;font-size:10px;color:#0a0;"></div>
-      <div id="secretShopItems"></div>
+      <div class="panel-shop-tabs" style="display:flex;gap:4px;margin-bottom:10px;">
+        <button class="panel-shop-tab active" onclick="switchShopTab('regular',this)" style="flex:1;padding:7px 4px;font-size:10px;border:1px solid #0f0;background:#000;color:#0f0;font-family:'Share Tech Mono',monospace;cursor:pointer;">🛒 ОБЫЧНЫЙ</button>
+        <button class="panel-shop-tab" onclick="switchShopTab('secret',this)" style="flex:1;padding:7px 4px;font-size:10px;border:1px solid #f00;background:#000;color:#f00;font-family:'Share Tech Mono',monospace;cursor:pointer;">🔥 СЕКРЕТ</button>
+      </div>
+      <!-- Обычный шоп -->
+      <div id="shopTabRegular">
+        <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px;" id="panelShopFilterBtns">
+          <button onclick="panelFilterShop('all',this)" style="padding:4px 6px;font-size:9px;border:1px solid #0f0;background:#0f0;color:#000;font-family:'Share Tech Mono',monospace;cursor:pointer;">ВСЕ</button>
+          <button onclick="panelFilterShop('common',this)" style="padding:4px 6px;font-size:9px;border:1px solid #0a0;background:#000;color:#0a0;font-family:'Share Tech Mono',monospace;cursor:pointer;">ОБЫЧН</button>
+          <button onclick="panelFilterShop('rare',this)" style="padding:4px 6px;font-size:9px;border:1px solid #00aaff;background:#000;color:#00aaff;font-family:'Share Tech Mono',monospace;cursor:pointer;">РЕДК</button>
+          <button onclick="panelFilterShop('epic',this)" style="padding:4px 6px;font-size:9px;border:1px solid #aa00ff;background:#000;color:#aa00ff;font-family:'Share Tech Mono',monospace;cursor:pointer;">ЭПИК</button>
+          <button onclick="panelFilterShop('legendary',this)" style="padding:4px 6px;font-size:9px;border:1px solid #ff8800;background:#000;color:#ff8800;font-family:'Share Tech Mono',monospace;cursor:pointer;">ЛЕГЕНД</button>
+        </div>
+        <div id="panelShopGrid"></div>
+      </div>
+      <!-- Секретный шоп -->
+      <div id="shopTabSecret" style="display:none;">
+        <div id="secretShopTimer" style="text-align:center;margin-bottom:8px;font-size:10px;color:#0a0;"></div>
+        <div id="secretShopItems"></div>
+      </div>
     </div>
 
     <!-- ТОРГ -->
     <div class="tab-pane" id="pane-trade">
       <div class="panel-section-title">[ ТОРГ ]</div>
-      <div style="color:#0a0;font-size:10px;margin-bottom:10px;">Покупай предметы у других игроков</div>
-      <div id="tradeList"></div>
+      <!-- МОИ ЛОТЫ -->
+      <div style="margin-bottom:10px;">
+        <div style="color:#ff0;font-size:10px;margin-bottom:6px;">📦 МОИ ЛОТЫ</div>
+        <div id="myListings" style="margin-bottom:8px;"></div>
+        <button onclick="openSellModal()" style="width:100%;padding:8px;font-size:11px;border:1px solid #ff0;color:#ff0;background:#000;font-family:'Share Tech Mono',monospace;cursor:pointer;">+ ВЫСТАВИТЬ ПРЕДМЕТ</button>
+      </div>
+      <div style="border-top:1px solid #0a0;margin:10px 0;"></div>
+      <!-- ЛОТЫ ДРУГИХ -->
+      <div>
+        <div style="color:#ff0;font-size:10px;margin-bottom:6px;">🏪 ЛОТЫ ИГРОКОВ</div>
+        <div id="tradeList"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -477,6 +500,23 @@ button:active{transform:scale(0.97);}
     <button class="payment-btn" onclick="openPayment()">💸 ДОДЭП (10₴)</button>
   </div>
 </div>
+</div>
+
+
+<!-- SELL MODAL -->
+<div class="modal" id="sellModal">
+  <div class="modal-content" style="max-width:340px;">
+    <span class="modal-close" onclick="cm('sellModal')">✕</span>
+    <h2>📦 ВЫСТАВИТЬ ПРЕДМЕТ</h2>
+    <div id="sellItemSelect" style="margin-bottom:12px;max-height:200px;overflow-y:auto;"></div>
+    <div id="sellPriceRow" style="display:none;">
+      <div style="color:#0a0;font-size:11px;margin-bottom:6px;">Выбрано: <span id="sellSelectedName" style="color:#ff0;"></span></div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <input id="sellPriceInput" type="number" min="1" placeholder="Цена ♂" style="flex:1;background:#000;border:1px solid #0f0;color:#0f0;padding:9px;font-family:'Share Tech Mono',monospace;font-size:13px;outline:none;">
+        <button onclick="confirmSellItem()" style="padding:9px 14px;font-size:13px;border:1px solid #ff0;color:#ff0;background:#000;font-family:'Share Tech Mono',monospace;cursor:pointer;">✓ ПРОДАТЬ</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- PAYMENT -->
@@ -636,7 +676,7 @@ function switchPanelTab(tab, el) {
   document.getElementById('pane-' + tab).classList.add('active');
   if (tab === 'top') renderPanelLeaderboard();
   if (tab === 'inv') renderPanelInv();
-  if (tab === 'market') renderSecretShop();
+  if (tab === 'market') { renderPanelShop('all'); }
   if (tab === 'trade') renderTrade();
 }
 
@@ -734,6 +774,194 @@ function buyMarketItem(i) {
   balance -= it.price;
   updateBalance();
   alert('КУПИЛ ' + it.name + '!');
+}
+
+
+// ===== ПАНЕЛЬНЫЙ ШОП =====
+let panelShopFilter = 'all';
+let selectedSellItem = null;
+
+function switchShopTab(tab, el) {
+  document.querySelectorAll('.panel-shop-tab').forEach(t => {
+    t.style.background = '#000';
+    t.style.color = t.style.borderColor;
+  });
+  el.style.background = el.style.borderColor;
+  el.style.color = '#000';
+  document.getElementById('shopTabRegular').style.display = tab === 'regular' ? 'block' : 'none';
+  document.getElementById('shopTabSecret').style.display = tab === 'secret' ? 'block' : 'none';
+  if (tab === 'secret') renderSecretShop();
+  if (tab === 'regular') renderPanelShop(panelShopFilter);
+}
+
+function panelFilterShop(f, el) {
+  panelShopFilter = f;
+  document.querySelectorAll('#panelShopFilterBtns button').forEach(b => {
+    b.style.background = '#000';
+  });
+  el.style.background = el.style.color;
+  el.style.color = '#000';
+  renderPanelShop(f);
+}
+
+function renderPanelShop(filter) {
+  checkSecret();
+  const owned = currentUser?.inventory || [];
+  let items = ITEMS.filter(i => !i.timed);
+  if (filter && filter !== 'all') items = items.filter(i => i.rarity === filter);
+  const rarityColors = {common:'#0a0', rare:'#00aaff', epic:'#aa00ff', legendary:'#ff8800', secret:'#f00'};
+  document.getElementById('panelShopGrid').innerHTML = items.map(it => {
+    const isOwned = owned.includes(it.id);
+    const col = rarityColors[it.rarity] || '#0f0';
+    return `<div class="market-item" style="border-color:${col};${isOwned?'opacity:0.6;cursor:default':''}" onclick="${isOwned?'':'panelBuyItem(\''+it.id+'\')'}" >
+      <div class="mi-icon">${it.icon}</div>
+      <div class="mi-info">
+        <div class="mi-name" style="color:${col}">${it.name}</div>
+        <div class="mi-seller" style="color:#0a0;font-size:9px">${it.desc}</div>
+        <div style="font-size:9px;color:#0a0">+${it.income}♂/час</div>
+      </div>
+      <div class="mi-price">${isOwned?'<span style="color:#0f0">✓ ЕСТЬ</span>':it.price+'♂'}</div>
+    </div>`;
+  }).join('');
+}
+
+function panelBuyItem(id) {
+  const it = ITEMS.find(i => i.id === id);
+  if (!it) return;
+  if (!currentUser) { alert('ВОЙДИ В АККАУНТ ЛОШОК!'); return; }
+  if (balance < it.price) { alert('НЕМА БАБОК! Нужно: ' + it.price + '♂'); return; }
+  if (currentUser.inventory.includes(id)) { alert('УЖЕ ЕСТЬ!'); return; }
+  balance -= it.price;
+  currentUser.inventory.push(id);
+  saveUser(); updateBalance(); updatePassiveInfo(); startPassiveIncome();
+  renderPanelShop(panelShopFilter);
+  renderPanelInv();
+  alert('✓ КУПЛЕНО: ' + it.name + '!');
+}
+
+// ===== ТОРГ =====
+let myListings = JSON.parse(localStorage.getItem('nab_listings') || '[]');
+
+function saveListings() {
+  localStorage.setItem('nab_listings', JSON.stringify(myListings));
+}
+
+function renderTrade() {
+  renderMyListings();
+  renderTradeList();
+}
+
+function renderMyListings() {
+  const el = document.getElementById('myListings');
+  if (!currentUser) { el.innerHTML = '<div style="color:#0a0;font-size:10px;">Войди в аккаунт</div>'; return; }
+  const mine = myListings.filter(l => l.seller === currentUser.name);
+  if (!mine.length) { el.innerHTML = '<div style="color:#0a0;font-size:10px;">У тебя нет активных лотов</div>'; return; }
+  el.innerHTML = mine.map((lot, i) => {
+    const realIdx = myListings.findIndex(l => l === lot);
+    return `<div class="market-item" style="border-color:#ff0;">
+      <div class="mi-icon">${lot.icon}</div>
+      <div class="mi-info">
+        <div class="mi-name" style="color:#ff0;">${lot.name}</div>
+        <div class="mi-seller" style="color:#0a0">выставлено</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+        <div class="mi-price">${lot.price}♂</div>
+        <button onclick="cancelListing(${realIdx})" style="padding:3px 7px;font-size:11px;border:1px solid #f00;color:#f00;background:#000;cursor:pointer;font-family:'Share Tech Mono',monospace;">✕</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderTradeList() {
+  const el = document.getElementById('tradeList');
+  const others = myListings.filter(l => !currentUser || l.seller !== currentUser.name);
+  if (!others.length) {
+    el.innerHTML = '<div style="color:#0a0;font-size:10px;padding:8px;">Пока никто ничего не выставил</div>';
+    return;
+  }
+  el.innerHTML = others.map((lot, i) => {
+    const realIdx = myListings.findIndex(l => l === lot);
+    return `<div class="market-item" onclick="buyListing(${realIdx})">
+      <div class="mi-icon">${lot.icon}</div>
+      <div class="mi-info">
+        <div class="mi-name">${lot.name}</div>
+        <div class="mi-seller">от: ${lot.seller}</div>
+      </div>
+      <div class="mi-price">${lot.price}♂</div>
+    </div>`;
+  }).join('');
+}
+
+function openSellModal() {
+  if (!currentUser) { alert('ВОЙДИ В АККАУНТ!'); return; }
+  const inv = currentUser.inventory || [];
+  if (!inv.length) { alert('ИНВЕНТАРЬ ПУСТ!'); return; }
+  selectedSellItem = null;
+  document.getElementById('sellPriceRow').style.display = 'none';
+  const el = document.getElementById('sellItemSelect');
+  el.innerHTML = '<div style="color:#0a0;font-size:10px;margin-bottom:8px;">Выбери предмет:</div>' +
+    inv.map(id => {
+      const it = ITEMS.find(i => i.id === id);
+      if (!it) return '';
+      return `<div class="market-item" onclick="selectSellItem('${id}', this)" style="cursor:pointer;">
+        <div class="mi-icon">${it.icon}</div>
+        <div class="mi-info"><div class="mi-name">${it.name}</div></div>
+        <div class="mi-price" style="font-size:10px;color:#0a0">+${it.income}♂/ч</div>
+      </div>`;
+    }).join('');
+  om('sellModal');
+}
+
+function selectSellItem(id, el) {
+  selectedSellItem = id;
+  document.querySelectorAll('#sellItemSelect .market-item').forEach(e => e.style.borderColor = '#0a0');
+  el.style.borderColor = '#ff0';
+  const it = ITEMS.find(i => i.id === id);
+  document.getElementById('sellSelectedName').textContent = it ? it.name : id;
+  document.getElementById('sellPriceRow').style.display = 'block';
+}
+
+function confirmSellItem() {
+  if (!selectedSellItem) { alert('Выбери предмет!'); return; }
+  const price = parseInt(document.getElementById('sellPriceInput').value);
+  if (!price || price < 1) { alert('Укажи цену!'); return; }
+  const it = ITEMS.find(i => i.id === selectedSellItem);
+  if (!it) return;
+  // Убираем из инвентаря
+  currentUser.inventory = currentUser.inventory.filter(i => i !== selectedSellItem);
+  saveUser(); updatePassiveInfo(); startPassiveIncome();
+  // Добавляем лот
+  myListings.push({ id: selectedSellItem, icon: it.icon, name: it.name, price, seller: currentUser.name });
+  saveListings();
+  cm('sellModal');
+  renderTrade();
+  alert('✓ ВЫСТАВЛЕНО: ' + it.name + ' за ' + price + '♂');
+}
+
+function cancelListing(idx) {
+  const lot = myListings[idx];
+  if (!lot || lot.seller !== currentUser?.name) return;
+  // Возвращаем в инвентарь
+  if (!currentUser.inventory.includes(lot.id)) {
+    currentUser.inventory.push(lot.id);
+    saveUser(); updatePassiveInfo(); startPassiveIncome();
+  }
+  myListings.splice(idx, 1);
+  saveListings();
+  renderTrade();
+}
+
+function buyListing(idx) {
+  const lot = myListings[idx];
+  if (!lot) return;
+  if (!currentUser) { alert('ВОЙДИ В АККАУНТ!'); return; }
+  if (balance < lot.price) { alert('НЕМА БАБОК! Нужно: ' + lot.price + '♂'); return; }
+  balance -= lot.price;
+  currentUser.inventory.push(lot.id);
+  myListings.splice(idx, 1);
+  saveUser(); saveListings(); updateBalance(); updatePassiveInfo(); startPassiveIncome();
+  renderTrade();
+  alert('✓ КУПЛЕНО: ' + lot.name + '!');
 }
 
 // ===== USERS =====
