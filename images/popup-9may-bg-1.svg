@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="662" height="469" viewBox="0 0 662 469">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#efbf00" stop-opacity="0.722"/>
+      <stop offset="0.477" stop-color="#d78100" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#0f0b00" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="radial-gradient-2" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#efa900" stop-opacity="0.722"/>
+      <stop offset="0.477" stop-color="#d75600" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#0f0b00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="popup-9may-bg-1" transform="translate(-1413 -112.678)">
+    <rect id="Прямоугольник_125" data-name="Прямоугольник 125" width="662" height="469" transform="translate(1413 112.678)" opacity="0.5" fill="url(#radial-gradient)"/>
+    <rect id="Прямоугольник_124" data-name="Прямоугольник 124" width="386" height="397" transform="translate(1436 140.678)" fill="url(#radial-gradient-2)"/>
+  </g>
+</svg>

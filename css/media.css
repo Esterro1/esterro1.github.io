@@ -1,0 +1,1476 @@
+@media (min-width: 1241px) {
+  .mobile-wrap,
+  .mobile-wrap.open {
+    display: none;
+  }
+}
+@media (max-width: 1240px) {
+  banner-garanty-prize-wrap {
+    display: none;
+  }
+
+  html,
+  body {
+    min-width: 100%;
+  }
+
+  body {
+    background-position: 50% 70px;
+  }
+
+  .wrapper {
+    width: 100%;
+    padding: 0 16px !important;
+  }
+
+  #main[data-pathname="/profile"] {
+    background-position: 50% -90px;
+  }
+  #main[data-pathname="/profile"] .content.wrapper {
+    padding: 55px 16px 0 16px !important;
+  }
+
+  .content .stat,
+  header .top .menu,
+  header .live,
+  header .profile {
+    display: none;
+  }
+
+  .content.wrapper div > h1 br {
+    display: none;
+  }
+
+  header .top a.logo {
+    margin-right: 0;
+    position: relative;
+    z-index: 1000;
+  }
+
+  #main.not-auth header .top a.logo {
+    margin-right: auto;
+  }
+
+  #main.not-auth header .top a.logo {
+    margin-right: auto;
+  }
+
+  #main .header-lang {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 21px;
+    transform: translateY(-50%);
+  }
+
+  #main header .top .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 10px !important;
+  }
+
+  .hamburger {
+    display: block;
+    z-index: 1000;
+  }
+
+  .game {
+    overflow: hidden;
+  }
+
+  #main
+    .profile-page
+    .profile-history-games
+    .profile-history-games-wrap
+    .in-case-wrap
+    .profile-history-games-item {
+    width: calc(25% - 8px);
+  }
+
+  #main .profile-history-games-wrap {
+    min-width: 100%;
+  }
+
+  #main header .login a.wot,
+  #main header .login a.vk,
+  #main header .login a.fb,
+  #main header .login a.lesta {
+    font-size: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+  }
+
+  #main header .login a.wot:before,
+  #main header .login a.vk:before,
+  #main header .login a.fb:before,
+  #main header .login a.lesta:before {
+    top: 0;
+    margin-right: 0;
+  }
+
+  #main header .login {
+    position: absolute;
+    top: 0;
+    right: 80px;
+  }
+  #main[data-pathname="/referral"] {
+    background-position: 50% 70px;
+  }
+  header .top a.logo:before {
+    width: 100%;
+    background-size: contain;
+  }
+}
+
+@media (max-width: 1200px) {
+  #main[data-pathname="/profile"] .content.wrapper {
+    padding-top: 0 !important;
+  }
+}
+
+@media (max-width: 1165px) {
+  #main .distribution {
+    width: 100%;
+  }
+
+  #main .distribution-wrap {
+    margin: 0 -16px;
+    padding: 0 16px;
+  }
+
+  #main .distribution-left {
+    padding-left: 0;
+  }
+
+  #main .profile-page .stats ul {
+    text-align: center;
+    min-width: 100%;
+  }
+
+  #main .profile-right {
+    position: relative;
+    clear: both;
+    margin: 0 auto;
+    float: none;
+    width: 100%;
+    min-width: 100%;
+  }
+
+  #main .profile-withdraw-money {
+    max-width: 895px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  #main .profile-withdraw-money-step-3 {
+    flex-grow: 1;
+  }
+
+  #main .profile-withdraw-disclamer {
+    border: 1px solid #d1a452;
+    color: #d1a452;
+    padding: 2px 8px;
+    margin-bottom: 24px;
+  }
+
+  #main .profile-wrap {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 1080px) {
+  #main .distribution-left {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+
+  #main .distrLeft {
+    width: 100%;
+  }
+
+  #main .distribution {
+    background-size: 20%;
+  }
+
+  #main .distrBottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  #main .distrRight {
+    display: none;
+  }
+
+  #main .distr-stats-item {
+    margin: 0 0 10px 0;
+    padding: 0 30px;
+    max-width: 100%;
+  }
+
+  #main .distr-stats > :nth-child(2) {
+    padding: 0 30px;
+  }
+
+  #main .distribution-right {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    float: none;
+  }
+
+  #main .distr-step {
+    float: none;
+  }
+
+  #main .distribution-wrap {
+    margin-bottom: 80px;
+  }
+
+  #main .footer .logo {
+    order: 1;
+    margin: 0 auto 10px auto;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  #main .f-text {
+    order: 2;
+  }
+
+  #main .fblank {
+    order: 3;
+  }
+
+  #main .c-bg .list .inner > :nth-child(6n + 6) {
+    margin-right: 7px;
+  }
+
+  #main .c-bg .list .inner > :nth-child(5n + 5) {
+    margin-right: 0;
+  }
+
+  #main .c-bg .cases .list .case {
+    width: calc(21.1% - 17px);
+  }
+
+  #main .game-panel .progress {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #main .progress .title-small {
+    display: none;
+  }
+
+  #main .progress ul {
+    margin-top: 8px;
+    margin-left: 0;
+    display: flex;
+  }
+
+  #main .game-panel .progress ul li {
+    width: 54px;
+  }
+
+  #main .box-loop {
+    top: 0;
+    height: 340px;
+  }
+
+  #main .box-loop .boxes .box .box-prize img {
+    height: 127px;
+    width: auto;
+  }
+
+  .game.isGame-0 .box-loop:before,
+  .game.isGame-1 .box-loop:before,
+  .game.isGame-2 .box-loop:before,
+  .game.isGame-3 .box-loop:before,
+  .game.isGame-4 .box-loop:before,
+  .game.isGame-5 .box-loop:before,
+  .game.isGame-6 .box-loop:before,
+  .game.isGame-7 .box-loop:before,
+  .game.isGame-8 .box-loop:before,
+  .game.isGame-9 .box-loop:before,
+  .game.isGame-10 .box-loop:before,
+  .game.isGame-11 .box-loop:before,
+  .game.isGame-12 .box-loop:before,
+  .game.isGame-13 .box-loop:before,
+  .game.isGame-14 .box-loop:before,
+  .game.isGame-15 .box-loop:before {
+    background: none;
+  }
+
+  .game {
+    background: rgba(17, 17, 12, 0.7);
+    height: auto;
+  }
+
+  #main .game-panel-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  #main .game-panel-right .playButton {
+    margin-left: 0;
+  }
+
+  #main .game-panel {
+    position: static;
+    height: auto;
+  }
+
+  #main .playButton {
+    margin-left: 0;
+  }
+
+  #main .playButton button.ui.button.game-button.btn-new {
+    margin: 0;
+  }
+
+  #main .game-panel-right .game-rub {
+    margin-top: 0;
+    padding-right: 0;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  #main .game-panel-right .game-rub span {
+    color: #d6d4c8;
+    opacity: 1;
+  }
+
+  #game-panel-1 .game-rub:before {
+    transform: rotate(90deg);
+  }
+
+  #main .game-rub-old-price {
+    color: #d6d4c8;
+  }
+
+  #main .game-panel-menu a {
+    font-weight: 400;
+    text-transform: none;
+    font-size: 14px;
+  }
+  #main .game .box-loop .boxes .box {
+    width: 145px;
+  }
+
+  #main .box-row {
+    width: 100%;
+    background-position: 50% 0;
+  }
+
+  .boxes.game-1 .box-row,
+  .boxes.game-2 .box-row,
+  .boxes.game-3 .box-row,
+  .boxes.game-4 .box-row,
+  .boxes.game-5 .box-row,
+  .boxes.game-11 .box-row {
+    background-size: contain;
+  }
+
+  #main .game.isGame-2 .game-panel-right {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(0%, 0%);
+  }
+
+  #main .game.isGame-2 .game-panel-right .game-rub {
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+
+  .box-loop .btns-won {
+    bottom: 45px;
+  }
+
+  #modal-auth:before {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  #main
+    .profile-page
+    .profile-history-games
+    .profile-history-games-wrap
+    .in-case-wrap
+    .profile-history-games-item {
+    width: calc(33% - 3px);
+  }
+
+  #main .in-case-wrap > :nth-child(4n + 4) {
+    margin-right: 6px;
+  }
+
+  #main .in-case-wrap > :nth-child(3n + 3) {
+    margin-right: 0;
+  }
+
+  #main .referer-page {
+    padding-top: 0;
+  }
+
+  #main .referer-page-title {
+    padding-top: 0;
+    text-align: center;
+    display: block;
+  }
+
+  #main .referer-page-title:before {
+    display: none;
+  }
+
+  #main .referer-page-link-wrap {
+    float: none;
+    margin: 50px auto 0 auto;
+  }
+
+  #main .box-loop .boxes.isGame-8 {
+    top: 0;
+  }
+}
+
+@media not all and (min-resolution: 0.001dpcm) and (max-width: 1024px) {
+  #main[data-host="wotkit.com"] .box-loop .boxes.game-1 .box .box-row,
+  #main[data-host="wotkit.pl"] .box-loop .boxes.game-1 .box .box-row,
+  #main[data-host="wotkit.net"] .box-loop .boxes.game-1 .box .box-row,
+  #main[data-host="wotkit.com"] .box-loop .boxes.game-2 .box .box-row,
+  #main[data-host="wotkit.pl"] .box-loop .boxes.game-2 .box .box-row,
+  #main[data-host="wotkit.net"] .box-loop .boxes.game-2 .box .box-row,
+  #main[data-host="wotkit.com"] .box-loop .boxes.game-3 .box .box-row,
+  #main[data-host="wotkit.pl"] .box-loop .boxes.game-3 .box .box-row,
+  #main[data-host="wotkit.net"] .box-loop .boxes.game-3 .box .box-row,
+  #main[data-host="wotkit.com"] .box-loop .boxes.game-4 .box .box-row,
+  #main[data-host="wotkit.pl"] .box-loop .boxes.game-4 .box .box-row,
+  #main[data-host="wotkit.net"] .box-loop .boxes.game-4 .box .box-row,
+  #main[data-host="wotkit.com"] .box-loop .boxes.game-11 .box .box-row,
+  #main[data-host="wotkit.pl"] .box-loop .boxes.game-11 .box .box-row,
+  #main[data-host="wotkit.net"] .box-loop .boxes.game-11 .box .box-row {
+    background-size: contain !important;
+    background-position: 50% 0;
+  }
+}
+
+@media (max-width: 992px) {
+  body {
+    background-image: unset;
+  }
+  .banner-garanty-prize-wrap {
+    display: none;
+  }
+  #main .faq_page .title {
+    box-shadow: unset;
+    line-height: 20px;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+  #main .profile-withdraw-money-step-1 {
+    order: 2;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 25px;
+  }
+
+  #main .profile-withdraw-money-step-2 {
+    order: 2;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 25px;
+  }
+
+  #main .profile-withdraw-money-step-3 {
+    order: 3;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+
+  #main .profile-page button.ui.button.btn-withdraw-money {
+    order: 4;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+  #main .profile-withdraw-disclamer {
+    order: 1;
+  }
+
+  #main .referer-page-link-wrap {
+    margin-top: 40px;
+  }
+
+  #main .ref-referral_pr-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  #main .ref-referral_pr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #main .ref-stats {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #main .ref-stats .ref-stats-title {
+    font-size: 12px;
+    color: #474747;
+    text-transform: none;
+    margin-right: 0;
+  }
+
+  #main .ref-stats-data {
+    font-size: 28px;
+  }
+
+  #main .ref-stats-item {
+    margin: 0 15px;
+  }
+
+  #main .ref-stats > :nth-child(2) {
+    border-left: 1px solid #ffffff20;
+    border-right: 1px solid #ffffff20;
+    padding: 0 30px;
+  }
+
+  #main .ref-lvls .title {
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .free-game-btn-timer {
+    position: absolute;
+  }
+
+  #main .faq_page .sub.open .title {
+    font-size: 18px;
+  }
+
+  .case-sale-wrap .sale-timer {
+    padding: 0 4px;
+    font-size: 12px;
+  }
+
+  .case-sale-wrap .sale-percent {
+    font-size: 14px;
+    margin-right: 2px;
+    padding: 0 2px;
+  }
+
+  #main .game-panel-menu .active .sale-percent {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 800px) {
+  #main .game .box-loop .boxes .box {
+    width: 50%;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  #main .boxes.game-1 .box-row {
+    background-position: 50% 0 !important;
+  }
+  #main .game {
+    height: auto;
+    padding-bottom: 30px;
+  }
+  #main .box-loop {
+    height: auto;
+    padding-bottom: 30px;
+  }
+  #main .box-loop .boxes {
+    justify-content: center;
+    padding: 0 0 20px 0;
+  }
+  #main .box-prize {
+    top: -25px;
+  }
+  #main .box-prize .info {
+    bottom: 20px;
+  }
+  #main .game.isGame-2 .box-loop:before {
+    background: none;
+  }
+  #main .game.isGame-2 .game-panel-right .game-rub span {
+    text-align: left;
+  }
+  #main .box-loop .btns-won {
+    bottom: -20px;
+  }
+  #main .box-loop .boxes > div {
+    justify-content: center;
+    padding: 0;
+  }
+  #main .box-loop .boxes .box .box-prize img {
+    margin-top: 30px;
+  }
+  #main .box-loop .boxes.isGame-6 .box:after {
+    transform: scale(.7);
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  #main .c-bg .cases .list .case {
+    width: calc(26.4% - 17px);
+  }
+
+  #main .c-bg .list .inner > :nth-child(5n + 5) {
+    margin-right: 7px;
+  }
+
+  #main .c-bg .list .inner > :nth-child(4n + 4) {
+    margin-right: 0;
+  }
+
+  #main .footer.wrapper {
+    flex-direction: column;
+  }
+
+  #main .f-text {
+    order: 3;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  #main .fblank {
+    order: 2;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  .fblank .fnav {
+    justify-content: center;
+  }
+
+  #main .paymethods ul li {
+    margin: 20px;
+  }
+
+  #main .paymethods ul {
+    justify-content: center;
+  }
+
+  #main .paymethods {
+    height: auto;
+    background-size: auto 100%;
+  }
+
+  #main .paymethods:before {
+    content: "";
+    display: block;
+    background: #000;
+    z-index: -1;
+    height: 100px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  #main .f-text > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #main .f-text .footer-other-links a:before {
+    display: none;
+  }
+
+  #main .f-text div a {
+    margin-right: 0;
+  }
+
+  #main .footer-link-support:before {
+    display: none;
+  }
+
+  #main .game-panel-menu li .icon {
+    margin: 0;
+  }
+
+  #main .game-panel-menu .active {
+    flex-grow: 1;
+  }
+
+  #main .game-panel-menu a,
+  #main .game-panel-menu li a:hover {
+    font-size: 0;
+  }
+
+  #main .game-panel-menu .active > a,
+  #main .game-panel-menu li:hover > a {
+    font-size: 14px;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  #main .game-panel-menu .active .icon {
+    margin-right: 4px;
+  }
+
+  #main .content.wrapper div > h1 {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 15px;
+    margin-top: 0;
+  }
+
+  .content.wrapper > div:first-child {
+    padding-top: 15px !important;
+  }
+
+  #main
+    .profile-page
+    .profile-history-games
+    .profile-history-games-wrap
+    .in-case-wrap
+    .profile-history-games-item {
+    width: calc(50% - 4px);
+  }
+
+  #main .in-case-wrap > :nth-child(3n + 3) {
+    margin-right: 6px;
+  }
+
+  #main .in-case-wrap > :nth-child(2n + 2) {
+    margin-right: 0;
+  }
+
+  #main .profile-right .stats ul > :nth-child(1) .descr:before,
+  #main .profile-right .stats ul > :nth-child(2) .descr:before,
+  #main .profile-right .stats ul > :nth-child(3) .descr:before {
+    display: none;
+  }
+
+  #main .profile-page .stats ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #main .profile-page .stats li:first-child {
+    margin-right: 0;
+    width: auto;
+    text-align: center;
+    padding: 28px 22px 28px 0;
+  }
+
+  #main .profile-page .stats li:nth-child(2) {
+    width: auto;
+    text-align: center;
+    padding: 28px 20px;
+    height: 100%;
+    margin-right: 0;
+  }
+
+  #main .profile-page .stats li:nth-child(3) {
+    margin-right: 0;
+    width: auto;
+    margin-left: 22px;
+    text-align: center;
+  }
+
+  #main .profile-right .stats {
+    margin-bottom: 0;
+  }
+
+  #main .profile-user-money-wrap .deposit {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  #main .profile-user-name {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  #main .profile-user-name .icon.icon-svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  #main .ref-lvl-row {
+    flex-direction: column;
+    height: auto;
+    padding: 0;
+    text-align: center;
+  }
+
+  #main .ref-lvl-wrap {
+    display: inline-flex;
+  }
+
+  #main .ref-lvl-wrap .ref-lvl-row > :first-child {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  #main .ref-lvl-row {
+    max-width: 118px;
+  }
+
+  #main .ref-lvls {
+    text-align: center;
+  }
+
+  #main .ref-lvl-cell {
+    margin-bottom: 20px;
+  }
+
+  #main .ref-line-lvl {
+    display: none;
+  }
+
+  #main .referer-page-link-wrap {
+    width: 100%;
+  }
+
+  #main .referer-page-link-wrap input {
+    border: 1px solid #a29e87;
+    font-size: 22px;
+  }
+
+  #main .referer-page .btn-orange {
+    width: 100%;
+    float: none;
+    margin-bottom: 15px;
+    font-size: 17px;
+  }
+
+  #main .referer-page .btn-yellow {
+    float: none;
+    width: 100%;
+    font-size: 17px;
+  }
+
+  #main .referer-page-title {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  #main .referer-page {
+    padding-top: 15px;
+  }
+
+  #main .referer-title-link {
+    font-size: 16px;
+  }
+
+  #main .ref-lvls {
+    padding-top: 40px;
+  }
+
+  #main .ref-referral_pr {
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  #main .distribution {
+    background-position: 90% 75%;
+  }
+
+  #main .btn-distr:before {
+    display: none;
+  }
+
+  #main .footer-address div,
+  #main .footer .footer-link-support,
+  #main .f-text .footer-other-links a {
+    margin-right: 0;
+  }
+
+  #main .footer-other-links > :first-child:before {
+    display: none;
+  }
+
+  .mobile-wrap .butt {
+    max-width: calc(100% - 20px);
+  }
+
+  .mobile-wrap .butt .name {
+    max-width: calc(100% - 60px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .modal {
+    overflow: auto !important;
+    width: 100% !important;
+    margin: 0 !important;
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .box-modal {
+    transform: translateY(0%);
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 auto;
+  }
+
+  .box-modal-wrap {
+    max-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .box-modal-wrap.modal-winners {
+    flex-direction: column;
+  }
+
+  #bonus-free .box-modal {
+    overflow: visible;
+  }
+
+  #bonus-25,
+  #bonus-left,
+  #bonus-free {
+    position: fixed;
+    top: 50%;
+    z-index: 99;
+    overflow: visible;
+    display: block;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    max-height: initial;
+  }
+
+  #bonus-25 .box-modal-free,
+  #bonus-left .box-modal-quest-left {
+    overflow: visible;
+  }
+
+  #bonus-25 .box-modal-free {
+    transform: initial;
+  }
+
+  #noty_layout__topRight {
+    width: 100%;
+    right: 10px;
+  }
+
+  #main #notyContainer {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    z-index: 99999;
+  }
+
+  #modal-referral_pr .box-modal {
+    width: 95%;
+    margin: 0 auto;
+    left: 10px;
+  }
+
+  .referral_pr-item {
+    display: flex;
+  }
+
+  .referral_pr-item img {
+    max-height: 50px;
+    min-width: 50px;
+  }
+
+  #main .free-game-popup-cost {
+    height: auto;
+  }
+
+  #main #free-game-popup .free-game-popup {
+    width: 100%;
+  }
+
+  #main #free-game-popup {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #main .box-modal-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  #balance.box-modal-wrap {
+    width: 100%;
+  }
+
+  #main #modal-auth {
+    position: relative;
+    top: 0;
+    transform: none;
+    overflow-x: hidden;
+    margin: 0 auto;
+  }
+
+  #main #modal-auth .login-btn-line {
+    display: none;
+  }
+  .f-text-alikassa {
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  #main .c-bg .cases .list .case {
+    width: calc(35.5% - 17px);
+  }
+
+  #main .c-bg .list .inner > :nth-child(4n + 4) {
+    margin-right: 7px;
+  }
+
+  #main .c-bg .list .inner > :nth-child(3n + 3) {
+    margin-right: 0;
+  }
+
+  #main .game-panel-menu li {
+    min-width: 40px;
+    height: 40px;
+    line-height: 40px;
+    width: auto;
+  }
+
+  #main .distribution-right {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  #main .distr-step {
+    width: 100%;
+  }
+
+  #main .distr-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #main .distr-nav-item {
+    min-width: 58px;
+    min-height: 58px;
+    margin: 0 10px 18px 10px;
+  }
+
+  #main .paymethods li {
+    height: auto;
+  }
+
+  #main .paymethods .mastercard {
+    width: 48px;
+  }
+
+  #main .paymethods .visa {
+    width: 87px;
+  }
+
+  #main .paymethods .qiwi {
+    width: 104px;
+  }
+
+  #main .paymethods .apple-pay {
+    width: 80px;
+  }
+
+  #main .paymethods .yandex {
+    width: 106px;
+  }
+
+  #main .paymethods .sms {
+    width: 33px;
+    height: auto;
+  }
+
+  #main .paymethods ul li img {
+    height: auto;
+  }
+
+  #main .paymethods ul li img.alikassa {
+    height: 40px;
+  }
+
+  #main .paymethods ul li {
+    margin: 10px;
+  }
+
+  #main .distr-title {
+    font-size: 26px;
+    line-height: 38px;
+  }
+
+  #main .distr-desc {
+    font-size: 40px;
+    line-height: 45px;
+  }
+
+  #main .distr-stats {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #main .distr-stats-num {
+    font-size: 28px;
+  }
+
+  #main .distr-stats-item {
+    padding: 0 15px;
+  }
+
+  #main .distribution {
+    padding-top: 50px;
+  }
+
+  #main .game-panel .progress ul li {
+    width: 44px;
+  }
+
+  #main .distribution {
+    background: none;
+  }
+
+  #main .distribution-wrap {
+    background-size: 100% 80%;
+  }
+
+  header .login a.wot,
+  header .login a.vk,
+  header .login a.fb,
+  header .login a.lesta {
+    margin-left: 10px;
+  }
+
+  #main.not-auth header .top a.logo {
+    width: 150px;
+  }
+
+  #balance.box-modal-wrap {
+    left: 0;
+    top: 0;
+    transform: translateY(0);
+    overflow: scroll;
+    height: 100%;
+  }
+  #balance .box-modal-balance {
+    width: 100%;
+  }
+  #main .game-panel-menu li .sale-timer,
+  #main .game-panel-menu li .sale-percent {
+    display: none;
+  }
+  #main .game-panel-menu .active .sale-percent {
+    display: inline-block;
+  }
+  .case-sale-wrap {
+    left: 0;
+  }
+  .free-game-btn-timer {
+    display: none;
+  }
+  #main .game-panel-menu .active .sale-percent {
+    display: inline-flex;
+  }
+  .distribution.spring .distr-nav-item .btn-auth-vk {
+    width: auto;
+    padding: 0 10px;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+  #main[data-pathname="/"] .distr-nav-item {
+    min-width: auto;
+    margin: 0 0 18px 0;
+  }
+  .distribution.ny .distr-nav-details {
+    margin-right: 5px;
+  }
+  .distribution.spring .distr-nav-item .btn-auth-vk {
+    font-size: 14px;
+  }
+  #main .distr-nav {
+    justify-content: flex-start;
+  }
+  header .top a.logo:before {
+    height: 80px;
+    background-position: 50%;
+  }
+  .box-modal-wrap {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 560px) {
+  #main
+    .profile-page
+    .profile-history-games
+    .profile-history-games-wrap
+    .in-case-wrap
+    .profile-history-games-item {
+    width: 100%;
+  }
+
+  #main .in-case-wrap .profile-history-games-item {
+    margin-right: 0;
+  }
+
+  #main .profile-user-money-wrap .deposit {
+    width: 100%;
+    margin-left: 0;
+    margin: 15px 0 0 0;
+  }
+  #main .game .game-panel {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+  }
+  #main .game.isGame-2 .game-panel .progress {
+    margin-bottom: 10px;
+  }
+  #main .game.isGame-2 .progress .title {
+    padding-top: 7px;
+  }
+  header .top a.logo:before {
+    height: 80px;
+    background-position: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  header .top a.logo {
+    width: 180px;
+  }
+
+  #main .c-bg .cases .list .case {
+    width: calc(50% - 5px);
+    background-size: 100%;
+  }
+
+  #main .c-bg .list .inner > :nth-child(3n + 3) {
+    margin-right: 7px;
+  }
+
+  #main .c-bg .list .inner > :nth-child(2n + 2) {
+    margin-right: 0;
+  }
+
+  #main .footer .logo img {
+    width: 244px;
+  }
+
+  #main .distr-stats > :nth-child(2) {
+    border: 0;
+  }
+
+  #main .ref-stats > :nth-child(2) {
+    padding: 0 15px;
+    margin: 0 7px;
+  }
+
+  #balance.box-modal-wrap {
+    left: 0;
+  }
+
+  #balance .box-modal-balance {
+    width: 100%;
+  }
+
+  #main.not-auth header .top a.logo {
+    width: 40%;
+  }
+
+  #modal-auth,
+  .modal-auth-container {
+    width: 100%;
+    left: 0;
+  }
+
+  #main .box {
+    height: 130px;
+  }
+
+  #main .btns-won ul li {
+    margin: 0 5px;
+  }
+
+  .referral_pr-text {
+    width: 90%;
+    height: auto;
+  }
+
+  .referral_pr-title {
+    font-size: 16px;
+  }
+
+  #main header .login a.wot,
+  #main header .login a.vk,
+  #main header .login a.fb,
+  #main header .login a.lesta {
+    width: 30px;
+    padding: 0;
+  }
+}
+
+@media (min-resolution: 0.001dpcm) and (max-width: 420px) {
+  #main[data-host="wotkit.com"] .game,
+  #main[data-host="wotkit.pl"] .game,
+  #main[data-host="wotkit.net"] .game {
+    background: rgba(17, 17, 12, 0.7);
+  }
+}
+
+@media (max-width: 420px) {
+  #main .game-panel-menu li {
+    min-width: 35px;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  #main .profile-page .stats li span.descr {
+    color: #474747;
+    font-size: 12px;
+  }
+
+  #main .ref-stats .ref-stats-title {
+    line-height: 14px;
+  }
+
+  #main .ref-stats-data {
+    margin-bottom: 10px;
+  }
+
+  #main .ref-referral_pr-item div {
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  #main .variants-pay-item {
+    width: calc(50% - 14px);
+  }
+
+  #main .game {
+    background: rgba(17, 17, 12, 0.7);
+  }
+
+  #main .boxes.game-1 .box-row {
+    background-size: 100% auto;
+  }
+
+  #main .game .box-loop .boxes .box {
+    width: 45%;
+  }
+}
+
+@media (max-width: 380px) {
+  #main .profile-page .stats ul {
+    flex-direction: column;
+  }
+
+  #main .profile-page .stats li,
+  #main .profile-page .stats li:first-child,
+  #main .profile-page .stats li:nth-child(2) {
+    padding: 0;
+    border: 0;
+  }
+
+  #main .profile-page .stats li:nth-child(3) {
+    margin: 0;
+  }
+
+  #main .profile-page .stats li {
+    margin-bottom: 20px;
+  }
+
+  #main .profile-user-info img {
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+  }
+
+  #main .profile-user-money-wrap {
+    margin-top: 0;
+  }
+
+  #main .profile-user-real-money {
+    margin-right: 10px;
+    padding-right: 10px;
+  }
+
+  #main .profile-user-name {
+    margin-bottom: 0;
+  }
+
+  header .top a.logo {
+    width: 150px;
+  }
+
+  #main .distr-stats-item {
+    border: 0;
+  }
+
+  header .login a.wot,
+  header .login a.vk,
+  header .login a.fb {
+    width: 38px;
+  }
+
+  header .login {
+    right: 75px;
+  }
+
+  #main.not-auth header .top a.logo {
+    width: 35%;
+  }
+
+  #main .profile-right {
+    margin-bottom: 40px;
+  }
+
+  #modal-referral_pr .box-modal {
+    width: 93%;
+  }
+}
+@media(max-width: 359px) {
+  #main.not-auth header .top a.logo {
+    width: 24%;
+  }
+}
