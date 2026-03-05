@@ -32,7 +32,7 @@ button:active{transform:scale(0.97);}
 .slide-toggle-btn {
   position: fixed;
   left: 0;
-  top: 30%;
+  top: 20%;
   transform: translateY(-50%);
   z-index: 9999;
   background: #0f0;
@@ -89,9 +89,9 @@ button:active{transform:scale(0.97);}
 }
 .panel-tab {
   flex: 1;
-  padding: 10px 4px;
+  padding: 8px 2px;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 8px;
   color: #0a0;
   background: none;
   border: none;
@@ -326,7 +326,10 @@ button:active{transform:scale(0.97);}
       <span class="tab-icon">🎒</span>ИНВЕНТ
     </button>
     <button class="panel-tab" onclick="switchPanelTab('market',this)">
-      <span class="tab-icon">💰</span>РЫНОК
+      <span class="tab-icon">🛒</span>МАГАЗИН
+    </button>
+    <button class="panel-tab" onclick="switchPanelTab('trade',this)">
+      <span class="tab-icon">🤝</span>ТОРГ
     </button>
   </div>
 
@@ -357,11 +360,18 @@ button:active{transform:scale(0.97);}
       <div id="panelInvGrid" class="panel-inv-grid"></div>
     </div>
 
-    <!-- РЫНОК -->
+    <!-- МАГАЗИН -->
     <div class="tab-pane" id="pane-market">
-      <div class="panel-section-title">[ РЫНОК ]</div>
+      <div class="panel-section-title">[ МАГАЗИН ]</div>
+      <div id="secretShopTimer" style="text-align:center;margin-bottom:8px;font-size:10px;color:#0a0;"></div>
+      <div id="secretShopItems"></div>
+    </div>
+
+    <!-- ТОРГ -->
+    <div class="tab-pane" id="pane-trade">
+      <div class="panel-section-title">[ ТОРГ ]</div>
       <div style="color:#0a0;font-size:10px;margin-bottom:10px;">Покупай предметы у других игроков</div>
-      <div id="marketList"></div>
+      <div id="tradeList"></div>
     </div>
   </div>
 </div>
@@ -527,7 +537,8 @@ function togglePanel() {
     btn.querySelector('.arrow').style.transform = 'rotate(180deg)';
     if (document.getElementById('pane-top').classList.contains('active')) renderPanelLeaderboard();
     if (document.getElementById('pane-inv').classList.contains('active')) renderPanelInv();
-    if (document.getElementById('pane-market').classList.contains('active')) renderMarket();
+    if (document.getElementById('pane-market').classList.contains('active')) renderSecretShop();
+    if (document.getElementById('pane-trade').classList.contains('active')) renderTrade();
   } else {
     panel.classList.remove('open');
     btn.style.left = '0';
@@ -542,7 +553,8 @@ function switchPanelTab(tab, el) {
   document.getElementById('pane-' + tab).classList.add('active');
   if (tab === 'top') renderPanelLeaderboard();
   if (tab === 'inv') renderPanelInv();
-  if (tab === 'market') renderMarket();
+  if (tab === 'market') renderSecretShop();
+  if (tab === 'trade') renderTrade();
 }
 
 // ===== ЧАТ (локальный демо) =====
