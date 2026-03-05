@@ -7,168 +7,112 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --green:#00ff00;--darkgreen:#003300;--red:#ff0000;--yellow:#ffff00;
-  --bg:#000;--border:2px solid #00ff00;
-}
-body{
-  font-family:'Share Tech Mono','Courier New',monospace;
-  background:#000;color:#0f0;text-align:center;min-height:100vh;
-  display:flex;flex-direction:column;
-  background-image:repeating-linear-gradient(0deg,rgba(0,255,0,0.03) 0px,rgba(0,255,0,0.03) 1px,transparent 1px,transparent 4px);
-}
-
-/* TOP BAR */
-.topbar{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:10px 16px;border-bottom:1px solid #0f0;
-  background:rgba(0,255,0,0.04);position:relative;z-index:10;
-}
-.topbar-btn{
-  background:#000;color:#0f0;border:1px solid #0f0;
-  padding:8px 14px;font-family:'Share Tech Mono',monospace;
-  font-size:clamp(11px,3vw,14px);cursor:pointer;transition:all 0.2s;
-  display:flex;align-items:center;gap:6px;
-}
+body{font-family:'Share Tech Mono','Courier New',monospace;background:#000;color:#0f0;text-align:center;min-height:100vh;display:flex;flex-direction:column;background-image:repeating-linear-gradient(0deg,rgba(0,255,0,0.03) 0px,rgba(0,255,0,0.03) 1px,transparent 1px,transparent 4px);}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-bottom:1px solid #0f0;background:rgba(0,255,0,0.04);flex-wrap:wrap;gap:6px;}
+.topbar-btn{background:#000;color:#0f0;border:1px solid #0f0;padding:7px 12px;font-family:'Share Tech Mono',monospace;font-size:clamp(10px,2.8vw,13px);cursor:pointer;transition:all 0.2s;}
 .topbar-btn:hover{background:#0f0;color:#000;}
-.topbar-title{font-size:clamp(12px,3.5vw,16px);color:#ff0;text-shadow:0 0 8px #ff0;letter-spacing:2px;}
-
-/* MAIN */
+.topbar-title{font-size:clamp(11px,3vw,15px);color:#ff0;text-shadow:0 0 8px #ff0;letter-spacing:2px;}
 .main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:10px;}
-.terminal{
-  border:2px solid #0f0;width:95%;max-width:820px;
-  margin:0 auto;padding:24px;position:relative;
-  box-shadow:0 0 30px rgba(0,255,0,0.2),inset 0 0 30px rgba(0,255,0,0.03);
-}
-.terminal::before{
-  content:'[ НАЕБАЛОВО 100% v2.0 ]';
-  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
-  background:#000;padding:0 12px;font-size:12px;color:#0f0;white-space:nowrap;
-}
-.balance-panel{
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
-  margin-bottom:20px;border:1px solid #0f0;padding:10px;background:rgba(0,255,0,0.03);
-}
-.balance{font-size:clamp(12px,3.5vw,18px);color:#0f0;}
+.terminal{border:2px solid #0f0;width:95%;max-width:820px;margin:0 auto;padding:20px;position:relative;box-shadow:0 0 30px rgba(0,255,0,0.2);}
+.terminal::before{content:'[ НАЕБАЛОВО 100% v3.0 ]';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#000;padding:0 12px;font-size:11px;color:#0f0;white-space:nowrap;}
+.balance-panel{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:16px;border:1px solid #0f0;padding:8px;background:rgba(0,255,0,0.03);}
+.balance{font-size:clamp(11px,3vw,16px);color:#0f0;}
 .balance span{color:#ff0;text-shadow:0 0 8px #ff0;}
-.display{
-  font-size:clamp(20px,7vw,48px);min-height:18vh;
-  display:flex;align-items:center;justify-content:center;
-  letter-spacing:3px;color:#f00;
-  text-shadow:0 0 20px #f00,0 0 40px #f00;
-  margin:20px 0;padding:20px;border:1px dashed #0f0;
-  background:rgba(255,0,0,0.03);word-break:break-word;
-}
-.buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px;}
-button{
-  background:#000;color:#0f0;border:2px solid #0f0;
-  padding:14px 28px;font-family:'Share Tech Mono',monospace;
-  font-size:clamp(13px,3.5vw,18px);cursor:pointer;transition:all 0.2s;letter-spacing:1px;
-}
-button:hover{background:#0f0;color:#000;box-shadow:0 0 20px rgba(0,255,0,0.5);}
+.passive-income{font-size:11px;color:#0a0;margin-top:2px;}
+.display{font-size:clamp(18px,6vw,44px);min-height:16vh;display:flex;align-items:center;justify-content:center;letter-spacing:3px;color:#f00;text-shadow:0 0 20px #f00;margin:16px 0;padding:16px;border:1px dashed #0f0;word-break:break-word;}
+.buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+button{background:#000;color:#0f0;border:2px solid #0f0;padding:12px 22px;font-family:'Share Tech Mono',monospace;font-size:clamp(12px,3vw,16px);cursor:pointer;transition:all 0.2s;}
+button:hover{background:#0f0;color:#000;}
 button:active{transform:scale(0.97);}
 .payment-btn{background:#0f0;color:#000;font-weight:bold;}
-.payment-btn:hover{background:#00cc00;}
 .blink{animation:blink 0.6s infinite;}
 @keyframes blink{50%{opacity:0;}}
-
-/* MODAL BASE */
-.modal{
-  display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,0.88);z-index:200;
-  justify-content:center;align-items:center;padding:10px;
-}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:200;justify-content:center;align-items:center;padding:10px;}
 .modal.open{display:flex;}
-.modal-content{
-  background:#000;border:2px solid #0f0;padding:24px;
-  max-width:480px;width:100%;position:relative;
-  box-shadow:0 0 40px rgba(0,255,0,0.3);
-  max-height:90vh;overflow-y:auto;
-}
-.modal-content h2{color:#0f0;margin-bottom:10px;font-size:clamp(16px,4vw,22px);}
-.modal-close{position:absolute;top:12px;right:16px;color:#f00;font-size:28px;cursor:pointer;}
+.modal-content{background:#000;border:2px solid #0f0;padding:22px;max-width:500px;width:100%;position:relative;box-shadow:0 0 40px rgba(0,255,0,0.3);max-height:92vh;overflow-y:auto;}
+.modal-content h2{color:#0f0;margin-bottom:10px;font-size:clamp(15px,4vw,20px);}
+.modal-close{position:absolute;top:10px;right:14px;color:#f00;font-size:26px;cursor:pointer;}
 .modal-close:hover{text-shadow:0 0 10px #f00;}
-
-/* PAYMENT MODAL */
-.hint{color:#0a0;font-size:12px;margin-bottom:16px;cursor:pointer;}
-.hint:hover{color:#0f0;}
-.crypto-option{margin:10px 0;padding:12px;border:1px solid #0f0;cursor:pointer;transition:all 0.2s;text-align:left;}
-.crypto-option:hover,.crypto-option.active{background:rgba(0,255,0,0.1);border-color:#ff0;}
-.crypto-option h3{font-size:clamp(13px,3vw,16px);color:#0f0;margin-bottom:4px;}
-.crypto-option p{font-size:11px;color:#0a0;}
-.qr-code{background:white;padding:8px;margin:16px auto;width:150px;height:150px;display:flex;justify-content:center;align-items:center;}
-.crypto-address{word-break:break-all;margin:14px 0;padding:10px;background:#0a0a0a;border:1px dashed #0f0;font-size:11px;color:#0f0;}
-.confirm-btn{width:100%;margin-top:10px;padding:16px;font-size:clamp(14px,3.5vw,18px);}
-
-/* AUTH MODAL */
-.auth-tabs{display:flex;margin-bottom:16px;border-bottom:1px solid #0f0;}
-.auth-tab{flex:1;padding:10px;cursor:pointer;color:#0a0;font-family:'Share Tech Mono',monospace;font-size:14px;background:none;border:none;border-bottom:2px solid transparent;}
+/* AUTH */
+.auth-tabs{display:flex;margin-bottom:14px;border-bottom:1px solid #0f0;}
+.auth-tab{flex:1;padding:9px;cursor:pointer;color:#0a0;font-family:'Share Tech Mono',monospace;font-size:13px;background:none;border:none;border-bottom:2px solid transparent;}
 .auth-tab.active{color:#0f0;border-bottom-color:#0f0;}
-.auth-tab:hover{color:#0f0;}
-.auth-form{display:flex;flex-direction:column;gap:12px;}
-.auth-input{
-  background:#000;color:#0f0;border:1px solid #0f0;
-  padding:12px;font-family:'Share Tech Mono',monospace;font-size:14px;
-  outline:none;width:100%;
-}
-.auth-input:focus{border-color:#ff0;box-shadow:0 0 8px rgba(255,255,0,0.3);}
+.auth-form{display:flex;flex-direction:column;gap:10px;}
+.auth-input{background:#000;color:#0f0;border:1px solid #0f0;padding:11px;font-family:'Share Tech Mono',monospace;font-size:13px;outline:none;width:100%;}
+.auth-input:focus{border-color:#ff0;}
 .auth-input::placeholder{color:#0a0;}
-.remember-row{display:flex;align-items:center;gap:8px;font-size:13px;color:#0a0;cursor:pointer;}
-.remember-row input{accent-color:#0f0;width:16px;height:16px;cursor:pointer;}
-.auth-submit{width:100%;padding:14px;font-size:16px;margin-top:4px;}
-.auth-error{color:#f00;font-size:12px;text-align:left;display:none;}
-.auth-success{color:#0f0;font-size:13px;text-align:center;display:none;}
-.user-info{text-align:center;padding:10px 0;}
-.user-info .username{font-size:20px;color:#ff0;text-shadow:0 0 8px #ff0;margin-bottom:8px;}
-.user-info .user-balance{font-size:14px;color:#0a0;margin-bottom:16px;}
-.logout-btn{background:#000;color:#f00;border:1px solid #f00;padding:10px 20px;font-family:'Share Tech Mono',monospace;cursor:pointer;}
+.remember-row{display:flex;align-items:center;gap:8px;font-size:12px;color:#0a0;cursor:pointer;}
+.remember-row input{accent-color:#0f0;cursor:pointer;}
+.auth-error{color:#f00;font-size:11px;display:none;text-align:left;}
+.auth-success{color:#0f0;font-size:12px;text-align:center;display:none;}
+.auth-submit{width:100%;padding:13px;font-size:15px;}
+.user-info{text-align:center;padding:8px 0;}
+.username-display{font-size:18px;color:#ff0;text-shadow:0 0 8px #ff0;margin-bottom:6px;}
+.user-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;}
+.stat-box{border:1px solid #0a0;padding:8px;text-align:center;}
+.stat-box .stat-val{font-size:16px;color:#ff0;}
+.stat-box .stat-lbl{font-size:10px;color:#0a0;margin-top:2px;}
+.passive-total{background:rgba(0,255,0,0.05);border:1px solid #0f0;padding:8px;margin:10px 0;font-size:12px;color:#0a0;}
+.passive-total span{color:#0f0;}
+.logout-btn{background:#000;color:#f00;border:1px solid #f00;padding:9px 18px;font-family:'Share Tech Mono',monospace;cursor:pointer;width:100%;margin-top:8px;}
 .logout-btn:hover{background:#f00;color:#000;}
-.inventory-title{color:#ff0;font-size:14px;margin:16px 0 8px;text-align:left;border-bottom:1px solid #0f0;padding-bottom:6px;}
-.inventory-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-height:200px;overflow-y:auto;}
-.inv-item{border:1px solid #0a0;padding:8px;text-align:center;font-size:11px;}
-.inv-item .skin-icon{font-size:28px;margin-bottom:4px;}
-.inv-item .skin-name{color:#0f0;font-size:10px;}
-.inv-item .skin-rarity{font-size:9px;}
-.empty-inv{color:#0a0;font-size:12px;padding:16px;}
-
-/* SHOP MODAL */
-.shop-tabs{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
-.shop-tab{padding:8px 14px;cursor:pointer;color:#0a0;border:1px solid #0a0;background:none;font-family:'Share Tech Mono',monospace;font-size:12px;}
-.shop-tab.active{color:#0f0;border-color:#0f0;background:rgba(0,255,0,0.1);}
-.shop-tab:hover{color:#0f0;border-color:#0f0;}
-.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-height:60vh;overflow-y:auto;}
-.shop-item{
-  border:1px solid #0a0;padding:12px;cursor:pointer;
-  transition:all 0.2s;position:relative;text-align:center;
-}
+.inv-title{color:#ff0;font-size:13px;margin:14px 0 8px;text-align:left;border-bottom:1px solid #0f0;padding-bottom:5px;}
+.inv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-height:180px;overflow-y:auto;}
+.inv-item{border:1px solid #0a0;padding:7px;text-align:center;}
+.inv-item .ii{font-size:24px;}
+.inv-item .in{color:#0f0;font-size:9px;margin-top:3px;}
+.inv-item .ip{font-size:9px;color:#ff0;}
+.empty-inv{color:#0a0;font-size:12px;padding:14px;text-align:center;}
+/* SHOP */
+.shop-tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+.shop-tab{padding:7px 12px;cursor:pointer;color:#0a0;border:1px solid #0a0;background:none;font-family:'Share Tech Mono',monospace;font-size:11px;}
+.shop-tab.active{color:#0f0;border-color:#0f0;background:rgba(0,255,0,0.08);}
+.shop-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-height:58vh;overflow-y:auto;}
+.shop-item{border:1px solid #0a0;padding:10px;cursor:pointer;transition:all 0.2s;position:relative;text-align:center;}
 .shop-item:hover{border-color:#0f0;background:rgba(0,255,0,0.05);}
-.shop-item.rarity-common{border-color:#0a0;}
-.shop-item.rarity-rare{border-color:#00aaff;box-shadow:0 0 8px rgba(0,170,255,0.3);}
-.shop-item.rarity-epic{border-color:#aa00ff;box-shadow:0 0 8px rgba(170,0,255,0.3);}
-.shop-item.rarity-legendary{border-color:#ff8800;box-shadow:0 0 12px rgba(255,136,0,0.4);animation:legendary-pulse 2s infinite;}
-.shop-item.rarity-secret{border-color:#ff0000;box-shadow:0 0 15px rgba(255,0,0,0.5);animation:secret-pulse 1.5s infinite;}
-@keyframes legendary-pulse{0%,100%{box-shadow:0 0 12px rgba(255,136,0,0.4);}50%{box-shadow:0 0 20px rgba(255,136,0,0.7);}}
-@keyframes secret-pulse{0%,100%{box-shadow:0 0 15px rgba(255,0,0,0.5);}50%{box-shadow:0 0 25px rgba(255,0,0,0.8);}}
-.shop-item .item-icon{font-size:36px;margin-bottom:8px;}
-.shop-item .item-name{color:#0f0;font-size:12px;margin-bottom:4px;}
-.shop-item .item-desc{color:#0a0;font-size:10px;margin-bottom:8px;}
-.shop-item .item-price{color:#ff0;font-size:14px;font-weight:bold;}
-.rarity-badge{
-  position:absolute;top:6px;right:6px;
-  font-size:9px;padding:2px 6px;
-}
-.rarity-common .rarity-badge{color:#0a0;border:1px solid #0a0;}
-.rarity-rare .rarity-badge{color:#00aaff;border:1px solid #00aaff;}
-.rarity-epic .rarity-badge{color:#aa00ff;border:1px solid #aa00ff;}
-.rarity-legendary .rarity-badge{color:#ff8800;border:1px solid #ff8800;}
-.rarity-secret .rarity-badge{color:#f00;border:1px solid #f00;}
-.secret-timer{color:#f00;font-size:10px;margin-top:4px;animation:blink 0.8s infinite;}
-.owned-badge{position:absolute;top:6px;left:6px;background:#0f0;color:#000;font-size:9px;padding:2px 5px;}
-.buy-result{text-align:center;padding:16px;}
-.buy-result .big-icon{font-size:60px;margin-bottom:12px;}
-.buy-result h3{color:#ff0;font-size:18px;margin-bottom:8px;}
-.buy-result p{color:#0a0;font-size:13px;}
-
+.rarity-common{border-color:#0a0;}
+.rarity-rare{border-color:#00aaff;box-shadow:0 0 6px rgba(0,170,255,0.3);}
+.rarity-epic{border-color:#aa00ff;box-shadow:0 0 8px rgba(170,0,255,0.3);}
+.rarity-legendary{border-color:#ff8800;animation:lpulse 2s infinite;}
+.rarity-secret{border-color:#f00;animation:spulse 1.5s infinite;}
+@keyframes lpulse{0%,100%{box-shadow:0 0 10px rgba(255,136,0,0.4);}50%{box-shadow:0 0 20px rgba(255,136,0,0.7);}}
+@keyframes spulse{0%,100%{box-shadow:0 0 12px rgba(255,0,0,0.5);}50%{box-shadow:0 0 22px rgba(255,0,0,0.8);}}
+.si-icon{font-size:32px;margin-bottom:6px;}
+.si-name{color:#0f0;font-size:11px;margin-bottom:3px;}
+.si-desc{color:#0a0;font-size:9px;margin-bottom:6px;}
+.si-price{color:#ff0;font-size:13px;font-weight:bold;}
+.si-income{color:#0f0;font-size:9px;margin-top:3px;}
+.rbadge{position:absolute;top:5px;right:5px;font-size:8px;padding:2px 5px;border:1px solid;}
+.rarity-common .rbadge{color:#0a0;border-color:#0a0;}
+.rarity-rare .rbadge{color:#00aaff;border-color:#00aaff;}
+.rarity-epic .rbadge{color:#aa00ff;border-color:#aa00ff;}
+.rarity-legendary .rbadge{color:#ff8800;border-color:#ff8800;}
+.rarity-secret .rbadge{color:#f00;border-color:#f00;}
+.owned-badge{position:absolute;top:5px;left:5px;background:#0f0;color:#000;font-size:8px;padding:2px 4px;}
+.secret-locked{opacity:0.5;cursor:default!important;}
+/* LEADERBOARD */
+.lb-list{text-align:left;}
+.lb-item{display:flex;align-items:center;gap:10px;padding:10px;border-bottom:1px solid #0a0;transition:background 0.2s;}
+.lb-item:hover{background:rgba(0,255,0,0.04);}
+.lb-rank{font-size:20px;width:36px;text-align:center;flex-shrink:0;}
+.lb-info{flex:1;}
+.lb-name{color:#0f0;font-size:14px;}
+.lb-stats{color:#0a0;font-size:10px;margin-top:2px;}
+.lb-penis{color:#ff0;font-size:16px;font-weight:bold;}
+.lb-empty{text-align:center;color:#0a0;padding:24px;font-size:13px;}
+/* CRYPTO */
+.hint{color:#0a0;font-size:11px;margin-bottom:14px;cursor:pointer;}
+.hint:hover{color:#0f0;}
+.crypto-option{margin:8px 0;padding:10px;border:1px solid #0f0;cursor:pointer;transition:all 0.2s;text-align:left;}
+.crypto-option:hover,.crypto-option.active{background:rgba(0,255,0,0.08);border-color:#ff0;}
+.crypto-option h3{font-size:clamp(12px,3vw,15px);color:#0f0;margin-bottom:3px;}
+.crypto-option p{font-size:10px;color:#0a0;}
+.qr-code{background:white;padding:7px;margin:14px auto;width:140px;height:140px;display:flex;justify-content:center;align-items:center;}
+.crypto-address{word-break:break-all;margin:12px 0;padding:9px;background:#0a0a0a;border:1px dashed #0f0;font-size:10px;color:#0f0;}
+.confirm-btn{width:100%;margin-top:8px;padding:14px;}
+/* BUY RESULT */
+.buy-result{text-align:center;padding:14px;}
+.buy-icon-big{font-size:56px;margin-bottom:10px;}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:#000;}
 ::-webkit-scrollbar-thumb{background:#0f0;}
@@ -176,414 +120,427 @@ button:active{transform:scale(0.97);}
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="topbar">
-  <button class="topbar-btn" onclick="openShop()">🛒 МАГАЗИН</button>
+  <div style="display:flex;gap:6px;">
+    <button class="topbar-btn" onclick="openShop()">🛒 ШОП</button>
+    <button class="topbar-btn" onclick="openLeaderboard()">🏆 ТОП</button>
+  </div>
   <div class="topbar-title">♂ НАЕБАЛОВО ♂</div>
   <button class="topbar-btn" id="authBtn" onclick="openAuth()">👤 ВОЙТИ</button>
 </div>
 
-<!-- MAIN GAME -->
 <div class="main">
 <div class="terminal">
   <div class="balance-panel">
-    <div class="balance">BALANCE: <span id="balance">1000</span>&#9794;</div>
-    <div class="balance">PENIS: <span id="bonusCounter">0</span> см</div>
-    <div class="balance">&#9201; <span id="bonusTimer">--:--:--</span></div>
+    <div class="balance">BALANCE: <span id="balance">1000</span>♂<div class="passive-income" id="passiveInfo"></div></div>
+    <div class="balance">PENIS: <span id="penisSize">0</span> см</div>
+    <div class="balance">⏱ <span id="bonusTimer">--:--:--</span></div>
   </div>
-  <div class="display" id="display">10грн = 100&#9794;</div>
+  <div class="display" id="display">10грн = 100♂</div>
   <div class="buttons">
-    <button onclick="spin()">&#9654; ДЭП (100&#9794;)</button>
-    <button class="payment-btn" onclick="openPayment()">&#128184; ДОДЭП (10&#8372;)</button>
+    <button onclick="spin()">▶ ДЭП (100♂)</button>
+    <button class="payment-btn" onclick="openPayment()">💸 ДОДЭП (10₴)</button>
   </div>
 </div>
 </div>
 
-<!-- PAYMENT MODAL -->
+<!-- PAYMENT -->
 <div class="modal" id="paymentModal">
   <div class="modal-content">
-    <span class="modal-close" onclick="closeModal('paymentModal')">&#10005;</span>
-    <h2>&#128184; ДОДЭПЧИК 10грн</h2>
-    <p class="hint" onclick="closeModal('paymentModal')">&#8592; ВЕРНУТЬСЯ</p>
-    <div class="crypto-option active" onclick="selectCrypto('TON',this)"><h3>&#128142; TON Rocket</h3><p>Комиссии как у моего фимоза</p></div>
-    <div class="crypto-option" onclick="selectCrypto('USDT_TRC20',this)"><h3>&#129440; USDT TRC-20</h3><p>Стабильный как дед в паровозике</p></div>
-    <div class="crypto-option" onclick="selectCrypto('USDT_ERC20',this)"><h3>&#129418; MetaMask ERC-20</h3><p>Для тех кто любит жёстко</p></div>
-    <div class="crypto-option" onclick="selectCrypto('BTC',this)"><h3>&#8383; Bitcoin</h3><p>Комиссии как у отчима</p></div>
+    <span class="modal-close" onclick="cm('paymentModal')">✕</span>
+    <h2>💸 ДОДЭПЧИК 10грн</h2>
+    <p class="hint" onclick="cm('paymentModal')">← НАЗАД</p>
+    <div class="crypto-option active" onclick="selCrypto('TON',this)"><h3>💎 TON Rocket</h3><p>Комиссии как у моего фимоза</p></div>
+    <div class="crypto-option" onclick="selCrypto('USDT_TRC20',this)"><h3>🦍 USDT TRC-20</h3><p>Стабильный как дед в паровозике</p></div>
+    <div class="crypto-option" onclick="selCrypto('USDT_ERC20',this)"><h3>🦊 MetaMask ERC-20</h3><p>Для тех кто любит жёстко</p></div>
+    <div class="crypto-option" onclick="selCrypto('BTC',this)"><h3>₿ Bitcoin</h3><p>Комиссии как у отчима</p></div>
     <div class="qr-code" id="qrCode"></div>
-    <div class="crypto-address" id="cryptoAddress">Выберите способ оплаты</div>
-    <button class="confirm-btn" onclick="confirmPayment()">&#9989; СКИНУЛ БАБКИ</button>
+    <div class="crypto-address" id="cryptoAddress">Выберите способ</div>
+    <button class="confirm-btn" onclick="confirmPay()">✅ СКИНУЛ БАБКИ</button>
   </div>
 </div>
 
-<!-- AUTH MODAL -->
+<!-- AUTH -->
 <div class="modal" id="authModal">
   <div class="modal-content">
-    <span class="modal-close" onclick="closeModal('authModal')">&#10005;</span>
-
-    <!-- Залогинен -->
+    <span class="modal-close" onclick="cm('authModal')">✕</span>
     <div id="userPanel" style="display:none">
       <div class="user-info">
-        <div class="username" id="displayUsername">&#128100; ЛОШОК</div>
-        <div class="user-balance">Баланс: <span id="userBalanceDisplay">0</span>&#9794;</div>
-        <button class="logout-btn" onclick="logout()">&#128682; ВЫЙТИ</button>
+        <div class="username-display" id="dispUsername">👤</div>
+        <div class="user-stats">
+          <div class="stat-box"><div class="stat-val" id="statBalance">0</div><div class="stat-lbl">БАЛАНС ♂</div></div>
+          <div class="stat-box"><div class="stat-val" id="statPenis">0</div><div class="stat-lbl">PENIS см</div></div>
+          <div class="stat-box"><div class="stat-val" id="statSpins">0</div><div class="stat-lbl">КРУЧЕНИЙ</div></div>
+          <div class="stat-box"><div class="stat-val" id="statWins">0</div><div class="stat-lbl">ПОБЕД</div></div>
+        </div>
+        <div class="passive-total" id="passiveTotalInfo"></div>
+        <button class="logout-btn" onclick="logout()">🚪 ВЫЙТИ</button>
       </div>
-      <div class="inventory-title">&#127890; МОЙ ИНВЕНТАРЬ</div>
-      <div id="inventoryGrid" class="inventory-grid"></div>
+      <div class="inv-title">🎒 МОЙ ИНВЕНТАРЬ</div>
+      <div id="invGrid" class="inv-grid"></div>
     </div>
-
-    <!-- Не залогинен -->
     <div id="loginPanel">
-      <h2>&#128100; АККАУНТ</h2>
+      <h2>👤 АККАУНТ</h2>
       <div class="auth-tabs">
-        <button class="auth-tab active" onclick="switchTab('login')">ВОЙТИ</button>
-        <button class="auth-tab" onclick="switchTab('register')">СОЗДАТЬ</button>
+        <button class="auth-tab active" onclick="switchTab('login',this)">ВОЙТИ</button>
+        <button class="auth-tab" onclick="switchTab('register',this)">СОЗДАТЬ</button>
       </div>
       <div class="auth-form">
-        <input class="auth-input" id="authUsername" type="text" placeholder="НИКНЕЙМ" maxlength="20" autocomplete="username">
-        <input class="auth-input" id="authPassword" type="password" placeholder="ПАРОЛЬ" maxlength="30" autocomplete="current-password">
-        <div id="authConfirmWrap" style="display:none">
-          <input class="auth-input" id="authConfirm" type="password" placeholder="ПОДТВЕРДИТЬ ПАРОЛЬ" maxlength="30">
-        </div>
-        <label class="remember-row">
-          <input type="checkbox" id="rememberMe" checked>
-          ЗАПОМНИТЬ МЕНЯ
-        </label>
-        <div class="auth-error" id="authError"></div>
-        <div class="auth-success" id="authSuccess"></div>
-        <button class="auth-submit" id="authSubmitBtn" onclick="submitAuth()">&#9654; ВОЙТИ</button>
+        <input class="auth-input" id="authUser" type="text" placeholder="НИКНЕЙМ" maxlength="20" autocomplete="username">
+        <input class="auth-input" id="authPass" type="password" placeholder="ПАРОЛЬ" maxlength="30" autocomplete="current-password">
+        <div id="confirmWrap" style="display:none"><input class="auth-input" id="authConfirm" type="password" placeholder="ПОДТВЕРДИТЬ ПАРОЛЬ" maxlength="30"></div>
+        <label class="remember-row"><input type="checkbox" id="rememberMe" checked> ЗАПОМНИТЬ МЕНЯ</label>
+        <div class="auth-error" id="authErr"></div>
+        <div class="auth-success" id="authOk"></div>
+        <button class="auth-submit" id="authSubmit" onclick="doAuth()">▶ ВОЙТИ</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- SHOP MODAL -->
+<!-- SHOP -->
 <div class="modal" id="shopModal">
   <div class="modal-content" style="max-width:560px;">
-    <span class="modal-close" onclick="closeModal('shopModal')">&#10005;</span>
-    <h2>&#127890; МАГАЗИН СКИНОВ</h2>
+    <span class="modal-close" onclick="cm('shopModal')">✕</span>
+    <h2>🛒 МАГАЗИН СКИНОВ</h2>
     <div class="shop-tabs">
       <button class="shop-tab active" onclick="filterShop('all',this)">ВСЕ</button>
       <button class="shop-tab" onclick="filterShop('common',this)">ОБЫЧНЫЕ</button>
       <button class="shop-tab" onclick="filterShop('rare',this)">РЕДКИЕ</button>
       <button class="shop-tab" onclick="filterShop('epic',this)">ЭПИК</button>
       <button class="shop-tab" onclick="filterShop('legendary',this)">ЛЕГЕНД</button>
-      <button class="shop-tab" onclick="filterShop('secret',this)">&#128293; СЕКРЕТ</button>
+      <button class="shop-tab" onclick="filterShop('secret',this)">🔥 СЕКРЕТ</button>
     </div>
     <div id="shopGrid" class="shop-grid"></div>
   </div>
 </div>
 
-<!-- BUY RESULT MODAL -->
+<!-- LEADERBOARD -->
+<div class="modal" id="lbModal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="cm('lbModal')">✕</span>
+    <h2>🏆 ТАБЛИЦА ЛИДЕРОВ</h2>
+    <p style="color:#0a0;font-size:11px;margin-bottom:14px;">По длине пениса (локальная)</p>
+    <div id="lbList" class="lb-list"></div>
+  </div>
+</div>
+
+<!-- BUY RESULT -->
 <div class="modal" id="buyModal">
-  <div class="modal-content" style="max-width:360px;">
-    <span class="modal-close" onclick="closeModal('buyModal')">&#10005;</span>
+  <div class="modal-content" style="max-width:340px;">
+    <span class="modal-close" onclick="cm('buyModal')">✕</span>
     <div class="buy-result">
-      <div class="big-icon" id="buyIcon"></div>
-      <h3 id="buyTitle"></h3>
-      <p id="buyDesc"></p>
-      <button style="margin-top:16px;width:100%;padding:14px;" onclick="closeModal('buyModal')">&#10003; ЗБС</button>
+      <div class="buy-icon-big" id="buyIcon"></div>
+      <h3 id="buyTitle" style="color:#ff0;font-size:18px;margin-bottom:8px;"></h3>
+      <p id="buyDesc" style="color:#0a0;font-size:12px;"></p>
+      <button style="margin-top:14px;width:100%;padding:13px;" onclick="cm('buyModal')">✓ ЗБС!</button>
     </div>
   </div>
 </div>
 
 <script>
-// ========== ДАННЫЕ МАГАЗИНА ==========
-const SHOP_ITEMS = [
-  {id:'dildo_small',name:'МИНИ ДИЛДО',icon:'&#128039;',desc:'Для начинающих',price:500,rarity:'common'},
-  {id:'lube_basic',name:'ВАЗЕЛИНЧИК',icon:'&#129516;',desc:'Скользко как твоя совесть',price:300,rarity:'common'},
-  {id:'fimoz_hat',name:'ШАПКА ФИМОЗА',icon:'&#127913;',desc:'Носи с гордостью',price:750,rarity:'common'},
-  {id:'gay_flag',name:'ФЛАГ ГАЧИ',icon:'&#127987;',desc:'Развевается на ветру',price:600,rarity:'common'},
-  {id:'dildo_golden',name:'ЗОЛОТОЙ ДИЛДО',icon:'&#127941;',desc:'Редкий артефакт',price:2000,rarity:'rare'},
-  {id:'bishop_sword',name:'МЕЧ БИШОПА',icon:'&#9876;',desc:'Из самого Рима',price:2500,rarity:'rare'},
-  {id:'rainbow_horse',name:'РАДУЖНЫЙ КОНЬ',icon:'&#129412;',desc:'Скачет в закат',price:3000,rarity:'rare'},
-  {id:'anal_crown',name:'КОРОНА АНУСА',icon:'&#128081;',desc:'Для настоящих королей',price:5000,rarity:'epic'},
-  {id:'cyber_fimoz',name:'КИБЕР-ФИМОЗ',icon:'&#129302;',desc:'Технологии будущего',price:7000,rarity:'epic'},
-  {id:'dragon_dildo',name:'ДРАКОН ДИЛДО',icon:'&#129429;',desc:'Легендарный артефакт Билли',price:15000,rarity:'legendary'},
-  {id:'billy_himself',name:'САМ БИЛЛИ',icon:'&#128378;',desc:'Лично поприветствует тебя',price:50000,rarity:'legendary'},
-  {id:'mystery_box',name:'&#128293; СЕКРЕТ ЧАСА',icon:'&#10067;',desc:'Доступен 1 час в месяц!',price:9999,rarity:'secret',timed:true},
+// ===== ПРЕДМЕТЫ =====
+const ITEMS = [
+  {id:'lube',name:'ВАЗЕЛИНЧИК',icon:'🧴',desc:'Скользко как совесть',price:300,rarity:'common',income:50},
+  {id:'gayhat',name:'ШАПКА ГАЧА',icon:'🎩',desc:'Носи с гордостью',price:500,rarity:'common',income:100},
+  {id:'flag',name:'ФЛАГ ГАЧИ',icon:'🚩',desc:'Развевается в жопе',price:600,rarity:'common',income:150},
+  {id:'dildo_s',name:'МИНИ ДИЛДО',icon:'🥒',desc:'Для начинающих',price:750,rarity:'common',income:200},
+  {id:'sword',name:'МЕЧ БИШОПА',icon:'⚔️',desc:'Из самого Рима',price:2000,rarity:'rare',income:500},
+  {id:'horse',name:'РАДУЖНЫЙ КОНЬ',icon:'🦄',desc:'Скачет в закат',price:2500,rarity:'rare',income:800},
+  {id:'dildo_g',name:'ЗОЛОТОЙ ДИЛДО',icon:'🏅',desc:'Редкий артефакт',price:3000,rarity:'rare',income:1000},
+  {id:'crown',name:'КОРОНА АНУСА',icon:'👑',desc:'Для королей',price:6000,rarity:'epic',income:3000},
+  {id:'cyber',name:'КИБЕР-ФИМОЗ',icon:'🤖',desc:'Технологии будущего',price:8000,rarity:'epic',income:5000},
+  {id:'dragon',name:'ДРАКОН ДИЛДО',icon:'🐉',desc:'Легендарный артефакт',price:20000,rarity:'legendary',income:15000},
+  {id:'billy',name:'САМ БИЛЛИ',icon:'👼',desc:'Лично скажет привет',price:60000,rarity:'legendary',income:50000},
+  {id:'secret',name:'🔥 СЕКРЕТ ЧАСА',icon:'❓',desc:'1 час в начале месяца!',price:9999,rarity:'secret',income:100000,timed:true},
 ];
 
-// ========== КРИПТО ==========
-const cryptoWallets = {
-  "TON":{address:"ВСТАВЬ_TON_АДРЕС",qrData:"ton://transfer/ВСТАВЬ_TON_АДРЕС?amount=0.25"},
-  "USDT_TRC20":{address:"ВСТАВЬ_TRON_АДРЕС",qrData:"tron:ВСТАВЬ_TRON_АДРЕС?amount=0.25"},
-  "USDT_ERC20":{address:"0x53ef8a183F7EEaC66a2c031556831E4Efa34f229",qrData:"ethereum:0x53ef8a183F7EEaC66a2c031556831E4Efa34f229?amount=0.25"},
-  "BTC":{address:"ВСТАВЬ_BTC_АДРЕС",qrData:"bitcoin:ВСТАВЬ_BTC_АДРЕС?amount=0.0000042"}
+const WALLETS = {
+  TON:{address:"ВСТАВЬ_TON_АДРЕС",qrData:"ton://transfer/ВСТАВЬ_TON"},
+  USDT_TRC20:{address:"ВСТАВЬ_TRON_АДРЕС",qrData:"tron:ВСТАВЬ_TRON"},
+  USDT_ERC20:{address:"0x53ef8a183F7EEaC66a2c031556831E4Efa34f229",qrData:"ethereum:0x53ef8a183"},
+  BTC:{address:"ВСТАВЬ_BTC_АДРЕС",qrData:"bitcoin:ВСТАВЬ_BTC"}
 };
 
-// ========== ИГРОВОЕ СОСТОЯНИЕ ==========
-let balance = 1000, spinCount = 0, isSpinning = false, selectedCrypto = "TON";
-let currentUser = null;
-let currentTab = 'login';
+// ===== STATE =====
+let balance=1000,spinCount=0,wins=0,isSpinning=false,selCryptoKey="TON";
+let currentUser=null,authTab='login';
+const BET=100;
+const BONUS=500,BONUS_INT=5*60*60*1000;
 
-const winPhrases = ["пол члена семъи","пидрила но выйграл","хуетолог","10 пэнисав","спинер"];
-const losePhrases = ["слил","лошок","сасе","членосос","уэбище","подсосал"];
-const specialPhrases = {5:"нифуня сибэ",10:"МЕГА ГЕЙ",15:"ПОТУЖНО",30:"ВЕЗУНЧИК",35:"УФФ ДЕНЬГИ",40:"ПОЧТИ НАЕБАЛ КАЗИК!!",55:"ТА ТЫ ШО АХУЭЛ!!!"};
-const BET = 100;
+const WIN_P=["пол члена семъи","пидрила но виграл","хуетолог","10 пэнисав","спинер"];
+const LOSE_P=["слил","лошок","сасе","членосос","уэбище","подсосал"];
+const SPECIAL={5:"нифуня сибэ",10:"МЕГА ГЕЙ",15:"ПОТУЖНО",30:"ВЕЗУНЧИК",35:"УФФ ДЕНЬГИ",40:"ПОЧТИ НАЕБАЛ КАЗИК!!",55:"ТА ТЫ ШО АХУЭЛ!!!"};
 
-// ========== БАЗА ПОЛЬЗОВАТЕЛЕЙ (localStorage) ==========
-function getUsers(){ try{return JSON.parse(localStorage.getItem('users')||'{}');}catch(e){return{};} }
-function saveUsers(u){ localStorage.setItem('users',JSON.stringify(u)); }
-function getSavedSession(){ try{return JSON.parse(localStorage.getItem('session')||'null');}catch(e){return null;} }
+// ===== USERS =====
+function getUsers(){try{return JSON.parse(localStorage.getItem('nab_users')||'{}');}catch(e){return{};}}
+function saveUsers(u){localStorage.setItem('nab_users',JSON.stringify(u));}
+function getSession(){try{return JSON.parse(localStorage.getItem('nab_session')||'null');}catch(e){return null;}}
 
 function initSession(){
-  const s = getSavedSession();
-  if(s && s.username){
-    const users = getUsers();
-    if(users[s.username]){
-      loginUser(s.username, users[s.username].balance, users[s.username].inventory||[]);
-    }
-  }
+  const s=getSession();
+  if(s&&s.u){const us=getUsers();if(us[s.u])doLogin(s.u,us[s.u]);}
 }
 
-function loginUser(username, bal, inv){
-  currentUser = {username, balance: bal, inventory: inv||[]};
-  balance = bal;
+function doLogin(username,data){
+  currentUser={name:username,...data};
+  balance=data.balance||1000;
+  spinCount=data.spins||0;
+  wins=data.wins||0;
   updateBalance();
-  document.getElementById('authBtn').textContent = '👤 ' + username.toUpperCase();
-  showUserPanel();
+  document.getElementById('authBtn').textContent='👤 '+username.slice(0,8).toUpperCase();
+  startPassiveIncome();
 }
 
-function showUserPanel(){
-  if(!currentUser) return;
-  document.getElementById('loginPanel').style.display = 'none';
-  document.getElementById('userPanel').style.display = 'block';
-  document.getElementById('displayUsername').innerHTML = '&#128100; ' + currentUser.username.toUpperCase();
-  document.getElementById('userBalanceDisplay').textContent = currentUser.balance;
-  renderInventory();
-}
-
-function renderInventory(){
-  const grid = document.getElementById('inventoryGrid');
-  if(!currentUser || !currentUser.inventory || currentUser.inventory.length === 0){
-    grid.innerHTML = '<div class="empty-inv">&#128683; ИНВЕНТАРЬ ПУСТОЙ<br>ИДИ В МАГАЗИН ЛОШОК</div>';
-    return;
-  }
-  grid.innerHTML = currentUser.inventory.map(id => {
-    const item = SHOP_ITEMS.find(i=>i.id===id);
-    if(!item) return '';
-    const rarityColors = {common:'#0a0',rare:'#00aaff',epic:'#aa00ff',legendary:'#ff8800',secret:'#f00'};
-    return '<div class="inv-item"><div class="skin-icon">'+item.icon+'</div><div class="skin-name">'+item.name+'</div><div class="skin-rarity" style="color:'+rarityColors[item.rarity]+'">'+item.rarity.toUpperCase()+'</div></div>';
-  }).join('');
-}
-
-function submitAuth(){
-  const username = document.getElementById('authUsername').value.trim();
-  const password = document.getElementById('authPassword').value;
-  const confirm = document.getElementById('authConfirm').value;
-  const remember = document.getElementById('rememberMe').checked;
-  const errEl = document.getElementById('authError');
-  const sucEl = document.getElementById('authSuccess');
-  errEl.style.display='none'; sucEl.style.display='none';
-
-  if(!username || username.length < 3){ showAuthError('Никнейм минимум 3 символа'); return; }
-  if(!password || password.length < 4){ showAuthError('Пароль минимум 4 символа'); return; }
-
-  const users = getUsers();
-
-  if(currentTab === 'register'){
-    if(password !== confirm){ showAuthError('Пароли не совпадают'); return; }
-    if(users[username]){ showAuthError('Этот ник уже занят лошок'); return; }
-    users[username] = {password, balance: 1000, inventory:[]};
-    saveUsers(users);
-    sucEl.textContent = '✓ АККАУНТ СОЗДАН!';
-    sucEl.style.display = 'block';
-    setTimeout(()=>{
-      if(remember) localStorage.setItem('session', JSON.stringify({username}));
-      loginUser(username, 1000, []);
-    }, 800);
+function doAuth(){
+  const u=document.getElementById('authUser').value.trim();
+  const p=document.getElementById('authPass').value;
+  const c=document.getElementById('authConfirm').value;
+  const rem=document.getElementById('rememberMe').checked;
+  const err=document.getElementById('authErr');
+  const ok=document.getElementById('authOk');
+  err.style.display='none';ok.style.display='none';
+  if(!u||u.length<3){showErr('Никнейм мин 3 символа');return;}
+  if(!p||p.length<4){showErr('Пароль мин 4 символа');return;}
+  const us=getUsers();
+  if(authTab==='register'){
+    if(p!==c){showErr('Пароли не совпадают');return;}
+    if(us[u]){showErr('Ник уже занят лошок!');return;}
+    us[u]={password:p,balance:1000,spins:0,wins:0,inventory:[]};
+    saveUsers(us);
+    ok.textContent='✓ АККАУНТ СОЗДАН!';ok.style.display='block';
+    setTimeout(()=>{if(rem)localStorage.setItem('nab_session',JSON.stringify({u}));doLogin(u,us[u]);showUserPanel();},700);
   } else {
-    if(!users[username]){ showAuthError('Такого пользователя нет'); return; }
-    if(users[username].password !== password){ showAuthError('Неверный пароль лошок'); return; }
-    if(remember) localStorage.setItem('session', JSON.stringify({username}));
-    loginUser(username, users[username].balance, users[username].inventory||[]);
-    closeModal('authModal');
+    if(!us[u]){showErr('Такого юзера нет');return;}
+    if(us[u].password!==p){showErr('Неверный пароль лошок');return;}
+    if(rem)localStorage.setItem('nab_session',JSON.stringify({u}));
+    doLogin(u,us[u]);
+    cm('authModal');
   }
 }
 
-function showAuthError(msg){
-  const el = document.getElementById('authError');
-  el.textContent = '⚠ ' + msg;
-  el.style.display = 'block';
+function showErr(m){const e=document.getElementById('authErr');e.textContent='⚠ '+m;e.style.display='block';}
+
+function switchTab(tab,el){
+  authTab=tab;
+  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('confirmWrap').style.display=tab==='register'?'block':'none';
+  document.getElementById('authSubmit').textContent=tab==='register'?'▶ СОЗДАТЬ':'▶ ВОЙТИ';
+  document.getElementById('authErr').style.display='none';
 }
 
 function logout(){
-  localStorage.removeItem('session');
-  currentUser = null;
-  balance = 1000;
+  localStorage.removeItem('nab_session');
+  currentUser=null;balance=1000;spinCount=0;wins=0;
   updateBalance();
-  document.getElementById('authBtn').textContent = '👤 ВОЙТИ';
-  document.getElementById('loginPanel').style.display = 'block';
-  document.getElementById('userPanel').style.display = 'none';
-  document.getElementById('authUsername').value = '';
-  document.getElementById('authPassword').value = '';
+  document.getElementById('authBtn').textContent='👤 ВОЙТИ';
+  document.getElementById('loginPanel').style.display='block';
+  document.getElementById('userPanel').style.display='none';
 }
 
-function switchTab(tab){
-  currentTab = tab;
-  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
-  event.target.classList.add('active');
-  const isReg = tab === 'register';
-  document.getElementById('authConfirmWrap').style.display = isReg ? 'block' : 'none';
-  document.getElementById('authSubmitBtn').textContent = isReg ? '▶ СОЗДАТЬ' : '▶ ВОЙТИ';
-  document.getElementById('authError').style.display='none';
-  document.getElementById('authSuccess').style.display='none';
-}
-
-function saveUserData(){
-  if(!currentUser) return;
-  const users = getUsers();
-  if(users[currentUser.username]){
-    users[currentUser.username].balance = balance;
-    users[currentUser.username].inventory = currentUser.inventory;
-    saveUsers(users);
-    currentUser.balance = balance;
+function saveUser(){
+  if(!currentUser)return;
+  const us=getUsers();
+  if(us[currentUser.name]){
+    us[currentUser.name].balance=balance;
+    us[currentUser.name].spins=spinCount;
+    us[currentUser.name].wins=wins;
+    us[currentUser.name].inventory=currentUser.inventory||[];
+    saveUsers(us);
   }
 }
 
-// ========== МАГАЗИН ==========
-let secretAvailable = false;
+function showUserPanel(){
+  if(!currentUser)return;
+  document.getElementById('loginPanel').style.display='none';
+  document.getElementById('userPanel').style.display='block';
+  document.getElementById('dispUsername').innerHTML='👤 '+currentUser.name.toUpperCase();
+  document.getElementById('statBalance').textContent=balance;
+  document.getElementById('statPenis').textContent=Math.floor(spinCount/5);
+  document.getElementById('statSpins').textContent=spinCount;
+  document.getElementById('statWins').textContent=wins;
+  const inc=getPassiveIncome();
+  document.getElementById('passiveTotalInfo').innerHTML=inc>0?'💰 Пассивный доход: <span>+'+inc+'♂/час</span>':'💰 Купи скины для пассивного дохода!';
+  renderInv();
+}
 
-function checkSecretItem(){
-  // Секретный предмет доступен в первый час каждого месяца
-  const now = new Date();
-  secretAvailable = (now.getDate() === 1 && now.getHours() === 0);
-  // Для демо — раскомментируй следующую строку чтобы увидеть секретный предмет:
-  // secretAvailable = true;
+function renderInv(){
+  const grid=document.getElementById('invGrid');
+  const inv=currentUser?.inventory||[];
+  if(!inv.length){grid.innerHTML='<div class="empty-inv">🚫 ПУСТО<br>ИДИ В МАГАЗИН!</div>';return;}
+  grid.innerHTML=inv.map(id=>{
+    const it=ITEMS.find(i=>i.id===id);
+    if(!it)return'';
+    return'<div class="inv-item"><div class="ii">'+it.icon+'</div><div class="in">'+it.name+'</div><div class="ip">+'+it.income+'♂/ч</div></div>';
+  }).join('');
+}
+
+// ===== ПАССИВНЫЙ ДОХОД =====
+function getPassiveIncome(){
+  if(!currentUser?.inventory?.length)return 0;
+  return currentUser.inventory.reduce((s,id)=>{const it=ITEMS.find(i=>i.id===id);return s+(it?it.income:0);},0);
+}
+
+let passiveInterval=null;
+function startPassiveIncome(){
+  if(passiveInterval)clearInterval(passiveInterval);
+  passiveInterval=setInterval(()=>{
+    const inc=getPassiveIncome();
+    if(inc>0&&currentUser){
+      const perSec=inc/3600;
+      balance+=perSec;
+      balance=Math.round(balance);
+      updateBalance();
+      saveUser();
+    }
+  },1000);
+  updatePassiveInfo();
+}
+
+function updatePassiveInfo(){
+  const inc=getPassiveIncome();
+  const el=document.getElementById('passiveInfo');
+  if(inc>0)el.textContent='💰 +'+inc+'♂/час';
+  else el.textContent='';
+}
+
+// ===== МАГАЗИН =====
+let secretOk=false;
+function checkSecret(){
+  const n=new Date();
+  secretOk=(n.getDate()===1&&n.getHours()===0);
+  // secretOk=true; // раскомментируй для теста
 }
 
 function renderShop(filter){
-  checkSecretItem();
-  const grid = document.getElementById('shopGrid');
-  const owned = currentUser ? currentUser.inventory : [];
-  let items = SHOP_ITEMS;
-  if(filter && filter !== 'all') items = items.filter(i=>i.rarity===filter);
-
-  grid.innerHTML = items.map(item => {
-    if(item.rarity === 'secret' && !secretAvailable){
-      return '<div class="shop-item rarity-secret" style="opacity:0.5;cursor:default"><div class="rarity-badge">СЕКРЕТ</div><div class="item-icon">&#10067;</div><div class="item-name">??? СЕКРЕТНЫЙ СКИН ???</div><div class="item-desc">Появится в первый день месяца на 1 час!</div><div class="secret-timer">&#128293; НЕ ДОСТУПЕН</div></div>';
+  checkSecret();
+  const owned=currentUser?.inventory||[];
+  let items=ITEMS;
+  if(filter&&filter!=='all')items=items.filter(i=>i.rarity===filter);
+  document.getElementById('shopGrid').innerHTML=items.map(it=>{
+    if(it.timed&&!secretOk){
+      return'<div class="shop-item rarity-secret secret-locked"><div class="rbadge">СЕКРЕТ</div><div class="si-icon">❓</div><div class="si-name">??? СЕКРЕТ ???</div><div class="si-desc">1-го числа месяца на 1 час!</div><div class="si-income" style="color:#f00;animation:blink 0.8s infinite">🔒 НЕДОСТУПЕН</div></div>';
     }
-    const isOwned = owned.includes(item.id);
-    return '<div class="shop-item rarity-'+item.rarity+'" onclick="'+(isOwned?'':'buyItem(\''+item.id+'\')')+'">'+
-      (isOwned ? '<div class="owned-badge">&#10003; ЕСТЬ</div>' : '')+
-      '<div class="rarity-badge">'+item.rarity.toUpperCase()+'</div>'+
-      '<div class="item-icon">'+item.icon+'</div>'+
-      '<div class="item-name">'+item.name+'</div>'+
-      '<div class="item-desc">'+item.desc+'</div>'+
-      '<div class="item-price">'+item.price+'&#9794;</div>'+
-      (item.rarity==='secret'?'<div class="secret-timer">&#128293; ДОСТУПЕН 1 ЧАС!</div>':'')+
+    const isOwned=owned.includes(it.id);
+    return'<div class="shop-item rarity-'+it.rarity+'" onclick="'+(isOwned?'':'buyItem(\''+it.id+'\')')+'">'+
+      (isOwned?'<div class="owned-badge">✓ ЕСТЬ</div>':'')+
+      '<div class="rbadge">'+it.rarity.toUpperCase()+'</div>'+
+      '<div class="si-icon">'+it.icon+'</div>'+
+      '<div class="si-name">'+it.name+'</div>'+
+      '<div class="si-desc">'+it.desc+'</div>'+
+      '<div class="si-price">'+it.price+'♂</div>'+
+      '<div class="si-income">💰 +'+it.income+'♂/час</div>'+
       '</div>';
   }).join('');
 }
 
-function filterShop(filter, el){
+function filterShop(f,el){
   document.querySelectorAll('.shop-tab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
-  renderShop(filter);
+  renderShop(f);
 }
 
-function buyItem(itemId){
-  const item = SHOP_ITEMS.find(i=>i.id===itemId);
-  if(!item) return;
-  if(!currentUser){ alert('ВОЙДИ В АККАУНТ ЛОШОК!'); return; }
-  if(balance < item.price){ 
-    document.getElementById('buyIcon').innerHTML = '&#128683;';
-    document.getElementById('buyTitle').textContent = 'НЕМА БАБОК';
-    document.getElementById('buyDesc').textContent = 'Нужно: '+item.price+'♂  Есть: '+balance+'♂';
-    openModal('buyModal'); return;
+function buyItem(id){
+  const it=ITEMS.find(i=>i.id===id);
+  if(!it)return;
+  if(!currentUser){alert('ВОЙДИ В АККАУНТ ЛОШОК!');return;}
+  if(balance<it.price){
+    document.getElementById('buyIcon').innerHTML='🚫';
+    document.getElementById('buyTitle').textContent='НЕМА БАБОК!';
+    document.getElementById('buyDesc').textContent='Нужно: '+it.price+'♂  Есть: '+Math.floor(balance)+'♂';
+    cm('shopModal');om('buyModal');return;
   }
-  if(currentUser.inventory.includes(itemId)){
-    alert('У ТЕБЯ УЖЕ ЕСТЬ ЭТОТ СКИН ЛОШОК'); return;
-  }
-  balance -= item.price;
-  currentUser.inventory.push(itemId);
-  saveUserData();
-  updateBalance();
-  renderShop();
-  document.getElementById('buyIcon').innerHTML = item.icon;
-  document.getElementById('buyTitle').textContent = item.name + ' КУПЛЕНО!';
-  document.getElementById('buyDesc').innerHTML = 'Редкость: <span style="color:#ff0">'+item.rarity.toUpperCase()+'</span><br>'+item.desc;
-  closeModal('shopModal');
-  openModal('buyModal');
+  if(currentUser.inventory.includes(id)){alert('УЖЕ ЕСТЬ ЛОШОК!');return;}
+  balance-=it.price;
+  currentUser.inventory.push(id);
+  saveUser();updateBalance();renderShop();updatePassiveInfo();startPassiveIncome();
+  document.getElementById('buyIcon').innerHTML=it.icon;
+  document.getElementById('buyTitle').textContent=it.name+' КУПЛЕНО!';
+  document.getElementById('buyDesc').innerHTML='Доход: <span style="color:#ff0">+'+it.income+'♂/час</span><br>'+it.desc;
+  cm('shopModal');om('buyModal');
 }
 
-// ========== МОДАЛКИ ==========
-function openModal(id){ document.getElementById(id).classList.add('open'); }
-function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+// ===== ЛИДЕРБОРД =====
+function renderLeaderboard(){
+  const us=getUsers();
+  const list=Object.entries(us).map(([name,d])=>({name,penis:Math.floor((d.spins||0)/5),balance:d.balance||0,wins:d.wins||0}));
+  list.sort((a,b)=>b.penis-a.penis);
+  const el=document.getElementById('lbList');
+  if(!list.length){el.innerHTML='<div class="lb-empty">🚫 Пока никого нет<br>Зарегистрируйся первым!</div>';return;}
+  const medals=['🥇','🥈','🥉'];
+  el.innerHTML=list.slice(0,20).map((p,i)=>'<div class="lb-item"><div class="lb-rank">'+(medals[i]||'#'+(i+1))+'</div><div class="lb-info"><div class="lb-name">'+p.name+'</div><div class="lb-stats">Баланс: '+p.balance+'♂ | Побед: '+p.wins+'</div></div><div class="lb-penis">'+p.penis+' см</div></div>').join('');
+}
+
+// ===== МОДАЛКИ =====
+function om(id){document.getElementById(id).classList.add('open');}
+function cm(id){document.getElementById(id).classList.remove('open');}
 function openAuth(){
-  if(currentUser){ document.getElementById('loginPanel').style.display='none'; document.getElementById('userPanel').style.display='block'; showUserPanel(); }
-  else { document.getElementById('loginPanel').style.display='block'; document.getElementById('userPanel').style.display='none'; }
-  openModal('authModal');
+  if(currentUser){document.getElementById('loginPanel').style.display='none';document.getElementById('userPanel').style.display='block';showUserPanel();}
+  else{document.getElementById('loginPanel').style.display='block';document.getElementById('userPanel').style.display='none';}
+  om('authModal');
 }
-function openShop(){ renderShop('all'); openModal('shopModal'); }
-function openPayment(){ openModal('paymentModal'); updateCryptoDisplay(); }
+function openShop(){renderShop('all');om('shopModal');}
+function openLeaderboard(){renderLeaderboard();om('lbModal');}
+function openPayment(){om('paymentModal');updCrypto();}
 
-// ========== КРИПТА ==========
-function selectCrypto(crypto, el){
-  selectedCrypto = crypto;
+// ===== КРИПТА =====
+function selCrypto(k,el){
+  selCryptoKey=k;
   document.querySelectorAll('.crypto-option').forEach(e=>e.classList.remove('active'));
-  el.classList.add('active');
-  updateCryptoDisplay();
+  el.classList.add('active');updCrypto();
 }
-function updateCryptoDisplay(){
-  const w = cryptoWallets[selectedCrypto];
-  document.getElementById('cryptoAddress').textContent = w.address;
-  document.getElementById('qrCode').innerHTML = '<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data='+encodeURIComponent(w.qrData)+'" style="max-width:100%;height:auto;">';
+function updCrypto(){
+  const w=WALLETS[selCryptoKey];
+  document.getElementById('cryptoAddress').textContent=w.address;
+  document.getElementById('qrCode').innerHTML='<img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data='+encodeURIComponent(w.qrData)+'" style="max-width:100%;height:auto;">';
 }
-function confirmPayment(){
-  const d = document.getElementById('display');
-  d.textContent = 'CHECKING...'; d.classList.add('blink');
-  closeModal('paymentModal');
-  setTimeout(()=>{
-    balance += 100; updateBalance();
-    d.textContent = '+100 ADDED!';
-    setTimeout(()=>{ d.classList.remove('blink'); d.textContent = 'КРУТИ ЕЩЁ!'; }, 1500);
-  }, 3000);
+function confirmPay(){
+  const d=document.getElementById('display');
+  d.textContent='CHECKING...';d.classList.add('blink');cm('paymentModal');
+  setTimeout(()=>{balance+=100;updateBalance();d.textContent='+100♂ ADDED!';setTimeout(()=>{d.classList.remove('blink');d.textContent='КРУТИ ЩЁ!';},1500);},3000);
 }
 
-// ========== ИГРА ==========
+// ===== ИГРА =====
 function spin(){
-  if(isSpinning||balance<BET){ if(!isSpinning) document.getElementById('display').textContent='НЕМА БАБОК ЛОШОК'; return; }
-  isSpinning=true; balance-=BET; spinCount++; updateBalance();
-  const all=[...winPhrases,...losePhrases];
-  const t=Date.now();
+  if(isSpinning||balance<BET){if(!isSpinning)document.getElementById('display').textContent='НЕМА БАБОК ЛОШОК';return;}
+  isSpinning=true;balance-=BET;spinCount++;updateBalance();
+  const all=[...WIN_P,...LOSE_P];const t=Date.now();
   const iv=setInterval(()=>{
     document.getElementById('display').textContent=all[Math.floor(Math.random()*all.length)];
     if(Date.now()-t>2000){clearInterval(iv);showResult();}
   },100);
 }
+
 function showResult(){
-  isSpinning=false;
-  let result;
-  if(specialPhrases[spinCount]){result=specialPhrases[spinCount];balance+=BET*5;}
-  else if(Math.random()<0.1){result=winPhrases[Math.floor(Math.random()*winPhrases.length)];balance+=BET*3;}
-  else{result=losePhrases[Math.floor(Math.random()*losePhrases.length)];}
+  isSpinning=false;let result,won=false;
+  if(SPECIAL[spinCount]){result=SPECIAL[spinCount];balance+=BET*5;won=true;}
+  else if(Math.random()<0.1){result=WIN_P[Math.floor(Math.random()*WIN_P.length)];balance+=BET*3;won=true;}
+  else result=LOSE_P[Math.floor(Math.random()*LOSE_P.length)];
+  if(won)wins++;
   const d=document.getElementById('display');
-  d.textContent=result; d.classList.add('blink'); updateBalance();
-  saveUserData();
+  d.textContent=result;d.classList.add('blink');updateBalance();saveUser();
   setTimeout(()=>d.classList.remove('blink'),1000);
 }
+
 function updateBalance(){
+  balance=Math.round(balance);
   document.getElementById('balance').textContent=balance;
-  document.getElementById('bonusCounter').textContent=Math.floor(spinCount/5);
-  if(currentUser){
-    document.getElementById('userBalanceDisplay').textContent=balance;
-    currentUser.balance=balance;
-  }
+  document.getElementById('penisSize').textContent=Math.floor(spinCount/5);
+  if(currentUser){currentUser.balance=balance;document.getElementById('statBalance').textContent=balance;document.getElementById('statPenis').textContent=Math.floor(spinCount/5);}
 }
 
-// ========== БОНУС ТАЙМЕР ==========
-const BONUS=500, BONUS_INT=5*60*60*1000;
-function getRemaining(){const r=BONUS_INT-(Date.now()-parseInt(localStorage.getItem('lastBonus')||'0'));return r>0?r:0;}
+// ===== БОНУС ТАЙМЕР =====
+function getRem(){const r=BONUS_INT-(Date.now()-parseInt(localStorage.getItem('nab_bonus')||'0'));return r>0?r:0;}
 function fmt(ms){const s=Math.floor(ms/1000);return[Math.floor(s/3600),Math.floor((s%3600)/60),s%60].map(n=>String(n).padStart(2,'0')).join(':');}
-function updateTimer(){
-  const r=getRemaining();
+function tickTimer(){
+  const r=getRem();
   document.getElementById('bonusTimer').textContent=fmt(r);
-  if(r===0){balance+=BONUS;updateBalance();saveUserData();localStorage.setItem('lastBonus',Date.now().toString());}
+  if(r===0){balance+=BONUS;updateBalance();saveUser();localStorage.setItem('nab_bonus',Date.now().toString());}
 }
-setInterval(updateTimer,1000); updateTimer();
+setInterval(tickTimer,1000);tickTimer();
 
-// ========== INIT ==========
+// ===== INIT =====
 initSession();
 </script>
 </body>
