@@ -32,7 +32,7 @@ button:active{transform:scale(0.97);}
 .slide-toggle-btn {
   position: fixed;
   left: 0;
-  top: 50%;
+  top: 30%;
   transform: translateY(-50%);
   z-index: 9999;
   background: #0f0;
@@ -119,7 +119,7 @@ button:active{transform:scale(0.97);}
 
 /* ЧАТ */
 .chat-messages {
-  height: calc(100vh - 200px);
+  height: calc(100vh - 260px);
   overflow-y: auto;
   margin-bottom: 10px;
   padding-right: 4px;
@@ -335,7 +335,7 @@ button:active{transform:scale(0.97);}
     <div class="tab-pane active" id="pane-chat">
       <div class="panel-section-title">[ МИРОВОЙ ЧАТ ]</div>
       <div class="chat-messages" id="chatMessages"></div>
-      <div class="chat-input-row">
+      <div class="chat-input-row" style="position:static;margin-top:8px;">
         <input class="chat-input" id="chatInput" placeholder="напиши что-нибудь..." maxlength="100" onkeydown="if(event.key==='Enter')sendChat()">
         <button class="chat-send" onclick="sendChat()">▶</button>
       </div>
@@ -343,6 +343,10 @@ button:active{transform:scale(0.97);}
 
     <!-- ТОП -->
     <div class="tab-pane" id="pane-top">
+      <div style="display:flex;gap:6px;margin-bottom:12px;">
+        <button style="flex:1;padding:9px 4px;font-size:11px;" onclick="openShop();togglePanel()">🛒 ШОП</button>
+        <button style="flex:1;padding:9px 4px;font-size:11px;" onclick="openLeaderboard()">🏆 ПОЛНЫЙ ТОП</button>
+      </div>
       <div class="panel-section-title">[ ТАБЛИЦА ЛИДЕРОВ ]</div>
       <div id="panelLbList"></div>
     </div>
@@ -363,10 +367,6 @@ button:active{transform:scale(0.97);}
 </div>
 
 <div class="topbar">
-  <div style="display:flex;gap:6px;">
-    <button class="topbar-btn" onclick="openShop()">🛒 ШОП</button>
-    <button class="topbar-btn" onclick="openLeaderboard()">🏆 ТОП</button>
-  </div>
   <div class="topbar-title">♂ НАЕБАЛОВО ♂</div>
   <button class="topbar-btn" id="authBtn" onclick="openAuth()">👤 ВОЙТИ</button>
 </div>
