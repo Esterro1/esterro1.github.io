@@ -326,13 +326,13 @@ button:active{transform:scale(0.97);}
 <div style="width:95%;max-width:820px;margin:10px auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
   <div onclick="openContainerMenu()" style="border:2px solid #ff8800;background:#000;padding:14px 10px;cursor:pointer;text-align:center;transition:all 0.2s;position:relative;box-shadow:0 0 10px rgba(255,136,0,0.2);" onmouseover="this.style.background='rgba(255,136,0,0.08)'" onmouseout="this.style.background='#000'">
     <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#000;padding:0 8px;font-size:9px;color:#ff8800;white-space:nowrap;font-family:'Share Tech Mono',monospace;">[ КОНТЕЙНЕРЫ ]</div>
-    <img src="1000091988.png" style="width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(255,136,0,0.6));margin-top:6px;" onerror="this.innerHTML='📦';this.style.fontSize='48px'">
+    <img src="container.jpg" style="width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(255,136,0,0.6));margin-top:6px;" onerror="this.innerHTML='📦';this.style.fontSize='48px'">
     <div style="color:#ff8800;font-size:12px;margin-top:6px;font-family:'Share Tech Mono',monospace;">📦 ОТКРЫТЬ</div>
     <div style="color:#0a0;font-size:9px;margin-top:3px;font-family:'Share Tech Mono',monospace;">от 1,000,000♂</div>
   </div>
   <div onclick="openMiningMenu()" style="border:2px solid #00aaff;background:#000;padding:14px 10px;cursor:pointer;text-align:center;transition:all 0.2s;position:relative;box-shadow:0 0 10px rgba(0,170,255,0.2);" onmouseover="this.style.background='rgba(0,170,255,0.08)'" onmouseout="this.style.background='#000'">
     <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#000;padding:0 8px;font-size:9px;color:#00aaff;white-space:nowrap;font-family:'Share Tech Mono',monospace;">[ МАЙНИНГ ]</div>
-    <img src="1000091986.png" style="width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,170,255,0.6));margin-top:6px;" onerror="this.innerHTML='⛏';this.style.fontSize='48px'">
+    <img src="mining.jpg" style="width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,170,255,0.6));margin-top:6px;" onerror="this.innerHTML='⛏';this.style.fontSize='48px'">
     <div style="color:#00aaff;font-size:12px;margin-top:6px;font-family:'Share Tech Mono',monospace;">⛏ ДОБЫВАТЬ</div>
     <div style="color:#0a0;font-size:9px;margin-top:3px;font-family:'Share Tech Mono',monospace;">тапай = бабки</div>
   </div>
@@ -528,30 +528,20 @@ const ITEMS = [
 ];
 
 // ===== ДРОПЫ ПРИ СПИНЕ =====
-// weight = вес (больше = чаще), amount = число, amountFunc = функция для рандома
 const SPIN_DROPS = [
-  // ОБЫЧНЫЕ
   {id:'carrot_drop',    imgKey:'carrot',    name:'МОРКОВКА',         weight:300, amount:150,       amountClass:'positive'},
   {id:'chibi_drop',     imgKey:'chibi',     name:'ЧИБИ КИЦУНЭ',      weight:200, amount:700,       amountClass:'positive'},
   {id:'hog_drop',       imgKey:'hog_trio',  name:'ТРИ ВСАДНИКА',     weight:150, amount:5000,      amountClass:'positive'},
   {id:'cat_snail_drop', imgKey:'cat_snail', name:'КОТ-УЛИТКА',       weight:100, amount:10000,     amountClass:'positive'},
-  // ШТРАФ
   {id:'einstein_drop',  imgKey:'einstein',  name:'K=FC² ШТРАФ',      weight:120, amount:-1200,     amountClass:'negative', allowDebt:true},
-  // БЕЗУМИЕ
   {id:'brainrot_drop',  imgKey:'brainrot',  name:'БРЕЙНРОТ КОТ',     weight:130, amountFunc:()=>Math.random()<0.5?1000:-1000, amountClass:'dynamic', allowDebt:true},
-  // ПРОИГРЫШ (каждый 20й)
   {id:'syn_drop',       imgKey:'syn_sluhi', name:'СЫН ШЛЮХИ',        weight:0,   amount:0,         amountClass:'negative', loseTrophy:true, addToInv:'syn_sluhi'},
-  // КРИСТАЛЛ
   {id:'gem_drop',       imgKey:'gem',       name:'КРИСТАЛЛ',          weight:15,  amount:500000,    amountClass:'positive'},
-  // УЛЬТРА ЛЕГЕНДЫ (очень редкие)
   {id:'anime_drop',     imgKey:'anime_girl',name:'АНИМЕ ТЯН',         weight:1,   amount:1000000,   amountClass:'ultra',    addToInv:'anime_girl'},
   {id:'lucky_drop',     imgKey:'lucky_cat', name:'МАНЭКИ-НЭКО',       weight:1,   amount:1000000,   amountClass:'ultra',    addToInv:'lucky_cat'},
   {id:'mineta_drop',    imgKey:'mineta',    name:'ТЕОРЕМА МИНЕТА',     weight:1,   amount:10000000,  amountClass:'ultra',    addToInv:'mineta'},
-  // ПРОКЛЯТЫЙ
   {id:'daun_drop',      imgKey:'daun',      name:'ДАУН ДОЛБАЕБ',      weight:1,   amountFunc:()=>Math.random()<0.5?1000000:-1000000, amountClass:'cursed', allowDebt:true, addToInv:'daun'},
-  // РЫЦАРЬ (спин #10 → МЕГА ГЕЙ)
   {id:'knight_drop',    imgKey:'knight',    name:'МЕГА ГЕЙ',           weight:0,   amount:60000,    amountClass:'ultra',    addToInv:'knight', specialSpin:10},
-  // БОЖЕСТВЕННЫЙ
   {id:'divine_drop',    imgKey:'money_cup', name:'РОЯЛТИ ХУЁЯЛТИ',     weight:0.0001, amount:100000000, amountClass:'divine', addToInv:'money_cup'},
 ];
 
@@ -564,7 +554,7 @@ const WALLETS = {
 
 let balance=1000, spinCount=0, wins=0, isSpinning=false, selCryptoKey="TON";
 let currentUser=null, authTab='login';
-let lossCount=0; // счётчик проигрышей
+let lossCount=0;
 const BET=100;
 const BONUS=500, BONUS_INT=5*60*60*1000;
 const MAX_LEVEL=1488;
@@ -657,18 +647,15 @@ function claimReward(i){
 
 // ===== SPIN DROP SYSTEM =====
 function pickDrop(isWin, isLoss) {
-  // Спин #10 = МЕГА ГЕЙ / рыцарь
   if(spinCount===10){
     return SPIN_DROPS.find(d=>d.specialSpin===10);
   }
-  // Каждый 20й проигрыш = СЫН ШЛЮХИ
   if(isLoss){
     lossCount++;
     if(lossCount%20===0){
       return SPIN_DROPS.find(d=>d.loseTrophy);
     }
   }
-  // Взвешенный рандом
   const pool=SPIN_DROPS.filter(d=>!d.loseTrophy&&!d.specialSpin&&d.weight>0);
   const totalWeight=pool.reduce((s,d)=>s+d.weight,0);
   let rnd=Math.random()*totalWeight;
@@ -678,19 +665,16 @@ function pickDrop(isWin, isLoss) {
 
 function showDropResult(drop){
   const d=document.getElementById('display');
-  // Вычисляем сумму
   let amount=0;
   if(typeof drop.amountFunc==='function') amount=drop.amountFunc();
   else amount=drop.amount||0;
 
-  // Применяем к балансу (долг разрешён если allowDebt)
   if(amount!==0){
     balance+=amount;
     if(!drop.allowDebt&&balance<0) balance=0;
     updateBalance();
   }
 
-  // Добавляем в инвентарь если нужно
   if(drop.addToInv&&currentUser){
     if(!currentUser.inventory.includes(drop.addToInv)){
       currentUser.inventory.push(drop.addToInv);
@@ -698,11 +682,9 @@ function showDropResult(drop){
     }
   }
 
-  // Определяем цвет суммы
   let cls=drop.amountClass||'positive';
   if(cls==='dynamic'||cls==='cursed') cls=amount>=0?'positive':'negative';
 
-  // Строим HTML дисплея
   const amountStr=amount>0?'+'+amount.toLocaleString()+'♂':amount!==0?amount.toLocaleString()+'♂':'';
   d.innerHTML=`
     ${imgTag(drop.imgKey)}
@@ -710,7 +692,6 @@ function showDropResult(drop){
     ${drop.loseTrophy?'<div style="color:#f00;font-size:12px;margin-top:4px;">ТРОФЕЙ ПОЗОРА В ИНВЕНТАРЬ!</div>':''}
     ${drop.addToInv&&!drop.loseTrophy?'<div style="color:#ff0;font-size:11px;margin-top:4px;">→ ДОБАВЛЕНО В ИНВЕНТАРЬ!</div>':''}
   `;
-  // Очистим через 3 секунды
   setTimeout(()=>{if(d.querySelector('.drop-img'))d.textContent='КРУТИ ЩЁ!';},3500);
 }
 
@@ -1113,7 +1094,6 @@ function spin(){
 
 function showResult(){
   isSpinning=false;
-  // Определяем win/loss
   let won=false;let textResult='';
   if(SPECIAL_TEXT[spinCount]){textResult=SPECIAL_TEXT[spinCount];balance+=BET*5;won=true;}
   else if(Math.random()<0.1){textResult=WIN_P[Math.floor(Math.random()*WIN_P.length)];balance+=BET*3;won=true;}
@@ -1121,7 +1101,6 @@ function showResult(){
 
   if(won)wins++;
 
-  // Пробуем показать PNG дроп
   const drop=pickDrop(won,!won);
   if(drop){
     showDropResult(drop);
@@ -1138,7 +1117,6 @@ function updateBalance(){
   balance=Math.round(balance);
   document.getElementById('balance').textContent=balance.toLocaleString();
   document.getElementById('penisSize').textContent=Math.floor(spinCount/5);
-  // Показываем долг
   const debtEl=document.getElementById('debtInfo');
   if(balance<0){debtEl.style.display='block';debtEl.textContent='⚠ ДОЛГ: '+balance.toLocaleString()+'♂';}
   else debtEl.style.display='none';
@@ -1156,11 +1134,10 @@ setInterval(tickTimer,1000);tickTimer();
 
 // ===== КОНТЕЙНЕРЫ =====
 const CONTAINERS = [
-  {id:'basic', name:'ОБЫЧНЫЙ КОНТЕЙНЕР', img:'1000091988.png', price:1000000, color:'#ff8800',
+  {id:'basic', name:'ОБЫЧНЫЙ КОНТЕЙНЕР', img:'container.jpg', price:1000000, color:'#ff8800',
    desc:'3 предмета + каждый 100й гарантированная легендарка'},
 ];
 
-// Пул предметов для контейнера
 const CONTAINER_POOL_COMMON = ['lube','gayhat','flag','dildo_s','carrot','bottle'];
 const CONTAINER_POOL_RARE   = ['sword','horse','dildo_g','gem','money_cup_item'];
 const CONTAINER_POOL_EPIC   = ['crown','cyber','hog_trio','lucky_cat','aot'];
@@ -1171,7 +1148,6 @@ let containerOpenCount = 0;
 let isContainerAnimating = false;
 
 function openContainerMenu() {
-  // Рендер контейнеров
   const el = document.getElementById('containerList');
   el.innerHTML = CONTAINERS.map(c => `
     <div style="border:2px solid ${c.color};padding:14px;margin-bottom:10px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:12px;" onclick="buyContainer('${c.id}')">
@@ -1227,7 +1203,6 @@ function startContainerOpen(c) {
     isContainerAnimating = false;
   };
 
-  // Если видео не найдено — CSS анимация
   vid.onerror = () => {
     vidWrap.innerHTML = `<div id="cssContainerAnim" style="width:140px;height:140px;margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center;">
       <img src="${c.img}" style="width:100px;height:100px;object-fit:contain;animation:containerShake 0.15s infinite;" onerror="this.style.display='none'">
@@ -1277,7 +1252,6 @@ function showContainerRewards(c) {
     rewardsEl.innerHTML = `<div style="color:#ff8800;font-size:12px;margin-bottom:10px;">📦 ВЫПАЛО ${count} ПРЕДМЕТА:</div>`;
   }
 
-  // Показываем предметы по очереди с задержкой
   drops.forEach((itemId, idx) => {
     setTimeout(() => {
       const it = ITEMS.find(i => i.id === itemId);
@@ -1292,11 +1266,9 @@ function showContainerRewards(c) {
       div.innerHTML = `${iconHtml}<div style="text-align:left;flex:1;"><div style="color:${col};font-size:12px;font-family:'Share Tech Mono',monospace">${it.name}</div><div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace">${it.rarity.toUpperCase()}</div><div style="color:#ff0;font-size:9px;font-family:'Share Tech Mono',monospace">${it.income?'+'+it.income+'♂/ч':'ТРОФЕЙ'}</div></div><div style="color:#0f0;font-size:18px">✓</div>`;
       rewardsEl.appendChild(div);
 
-      // Добавляем в инвентарь
       if(currentUser && !currentUser.inventory.includes(itemId)) {
         currentUser.inventory.push(itemId);
       } else if(currentUser) {
-        // Уже есть — даём немного бабок вместо
         balance += Math.floor(it.price * 0.3);
         updateBalance();
       }
@@ -1339,12 +1311,10 @@ function doMine() {
   updateMiningUI();
   saveUser();
 
-  // Комбо
   miningCombo = Math.min(miningCombo + 1, 10);
   if(miningComboTimer) clearTimeout(miningComboTimer);
   miningComboTimer = setTimeout(() => { miningCombo = 1; updateMiningUI(); }, 2000);
 
-  // Анимация кирки
   const pick = document.getElementById('miningPickImg');
   pick.style.transform = 'rotate(-30deg) scale(1.2)';
   pick.style.filter = 'drop-shadow(0 0 12px #00aaff)';
@@ -1353,7 +1323,6 @@ function doMine() {
     pick.style.filter = 'drop-shadow(0 0 6px rgba(0,170,255,0.6))';
   }, 150);
 
-  // Показываем +N
   const flash = document.getElementById('miningFlash');
   flash.textContent = '+' + earned + '♂';
   flash.style.opacity = '1';
@@ -1423,7 +1392,7 @@ initSession();
     </div>
     <!-- ТАПАЛКА -->
     <div style="position:relative;display:inline-block;margin:10px 0;">
-      <img id="miningPickImg" src="1000091986.png" 
+      <img id="miningPickImg" src="mining.jpg" 
         style="width:120px;height:120px;object-fit:contain;cursor:pointer;transition:all 0.15s;filter:drop-shadow(0 0 6px rgba(0,170,255,0.6));"
         onclick="doMine()"
         onerror="this.style.fontSize='80px';this.outerHTML='<div onclick=doMine() style=font-size:80px;cursor:pointer;transition:all 0.15s;>⛏</div>'">
