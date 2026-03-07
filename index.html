@@ -413,10 +413,12 @@ button:active{transform:scale(0.97);}
           <div class="stat-box"><div class="stat-val" id="statWins">0</div><div class="stat-lbl">ПОБЕД</div></div>
         </div>
         <div class="passive-total" id="passiveTotalInfo"></div>
+        <button class="logout-btn" style="background:#000;color:#ff0;border:1px solid #ff0;margin-top:8px;" onclick="openPromoModal()">🎟️ ПРОМОКОД</button>
         <button class="logout-btn" onclick="logout()">🚪 ВЫЙТИ</button>
       </div>
       <div class="inv-title">🎒 МОЙ ИНВЕНТАРЬ</div>
       <div id="invGrid" class="inv-grid"></div>
+      <button class="logout-btn" style="background:#000;color:#00aaff;border:1px solid #00aaff;margin-top:10px;" onclick="openMergeModal()">⬆️ ПРОКАЧАТЬ</button>
     </div>
     <div id="loginPanel">
       <h2>👤 АККАУНТ</h2>
@@ -756,13 +758,24 @@ function showDropResult(drop){
   if(cls==='dynamic'||cls==='cursed') cls=amount>=0?'positive':'negative';
 
   const amountStr=amount>0?'+'+amount.toLocaleString()+'♂':amount!==0?amount.toLocaleString()+'♂':'';
-  d.innerHTML=`
-    ${imgTag(drop.imgKey)}
-    ${amountStr?`<div class="drop-amount ${amount>=0&&amount!==0?'positive':'negative'} ${cls==='divine'?'divine':cls==='ultra'?'ultra':''}">${amountStr}</div>`:''}
-    ${drop.loseTrophy?'<div style="color:#f00;font-size:12px;margin-top:4px;">ТРОФЕЙ ПОЗОРА В ИНВЕНТАРЬ!</div>':''}
-    ${drop.addToInv&&!drop.loseTrophy?'<div style="color:#ff0;font-size:11px;margin-top:4px;">→ ДОБАВЛЕНО В ИНВЕНТАРЬ!</div>':''}
+  const dropModal = document.createElement('div');
+  dropModal.className = 'modal';
+  dropModal.style.display = 'flex';
+  dropModal.id = 'dropResultModal';
+  dropModal.innerHTML = `
+    <div class="modal-content" style="max-width:400px;text-align:center;">
+      <span class="modal-close" onclick="cm('dropResultModal');isSpinning=false;" style="position:absolute;top:10px;right:14px;color:#f00;font-size:26px;cursor:pointer;">✕</span>
+      <div style="padding:20px;">
+        ${imgTag(drop.imgKey, 160)}
+        ${amountStr?`<div class="drop-amount ${amount>=0&&amount!==0?'positive':'negative'} ${cls==='divine'?'divine':cls==='ultra'?'ultra':''}" style="margin-top:20px;">${amountStr}</div>`:''}
+        ${drop.loseTrophy?'<div style="color:#f00;font-size:12px;margin-top:14px;">ТРОФЕЙ ПОЗОРА В ИНВЕНТАРЬ!</div>':''}
+        ${drop.addToInv&&!drop.loseTrophy?'<div style="color:#ff0;font-size:11px;margin-top:14px;">→ ДОБАВЛЕНО В ИНВЕНТАРЬ!</div>':''}
+        <button onclick="cm('dropResultModal');isSpinning=false;" style="margin-top:20px;width:100%;padding:12px;border:1px solid #0f0;color:#0f0;background:#000;font-family:'Share Tech Mono',monospace;font-size:14px;cursor:pointer;">✓ ДЭП</button>
+      </div>
+    </div>
   `;
-  setTimeout(()=>{if(d.querySelector('.drop-img'))d.textContent='КРУТИ ЕЩЁ!';},3500);
+  document.body.appendChild(dropModal);
+  document.getElementById('display').innerHTML = `${imgTag(drop.imgKey)}<div style="color:#0a0;font-size:12px;margin-top:10px;">КЛИКНИ ДЭП ДЛЯ ПРОДОЛЖЕНИЯ</div>`;
 }
 
 // ===== ПАНЕЛЬ =====
@@ -1143,6 +1156,39 @@ function confirmPay(){
   setTimeout(()=>{balance+=100;updateBalance();d.textContent='+100♂ ADDED!';setTimeout(()=>{d.classList.remove('blink');d.textContent='КРУТИ ЕЩЁ!';},1500);},3000);
 }
 
+// ===== ЗВУКИ =====
+const sounds = {
+  tap: new Audio('gacha-tap.mp3'),
+  spin: new Audio('zvuk_kazino.mp3')
+};
+
+// Fallback звуки если файлы не найдены
+function generateTapSound() {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.frequency.value = 1000;
+  osc.type = 'sine';
+  gain.gain.setValueAtTime(0.3, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+  osc.start(ctx.currentTime);
+  osc.stop(ctx.currentTime + 0.1);
+}
+
+function playSound(name) {
+  if(sounds[name]) {
+    sounds[name].currentTime = 0;
+    const promise = sounds[name].play();
+    if(promise !== undefined) {
+      promise.catch(() => {
+        if(name === 'tap') generateTapSound();
+      });
+    }
+  }
+}
+
 // ===== SPIN =====
 const WIN_P=["пол члена семъи","пидрила но виграл","хуетолог","спинер","везунчик"];
 const LOSE_P=["слил","лошок","сасе","членосос","уэбище","подсосал"];
@@ -1153,12 +1199,14 @@ function spin(){
     if(!isSpinning)document.getElementById('display').textContent='НЕМА БАБОК ЛОШОК';
     return;
   }
+  playSound('tap');
   isSpinning=true;balance-=BET;spinCount++;updateBalance();
   const xpGain=Math.floor(Math.random()*20)+10;addXP(xpGain);
+  playSound('spin');
   const all=[...WIN_P,...LOSE_P];const t=Date.now();
   const iv=setInterval(()=>{
     document.getElementById('display').textContent=all[Math.floor(Math.random()*all.length)];
-    if(Date.now()-t>2000){clearInterval(iv);showResult();}
+    if(Date.now()-t>4000){clearInterval(iv);showResult();}
   },100);
 }
 
@@ -1347,7 +1395,117 @@ function showContainerRewards(c) {
   });
 }
 
-// ===== МАЙНИНГ =====
+const PROMOS = {
+  'GaY': {amount: 100000000, desc: 'ТЕСТОВЫЙ ПРОМОКОД'}
+};
+
+function openPromoModal() {
+  playSound('tap');
+  const input = prompt('Введи промокод:');
+  if(!input) return;
+  const promo = PROMOS[input.toUpperCase()];
+  if(!promo) {
+    alert('❌ Неверный промокод');
+    return;
+  }
+  if(!currentUser) {
+    alert('⚠️ Сначала войди в аккаунт!');
+    return;
+  }
+  balance += promo.amount;
+  updateBalance();
+  saveUser();
+  alert(`✅ ПРОМОКОД АКТИВИРОВАН!\n+${promo.amount.toLocaleString()}♂\n${promo.desc}`);
+}
+
+// ===== СЛИЯНИЕ ПРЕДМЕТОВ =====
+const RARITY_ORDER = ['common', 'rare', 'epic', 'legendary', 'ultralegend', 'divine'];
+const MERGE_COSTS = {
+  'common': 100,
+  'rare': 50,
+  'epic': 20,
+  'legendary': 10,
+  'ultralegend': 4
+};
+
+function openMergeModal() {
+  playSound('tap');
+  if(!currentUser || !currentUser.inventory.length) {
+    alert('⚠️ Инвентарь пуст!');
+    return;
+  }
+
+  const itemCounts = {};
+  currentUser.inventory.forEach(id => {
+    itemCounts[id] = (itemCounts[id] || 0) + 1;
+  });
+
+  const mergeable = [];
+  Object.entries(itemCounts).forEach(([id, count]) => {
+    const item = ITEMS.find(i => i.id === id);
+    if(!item) return;
+    const cost = MERGE_COSTS[item.rarity];
+    if(cost && count >= cost) {
+      mergeable.push({ id, item, count, cost });
+    }
+  });
+
+  if(!mergeable.length) {
+    alert('❌ Нет предметов для слияния.\nНужно иметь:\n100x обычных | 50x редких | 20x эпиков | 10x легендарных | 4x ультра');
+    return;
+  }
+
+  let html = '<div style="font-size:11px;color:#0a0;margin-bottom:10px;">Выбери предмет для прокачки:</div>';
+  mergeable.forEach(m => {
+    const nextRarity = RARITY_ORDER[RARITY_ORDER.indexOf(m.item.rarity) + 1] || 'MAX';
+    html += `<div onclick="mergeItems('${m.id}')" style="border:1px solid #0a0;padding:10px;margin:5px 0;cursor:pointer;background:#000;transition:all 0.2s;" onmouseover="this.style.borderColor='#0f0'" onmouseout="this.style.borderColor='#0a0'">
+      <div style="color:#ff0;font-size:11px;">⬆️ ${m.item.name}</div>
+      <div style="color:#0a0;font-size:9px;margin-top:3px;">${m.cost}x ${m.item.rarity.toUpperCase()} → ${nextRarity.toUpperCase()} (у тебя: ${m.count})</div>
+    </div>`;
+  });
+
+  const modal = document.createElement('div');
+  modal.className = 'modal open';
+  modal.id = 'mergeModal';
+  modal.innerHTML = `
+    <div class="modal-content" style="max-width:400px;">
+      <span class="modal-close" onclick="cm('mergeModal')">✕</span>
+      <h2>⬆️ ПРОКАЧКА ПРЕДМЕТОВ</h2>
+      ${html}
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+function mergeItems(itemId) {
+  const item = ITEMS.find(i => i.id === itemId);
+  const cost = MERGE_COSTS[item.rarity];
+  if(!cost) { alert('❌ Максимум редкости!'); return; }
+
+  const count = currentUser.inventory.filter(i => i === itemId).length;
+  if(count < cost) { alert(`❌ Нужно ${cost}, у тебя ${count}`); return; }
+
+  for(let i = 0; i < cost; i++) {
+    const idx = currentUser.inventory.indexOf(itemId);
+    if(idx > -1) currentUser.inventory.splice(idx, 1);
+  }
+
+  const nextRarityIdx = RARITY_ORDER.indexOf(item.rarity) + 1;
+  if(nextRarityIdx >= RARITY_ORDER.length) { alert('❌ МАКСИМУМ!'); return; }
+
+  const nextRarity = RARITY_ORDER[nextRarityIdx];
+  let nextItem = ITEMS.find(i => i.rarity === nextRarity && i.name.toLowerCase().includes(item.name.split(' ')[0].toLowerCase()));
+  if(!nextItem) nextItem = ITEMS.find(i => i.rarity === nextRarity && !i.timed);
+
+  if(nextItem) {
+    currentUser.inventory.push(nextItem.id);
+    saveUser();
+    updatePassiveInfo();
+    startPassiveIncome();
+    cm('mergeModal');
+    alert(`✅ ПРОКАЧЕНО!\n${cost}x ${item.name}\n↓\n${nextItem.name}`);
+  }
+}
 let miningPower = 1;
 let miningTotal = 0;
 let miningCombo = 0;
@@ -1416,6 +1574,13 @@ function upgradeMining() {
 }
 
 initSession();
+
+// ===== ЗВУК НА ВСЕ КНОПКИ =====
+document.addEventListener('click', function(e) {
+  if(e.target.tagName === 'BUTTON' || e.target.classList.contains('topbar-btn') || e.target.classList.contains('chat-send') || e.target.classList.contains('auth-submit')) {
+    playSound('tap');
+  }
+}, true);
 </script>
 
 </body>
