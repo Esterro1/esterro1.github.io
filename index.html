@@ -218,6 +218,14 @@ button:active{transform:scale(0.97);}
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:#000;}
 ::-webkit-scrollbar-thumb{background:#0f0;}
+
+@keyframes containerShake {
+  0%,100%{transform:rotate(-3deg) scale(1.05);}
+  50%{transform:rotate(3deg) scale(1.1);}
+}
+@keyframes containerGlow {
+  from{opacity:0.3;}to{opacity:0.8;}
+}
 </style>
 </head>
 <body>
@@ -470,6 +478,68 @@ button:active{transform:scale(0.97);}
   </div>
 </div>
 
+<!-- CONTAINER MENU MODAL -->
+<div class="modal" id="containerModal">
+  <div class="modal-content" style="max-width:400px;">
+    <span class="modal-close" onclick="cm('containerModal')">✕</span>
+    <h2>📦 КОНТЕЙНЕРЫ</h2>
+    <div style="color:#0a0;font-size:11px;margin-bottom:14px;">Каждый 100й — гарантированная легендарка!</div>
+    <div id="containerList"></div>
+  </div>
+</div>
+
+<!-- CONTAINER OPEN MODAL - ИСПРАВЛЕНО ВИДЕО -->
+<div class="modal" id="containerOpenModal">
+  <div class="modal-content" style="max-width:420px;text-align:center;">
+    <span class="modal-close" onclick="cm('containerOpenModal')">✕</span>
+    <h2>📦 ОТКРЫТИЕ...</h2>
+    <div id="containerVidWrap" style="margin:10px 0;border:2px solid #ff8800;padding:0;background:#000;aspect-ratio:1/1;max-height:55vh;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+      <video id="containerVideo" style="width:100%;height:100%;object-fit:contain;display:block;" playsinline muted></video>
+    </div>
+    <div id="containerRewards" style="display:none;text-align:left;max-height:50vh;overflow-y:auto;"></div>
+    <button onclick="cm('containerOpenModal')" style="margin-top:12px;width:100%;padding:12px;border:1px solid #0f0;color:#0f0;background:#000;font-family:'Share Tech Mono',monospace;font-size:14px;cursor:pointer;">✓ ЗБС!</button>
+  </div>
+</div>
+
+<!-- MINING MODAL -->
+<div class="modal" id="miningModal">
+  <div class="modal-content" style="max-width:400px;text-align:center;">
+    <span class="modal-close" onclick="cm('miningModal')">✕</span>
+    <h2 style="color:#00aaff;">⛏ МАЙНИНГ</h2>
+    <div id="miningDebtStatus" style="display:none;color:#f00;font-size:11px;margin-bottom:8px;animation:blink 0.5s infinite;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;">
+      <div style="border:1px solid #00aaff;padding:8px;text-align:center;">
+        <div style="color:#ff0;font-size:16px;" id="miningBalance">0</div>
+        <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">БАЛАНС ♂</div>
+      </div>
+      <div style="border:1px solid #00aaff;padding:8px;text-align:center;">
+        <div style="color:#ff0;font-size:16px;" id="miningPower">1</div>
+        <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">СИЛА</div>
+      </div>
+      <div style="border:1px solid #00aaff;padding:8px;text-align:center;">
+        <div style="color:#ff00ff;font-size:16px;" id="miningCombo">1x</div>
+        <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">КОМБО</div>
+      </div>
+    </div>
+    <!-- ТАПАЛКА -->
+    <div style="position:relative;display:inline-block;margin:10px 0;">
+      <img id="miningPickImg" src="mining.jpg" 
+        style="width:120px;height:120px;object-fit:contain;cursor:pointer;transition:all 0.15s;filter:drop-shadow(0 0 6px rgba(0,170,255,0.6));"
+        onclick="doMine()"
+        onerror="this.style.fontSize='80px';this.outerHTML='<div onclick=doMine() style=font-size:80px;cursor:pointer;transition:all 0.15s;>⛏</div>'">
+      <div id="miningFlash" style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);color:#0f0;font-size:18px;font-weight:bold;font-family:Share Tech Mono,monospace;opacity:0;transition:all 0.6s;pointer-events:none;">+1♂</div>
+    </div>
+    <div style="color:#0a0;font-size:11px;margin:6px 0;font-family:'Share Tech Mono',monospace;">ТАПАЙ НА КИРКУ!</div>
+    <div style="color:#0a0;font-size:10px;margin-bottom:10px;font-family:'Share Tech Mono',monospace;">Быстро тапай — комбо x10 = x10 монет!</div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <div style="border:1px solid #0a0;padding:6px 12px;font-size:11px;color:#0a0;font-family:'Share Tech Mono',monospace;">НАМАЙНЕНО: <span id="miningTotal" style="color:#ff0;">0</span>♂</div>
+    </div>
+    <button onclick="upgradeMining()" style="margin-top:12px;width:100%;padding:11px;border:1px solid #00aaff;color:#00aaff;background:#000;font-family:'Share Tech Mono',monospace;font-size:13px;cursor:pointer;">
+      ⬆ ПРОКАЧАТЬ КИРКУ (<span id="upgradeCostDisplay">500</span>♂)
+    </button>
+  </div>
+</div>
+
 <script>
 // ===== PNG IMAGES (filenames — place PNGs next to this HTML file) =====
 const IMGS = {
@@ -692,7 +762,7 @@ function showDropResult(drop){
     ${drop.loseTrophy?'<div style="color:#f00;font-size:12px;margin-top:4px;">ТРОФЕЙ ПОЗОРА В ИНВЕНТАРЬ!</div>':''}
     ${drop.addToInv&&!drop.loseTrophy?'<div style="color:#ff0;font-size:11px;margin-top:4px;">→ ДОБАВЛЕНО В ИНВЕНТАРЬ!</div>':''}
   `;
-  setTimeout(()=>{if(d.querySelector('.drop-img'))d.textContent='КРУТИ ЩЁ!';},3500);
+  setTimeout(()=>{if(d.querySelector('.drop-img'))d.textContent='КРУТИ ЕЩЁ!';},3500);
 }
 
 // ===== ПАНЕЛЬ =====
@@ -1070,7 +1140,7 @@ function updCrypto(){
 }
 function confirmPay(){
   const d=document.getElementById('display');d.textContent='CHECKING...';d.classList.add('blink');cm('paymentModal');
-  setTimeout(()=>{balance+=100;updateBalance();d.textContent='+100♂ ADDED!';setTimeout(()=>{d.classList.remove('blink');d.textContent='КРУТИ ЩЁ!';},1500);},3000);
+  setTimeout(()=>{balance+=100;updateBalance();d.textContent='+100♂ ADDED!';setTimeout(()=>{d.classList.remove('blink');d.textContent='КРУТИ ЕЩЁ!';},1500);},3000);
 }
 
 // ===== SPIN =====
@@ -1189,7 +1259,7 @@ function startContainerOpen(c) {
   const vidWrap = document.getElementById('containerVidWrap');
   rewardsEl.innerHTML = '';
   rewardsEl.style.display = 'none';
-  vidWrap.style.display = 'block';
+  vidWrap.style.display = 'flex';
 
   vid.src = 'container_open.mp4';
   vid.currentTime = 0;
@@ -1347,77 +1417,6 @@ function upgradeMining() {
 
 initSession();
 </script>
-<!-- CONTAINER MENU MODAL -->
-<div class="modal" id="containerModal">
-  <div class="modal-content" style="max-width:400px;">
-    <span class="modal-close" onclick="cm('containerModal')">✕</span>
-    <h2>📦 КОНТЕЙНЕРЫ</h2>
-    <div style="color:#0a0;font-size:11px;margin-bottom:14px;">Каждый 100й — гарантированная легендарка!</div>
-    <div id="containerList"></div>
-  </div>
-</div>
-
-<!-- CONTAINER OPEN MODAL -->
-<div class="modal" id="containerOpenModal">
-  <div class="modal-content" style="max-width:420px;text-align:center;">
-    <span class="modal-close" onclick="cm('containerOpenModal')">✕</span>
-    <h2>📦 ОТКРЫТИЕ...</h2>
-    <div id="containerVidWrap" style="margin:10px 0;">
-      <video id="containerVideo" style="width:100%;max-height:280px;border:2px solid #ff8800;" playsinline muted></video>
-    </div>
-    <div id="containerRewards" style="display:none;text-align:left;max-height:50vh;overflow-y:auto;"></div>
-    <button onclick="cm('containerOpenModal')" style="margin-top:12px;width:100%;padding:12px;border:1px solid #0f0;color:#0f0;background:#000;font-family:'Share Tech Mono',monospace;font-size:14px;cursor:pointer;">✓ ЗБС!</button>
-  </div>
-</div>
-
-<!-- MINING MODAL -->
-<div class="modal" id="miningModal">
-  <div class="modal-content" style="max-width:400px;text-align:center;">
-    <span class="modal-close" onclick="cm('miningModal')">✕</span>
-    <h2 style="color:#00aaff;">⛏ МАЙНИНГ</h2>
-    <div id="miningDebtStatus" style="display:none;color:#f00;font-size:11px;margin-bottom:8px;animation:blink 0.5s infinite;"></div>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;">
-      <div style="border:1px solid #00aaff;padding:8px;text-align:center;">
-        <div style="color:#ff0;font-size:16px;" id="miningBalance">0</div>
-        <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">БАЛАНС ♂</div>
-      </div>
-      <div style="border:1px solid #00aaff;padding:8px;text-align:center;">
-        <div style="color:#ff0;font-size:16px;" id="miningPower">1</div>
-        <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">СИЛА</div>
-      </div>
-      <div style="border:1px solid #00aaff;padding:8px;text-align:center;">
-        <div style="color:#ff00ff;font-size:16px;" id="miningCombo">1x</div>
-        <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">КОМБО</div>
-      </div>
-    </div>
-    <!-- ТАПАЛКА -->
-    <div style="position:relative;display:inline-block;margin:10px 0;">
-      <img id="miningPickImg" src="mining.jpg" 
-        style="width:120px;height:120px;object-fit:contain;cursor:pointer;transition:all 0.15s;filter:drop-shadow(0 0 6px rgba(0,170,255,0.6));"
-        onclick="doMine()"
-        onerror="this.style.fontSize='80px';this.outerHTML='<div onclick=doMine() style=font-size:80px;cursor:pointer;transition:all 0.15s;>⛏</div>'">
-      <div id="miningFlash" style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);color:#0f0;font-size:18px;font-weight:bold;font-family:Share Tech Mono,monospace;opacity:0;transition:all 0.6s;pointer-events:none;">+1♂</div>
-    </div>
-    <div style="color:#0a0;font-size:11px;margin:6px 0;font-family:'Share Tech Mono',monospace;">ТАПАЙ НА КИРКУ!</div>
-    <div style="color:#0a0;font-size:10px;margin-bottom:10px;font-family:'Share Tech Mono',monospace;">Быстро тапай — комбо x10 = x10 монет!</div>
-    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
-      <div style="border:1px solid #0a0;padding:6px 12px;font-size:11px;color:#0a0;font-family:'Share Tech Mono',monospace;">НАМАЙНЕНО: <span id="miningTotal" style="color:#ff0;">0</span>♂</div>
-    </div>
-    <button onclick="upgradeMining()" style="margin-top:12px;width:100%;padding:11px;border:1px solid #00aaff;color:#00aaff;background:#000;font-family:'Share Tech Mono',monospace;font-size:13px;cursor:pointer;">
-      ⬆ ПРОКАЧАТЬ КИРКУ (<span id="upgradeCostDisplay">500</span>♂)
-    </button>
-  </div>
-</div>
-
-<style>
-@keyframes containerShake {
-  0%,100%{transform:rotate(-3deg) scale(1.05);}
-  50%{transform:rotate(3deg) scale(1.1);}
-}
-@keyframes containerGlow {
-  from{opacity:0.3;}to{opacity:0.8;}
-}
-</style>
 
 </body>
 </html>
