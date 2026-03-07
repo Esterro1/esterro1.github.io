@@ -758,24 +758,14 @@ function showDropResult(drop){
   if(cls==='dynamic'||cls==='cursed') cls=amount>=0?'positive':'negative';
 
   const amountStr=amount>0?'+'+amount.toLocaleString()+'♂':amount!==0?amount.toLocaleString()+'♂':'';
-  const dropModal = document.createElement('div');
-  dropModal.className = 'modal';
-  dropModal.style.display = 'flex';
-  dropModal.id = 'dropResultModal';
-  dropModal.innerHTML = `
-    <div class="modal-content" style="max-width:400px;text-align:center;">
-      <span class="modal-close" onclick="cm('dropResultModal');isSpinning=false;" style="position:absolute;top:10px;right:14px;color:#f00;font-size:26px;cursor:pointer;">✕</span>
-      <div style="padding:20px;">
-        ${imgTag(drop.imgKey, 160)}
-        ${amountStr?`<div class="drop-amount ${amount>=0&&amount!==0?'positive':'negative'} ${cls==='divine'?'divine':cls==='ultra'?'ultra':''}" style="margin-top:20px;">${amountStr}</div>`:''}
-        ${drop.loseTrophy?'<div style="color:#f00;font-size:12px;margin-top:14px;">ТРОФЕЙ ПОЗОРА В ИНВЕНТАРЬ!</div>':''}
-        ${drop.addToInv&&!drop.loseTrophy?'<div style="color:#ff0;font-size:11px;margin-top:14px;">→ ДОБАВЛЕНО В ИНВЕНТАРЬ!</div>':''}
-        <button onclick="cm('dropResultModal');isSpinning=false;" style="margin-top:20px;width:100%;padding:12px;border:1px solid #0f0;color:#0f0;background:#000;font-family:'Share Tech Mono',monospace;font-size:14px;cursor:pointer;">✓ ДЭП</button>
-      </div>
-    </div>
+  d.innerHTML=`
+    ${imgTag(drop.imgKey)}
+    ${amountStr?`<div class="drop-amount ${amount>=0&&amount!==0?'positive':'negative'} ${cls==='divine'?'divine':cls==='ultra'?'ultra':''}">${amountStr}</div>`:''}
+    ${drop.loseTrophy?'<div style="color:#f00;font-size:12px;margin-top:4px;">ТРОФЕЙ ПОЗОРА В ИНВЕНТАРЬ!</div>':''}
+    ${drop.addToInv&&!drop.loseTrophy?'<div style="color:#ff0;font-size:11px;margin-top:4px;">→ ДОБАВЛЕНО В ИНВЕНТАРЬ!</div>':''}
   `;
-  document.body.appendChild(dropModal);
-  document.getElementById('display').innerHTML = `${imgTag(drop.imgKey)}<div style="color:#0a0;font-size:12px;margin-top:10px;">КЛИКНИ ДЭП ДЛЯ ПРОДОЛЖЕНИЯ</div>`;
+  // Картинка останется на экране
+  setTimeout(()=>{if(!d.querySelector('.drop-img'))d.innerHTML='<div style="color:#0a0;font-size:16px;">КРУТИ ЕЩЁ!</div>';isSpinning=false;},8000);
 }
 
 // ===== ПАНЕЛЬ =====
