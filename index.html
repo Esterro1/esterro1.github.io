@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name='viewport' content='width=device-width, initial-scale=1'/>name="viewport" content="width=device-width, initial-scale=1.0">
 <title>НАЕБАЛОВО 100% | 10грн = 100♂</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
@@ -14,13 +10,11 @@ body{font-family:'Share Tech Mono','Courier New',monospace;background:#000;color
 .topbar-title{font-size:clamp(11px,3vw,15px);color:#ff0;text-shadow:0 0 8px #ff0;letter-spacing:2px;}
 .main{flex:1;display:flex;flex-direction:column;justify-content:center;padding:10px;}
 .terminal{border:2px solid #0f0;width:95%;max-width:820px;margin:0 auto;padding:20px;position:relative;box-shadow:0 0 30px rgba(0,255,0,0.2);}
-.terminal::before{content:'[ НАЕБАЛОВО 100% v1.13 ]';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#000;padding:0 12px;font-size:11px;color:#0f0;white-space:nowrap;}
+.terminal::before{content:'[ НАЕБАЛОВО 100% v1.14 ]';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#000;padding:0 12px;font-size:11px;color:#0f0;white-space:nowrap;}
 .balance-panel{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:16px;border:1px solid #0f0;padding:8px;background:rgba(0,255,0,0.03);}
 .balance{font-size:clamp(11px,3vw,16px);color:#0f0;}
 .balance span{color:#ff0;text-shadow:0 0 8px #ff0;}
 .passive-income{font-size:11px;color:#0a0;margin-top:2px;}
-
-/* DISPLAY - показывает картинку или текст */
 .display{font-size:clamp(18px,6vw,44px);min-height:22vh;display:flex;flex-direction:column;align-items:center;justify-content:center;letter-spacing:3px;color:#f00;text-shadow:0 0 20px #f00;margin:16px 0;padding:16px;border:1px dashed #0f0;word-break:break-word;position:relative;}
 .drop-img{max-height:160px;max-width:90%;object-fit:contain;image-rendering:auto;filter:drop-shadow(0 0 12px rgba(0,255,0,0.5));}
 .drop-amount{font-size:clamp(20px,5vw,36px);font-weight:bold;margin-top:8px;text-shadow:0 0 15px currentColor;}
@@ -30,7 +24,6 @@ body{font-family:'Share Tech Mono','Courier New',monospace;background:#000;color
 .drop-amount.ultra{color:#ff00ff;animation:ultraPulse 0.4s infinite alternate;}
 @keyframes divinePulse{from{text-shadow:0 0 10px #ff0,0 0 20px #ff0;}to{text-shadow:0 0 20px #ff0,0 0 40px #ff0,0 0 60px #ffaa00;}}
 @keyframes ultraPulse{from{text-shadow:0 0 10px #ff00ff;}to{text-shadow:0 0 25px #ff00ff,0 0 40px #aa00ff;}}
-
 .buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
 button{background:#000;color:#0f0;border:2px solid #0f0;padding:12px 22px;font-family:'Share Tech Mono',monospace;font-size:clamp(12px,3vw,16px);cursor:pointer;transition:all 0.2s;}
 button:hover{background:#0f0;color:#000;}
@@ -38,8 +31,6 @@ button:active{transform:scale(0.97);}
 .payment-btn{background:#0f0;color:#000;font-weight:bold;}
 .blink{animation:blink 0.6s infinite;}
 @keyframes blink{50%{opacity:0;}}
-
-/* LEVEL BAR */
 .level-bar-container{width:95%;max-width:820px;margin:8px auto;cursor:pointer;border:1px solid #0a0;background:#000;padding:8px;transition:border-color 0.2s;position:relative;}
 .level-bar-container:hover{border-color:#0f0;box-shadow:0 0 10px rgba(0,255,0,0.3);}
 .level-bar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;font-size:12px;}
@@ -49,8 +40,6 @@ button:active{transform:scale(0.97);}
 .level-bar-track{width:100%;height:18px;background:#001100;border:1px solid #0a0;font-family:'Share Tech Mono',monospace;font-size:12px;color:#0f0;overflow:hidden;position:relative;}
 .level-bar-fill{height:100%;background:#0f0;transition:width 0.5s;display:flex;align-items:center;padding-left:4px;white-space:nowrap;overflow:hidden;font-size:11px;color:#000;font-weight:bold;}
 .level-bar-hint{color:#0a0;font-size:10px;margin-top:3px;text-align:right;}
-
-/* ПАНЕЛЬ */
 .slide-toggle-btn{position:fixed;left:0;top:20%;transform:translateY(-50%);z-index:9999;background:#0f0;border:2px solid #0f0;border-left:none;color:#000;width:36px;height:90px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;transition:left 0.3s ease;box-shadow:4px 0 20px rgba(0,255,0,0.6);font-family:'Share Tech Mono',monospace;border-radius:0 8px 8px 0;padding:0;font-weight:bold;}
 .slide-toggle-btn:hover{background:#ff0;border-color:#ff0;}
 .slide-toggle-btn .arrow{transition:transform 0.3s ease;display:inline-block;line-height:1;}
@@ -67,9 +56,7 @@ button:active{transform:scale(0.97);}
 .panel-content::-webkit-scrollbar-thumb{background:#0f0;}
 .tab-pane{display:none;}
 .tab-pane.active{display:block;}
-
-/* ЧАТ */
-.chat-messages{height:calc(100vh - 260px);overflow-y:auto;margin-bottom:10px;padding-right:4px;}
+.chat-messages{height:calc(100vh - 280px);overflow-y:auto;margin-bottom:10px;padding-right:4px;}
 .chat-messages::-webkit-scrollbar{width:3px;}
 .chat-messages::-webkit-scrollbar-thumb{background:#0f0;}
 .chat-msg{margin-bottom:8px;font-size:11px;border-left:2px solid #0a0;padding-left:6px;animation:fadeIn 0.3s ease;}
@@ -81,16 +68,12 @@ button:active{transform:scale(0.97);}
 .chat-input{flex:1;background:#000;border:1px solid #0f0;color:#0f0;padding:8px;font-family:'Share Tech Mono',monospace;font-size:11px;outline:none;}
 .chat-input:focus{border-color:#ff0;}
 .chat-send{padding:8px 12px;font-size:11px;border:1px solid #0f0;}
-
-/* ИНВЕНТАРЬ */
 .panel-inv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
 .panel-inv-item{border:1px solid #0a0;padding:6px;text-align:center;font-size:9px;}
 .panel-inv-item .pii{font-size:22px;line-height:1.2;}
 .panel-inv-item .pii img{width:40px;height:40px;object-fit:contain;}
 .panel-inv-item .pin{color:#0f0;font-size:8px;margin-top:2px;}
 .panel-inv-item .pip{color:#ff0;font-size:8px;}
-
-/* MARKET */
 .market-item{border:1px solid #0a0;padding:8px;margin-bottom:6px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:all 0.2s;font-size:10px;}
 .market-item:hover{border-color:#0f0;background:rgba(0,255,0,0.04);}
 .market-item .mi-icon{font-size:24px;flex-shrink:0;width:36px;text-align:center;}
@@ -100,8 +83,6 @@ button:active{transform:scale(0.97);}
 .market-item .mi-seller{color:#0a0;font-size:9px;}
 .market-item .mi-price{color:#ff0;font-weight:bold;font-size:12px;}
 .panel-section-title{color:#ff0;font-size:11px;margin-bottom:8px;padding-bottom:4px;border-bottom:1px solid #0a0;letter-spacing:1px;}
-
-/* МОДАЛКИ */
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.88);z-index:200;justify-content:center;align-items:center;padding:10px;}
 .modal.open{display:flex;}
 .modal-content{background:#000;border:2px solid #0f0;padding:22px;max-width:500px;width:100%;position:relative;box-shadow:0 0 40px rgba(0,255,0,0.3);max-height:92vh;overflow-y:auto;}
@@ -197,8 +178,6 @@ button:active{transform:scale(0.97);}
 .buy-result{text-align:center;padding:14px;}
 .buy-icon-big{font-size:56px;margin-bottom:10px;}
 .buy-icon-big img{width:80px;height:80px;object-fit:contain;}
-
-/* LEVEL MODAL */
 .level-big{color:#ff0;font-size:36px;text-shadow:0 0 15px #ff0;display:block;}
 .level-track-full{width:100%;height:24px;background:#001100;border:1px solid #0a0;overflow:hidden;}
 .level-fill-full{height:100%;background:linear-gradient(90deg,#0f0,#ff0);transition:width 0.5s;display:flex;align-items:center;padding-left:6px;font-size:12px;color:#000;font-weight:bold;white-space:nowrap;overflow:hidden;}
@@ -211,21 +190,25 @@ button:active{transform:scale(0.97);}
 .lri-req{font-size:9px;color:#0a0;margin-top:2px;}
 .claim-btn{padding:6px 10px;font-size:10px;border:1px solid #ff0;color:#ff0;background:#000;font-family:'Share Tech Mono',monospace;cursor:pointer;}
 .claim-btn:hover{background:#ff0;color:#000;}
-
-/* DEBT indicator */
 .debt-warning{color:#f00;font-size:10px;animation:blink 0.5s infinite;}
-
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:#000;}
 ::-webkit-scrollbar-thumb{background:#0f0;}
-
-@keyframes containerShake {
-  0%,100%{transform:rotate(-3deg) scale(1.05);}
-  50%{transform:rotate(3deg) scale(1.1);}
-}
-@keyframes containerGlow {
-  from{opacity:0.3;}to{opacity:0.8;}
-}
+@keyframes containerShake{0%,100%{transform:rotate(-3deg) scale(1.05);}50%{transform:rotate(3deg) scale(1.1);}}
+@keyframes containerGlow{from{opacity:0.3;}to{opacity:0.8;}}
+/* UPGRADE BUTTON */
+.upgrade-btn{margin-top:4px;padding:3px 8px;font-size:9px;font-family:'Share Tech Mono',monospace;cursor:pointer;border:1px solid;transition:all 0.2s;}
+.upgrade-btn.common{color:#0a0;border-color:#0a0;background:#000;}
+.upgrade-btn.common:hover{background:#0a0;color:#000;}
+.upgrade-btn.rare{color:#00aaff;border-color:#00aaff;background:#000;}
+.upgrade-btn.rare:hover{background:#00aaff;color:#000;}
+.upgrade-btn.epic{color:#aa00ff;border-color:#aa00ff;background:#000;}
+.upgrade-btn.epic:hover{background:#aa00ff;color:#000;}
+.upgrade-btn.legendary{color:#ff8800;border-color:#ff8800;background:#000;}
+.upgrade-btn.legendary:hover{background:#ff8800;color:#000;}
+.upgrade-btn.ultralegend{color:#ff00ff;border-color:#ff00ff;background:#000;}
+.upgrade-btn.ultralegend:hover{background:#ff00ff;color:#000;}
+.upgrade-btn.max{color:#ff0;border-color:#ff0;background:#000;cursor:default;opacity:0.5;}
 </style>
 </head>
 <body>
@@ -238,13 +221,15 @@ button:active{transform:scale(0.97);}
   <div class="panel-tabs">
     <button class="panel-tab active" onclick="switchPanelTab('chat',this)"><span class="tab-icon">💬</span>ЧАТ</button>
     <button class="panel-tab" onclick="switchPanelTab('top',this)"><span class="tab-icon">🏆</span>ТОП</button>
-    <button class="panel-tab" onclick="switchPanelTab('inv',this)"><span class="tab-icon">🎒</span>ИНВЕНТ</button>
+    <button class="panel-tab" onclick="switchPanelTab('inv',this)"><span class="tab-icon">🎒</span>ИНВЕНТАРЬ</button>
     <button class="panel-tab" onclick="switchPanelTab('market',this)"><span class="tab-icon">🛒</span>МАГАЗИН</button>
     <button class="panel-tab" onclick="switchPanelTab('trade',this)"><span class="tab-icon">🤝</span>ТОРГ</button>
   </div>
   <div class="panel-content">
     <div class="tab-pane active" id="pane-chat">
-      <div class="panel-section-title">[ МИРОВОЙ ЧАТ ]</div>
+      <div class="panel-section-title">[ МИРОВОЙ ЧАТ ]
+        <span id="chatStatus" style="font-size:9px;color:#0a0;float:right;">(offline)</span>
+      </div>
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-input-row">
         <input class="chat-input" id="chatInput" placeholder="напиши что-нибудь..." maxlength="100" onkeydown="if(event.key==='Enter')sendChat()">
@@ -300,7 +285,6 @@ button:active{transform:scale(0.97);}
   <button class="topbar-btn" id="authBtn" onclick="openAuth()">👤 ВОЙТИ</button>
 </div>
 
-<!-- LEVEL BAR -->
 <div class="level-bar-container" onclick="openLevelModal()" title="Кликни для наград!">
   <div class="level-bar-header">
     <span class="level-bar-lbl">⚡ УРОВЕНЬ: <span class="level-bar-val" id="lvlDisplay">1</span></span>
@@ -330,17 +314,16 @@ button:active{transform:scale(0.97);}
   </div>
 </div>
 
-<!-- ДВА РЕЖИМА -->
 <div style="width:95%;max-width:820px;margin:10px auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
   <div onclick="openContainerMenu()" style="border:2px solid #ff8800;background:#000;padding:14px 10px;cursor:pointer;text-align:center;transition:all 0.2s;position:relative;box-shadow:0 0 10px rgba(255,136,0,0.2);" onmouseover="this.style.background='rgba(255,136,0,0.08)'" onmouseout="this.style.background='#000'">
     <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#000;padding:0 8px;font-size:9px;color:#ff8800;white-space:nowrap;font-family:'Share Tech Mono',monospace;">[ КОНТЕЙНЕРЫ ]</div>
-    <img src="container.jpg" style="width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(255,136,0,0.6));margin-top:6px;" onerror="this.innerHTML='📦';this.style.fontSize='48px'">
+    <img src="container.jpg" style="width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(255,136,0,0.6));margin-top:6px;" onerror="this.style.fontSize='48px'">
     <div style="color:#ff8800;font-size:12px;margin-top:6px;font-family:'Share Tech Mono',monospace;">📦 ОТКРЫТЬ</div>
     <div style="color:#0a0;font-size:9px;margin-top:3px;font-family:'Share Tech Mono',monospace;">от 1,000,000♂</div>
   </div>
   <div onclick="openMiningMenu()" style="border:2px solid #00aaff;background:#000;padding:14px 10px;cursor:pointer;text-align:center;transition:all 0.2s;position:relative;box-shadow:0 0 10px rgba(0,170,255,0.2);" onmouseover="this.style.background='rgba(0,170,255,0.08)'" onmouseout="this.style.background='#000'">
     <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#000;padding:0 8px;font-size:9px;color:#00aaff;white-space:nowrap;font-family:'Share Tech Mono',monospace;">[ МАЙНИНГ ]</div>
-    <img src="mining.jpg" style="width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,170,255,0.6));margin-top:6px;" onerror="this.innerHTML='⛏';this.style.fontSize='48px'">
+    <img src="mining.jpg" style="width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,170,255,0.6));margin-top:6px;" onerror="this.style.fontSize='48px'">
     <div style="color:#00aaff;font-size:12px;margin-top:6px;font-family:'Share Tech Mono',monospace;">⛏ ДОБЫВАТЬ</div>
     <div style="color:#0a0;font-size:9px;margin-top:3px;font-family:'Share Tech Mono',monospace;">тапай = бабки</div>
   </div>
@@ -430,22 +413,19 @@ button:active{transform:scale(0.97);}
         <input class="auth-input" id="authUser" type="text" placeholder="НИКНЕЙМ" maxlength="20" autocomplete="username">
         <input class="auth-input" id="authPass" type="password" placeholder="ПАРОЛЬ" maxlength="30" autocomplete="current-password">
         <div id="confirmWrap" style="display:none"><input class="auth-input" id="authConfirm" type="password" placeholder="ПОДТВЕРДИТЬ ПАРОЛЬ" maxlength="30"></div>
-        
-        <!-- ВЫБОР АВАТАРКИ -->
         <div id="avatarSelect" style="display:none;margin-bottom:10px;">
           <div style="color:#0a0;font-size:10px;margin-bottom:6px;">🎨 ВЫБЕРИ АВАТАРКУ:</div>
           <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;">
-            <div onclick="selectAvatar('👤','#0f0')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;border-radius:4px;" data-avatar="👤">👤</div>
-            <div onclick="selectAvatar('😎','#ff0')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;border-radius:4px;" data-avatar="😎">😎</div>
-            <div onclick="selectAvatar('🔥','#ff8800')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;border-radius:4px;" data-avatar="🔥">🔥</div>
-            <div onclick="selectAvatar('👑','#ffaa00')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;border-radius:4px;" data-avatar="👑">👑</div>
-            <div onclick="selectAvatar('💀','#f00')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;border-radius:4px;" data-avatar="💀">💀</div>
-            <div onclick="selectAvatar('🤖','#00aaff')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;border-radius:4px;" data-avatar="🤖">🤖</div>
-            <div onclick="selectAvatar('🎮','#aa00ff')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;border-radius:4px;" data-avatar="🎮">🎮</div>
-            <div onclick="selectAvatar('⚡','#ffff00')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;border-radius:4px;" data-avatar="⚡">⚡</div>
+            <div onclick="selectAvatar('👤','#0f0')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;" data-avatar="👤">👤</div>
+            <div onclick="selectAvatar('😎','#ff0')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;" data-avatar="😎">😎</div>
+            <div onclick="selectAvatar('🔥','#ff8800')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;" data-avatar="🔥">🔥</div>
+            <div onclick="selectAvatar('👑','#ffaa00')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;" data-avatar="👑">👑</div>
+            <div onclick="selectAvatar('💀','#f00')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;" data-avatar="💀">💀</div>
+            <div onclick="selectAvatar('🤖','#00aaff')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;" data-avatar="🤖">🤖</div>
+            <div onclick="selectAvatar('🎮','#aa00ff')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;" data-avatar="🎮">🎮</div>
+            <div onclick="selectAvatar('⚡','#ffff00')" style="padding:8px;border:2px solid #0a0;cursor:pointer;font-size:24px;text-align:center;" data-avatar="⚡">⚡</div>
           </div>
         </div>
-        
         <label class="remember-row"><input type="checkbox" id="rememberMe" checked> ЗАПОМНИТЬ МЕНЯ</label>
         <div class="auth-error" id="authErr"></div>
         <div class="auth-success" id="authOk"></div>
@@ -501,12 +481,12 @@ button:active{transform:scale(0.97);}
   <div class="modal-content" style="max-width:400px;">
     <span class="modal-close" onclick="cm('containerModal')">✕</span>
     <h2>📦 КОНТЕЙНЕРЫ</h2>
-    <div style="color:#0a0;font-size:11px;margin-bottom:14px;">Каждый 100й — гарантированная легендарка!</div>
+    <div style="color:#0a0;font-size:11px;margin-bottom:14px;">Каждый 100й — гарантированная легендарка!(наверное)</div>
     <div id="containerList"></div>
   </div>
 </div>
 
-<!-- CONTAINER OPEN MODAL - ИСПРАВЛЕНО ВИДЕО -->
+<!-- CONTAINER OPEN MODAL -->
 <div class="modal" id="containerOpenModal">
   <div class="modal-content" style="max-width:420px;text-align:center;">
     <span class="modal-close" onclick="cm('containerOpenModal')">✕</span>
@@ -539,7 +519,6 @@ button:active{transform:scale(0.97);}
         <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">КОМБО</div>
       </div>
     </div>
-    <!-- ТАПАЛКА -->
     <div style="position:relative;display:inline-block;margin:10px 0;">
       <img id="miningPickImg" src="mining.jpg" 
         style="width:120px;height:120px;object-fit:contain;cursor:pointer;transition:all 0.15s;filter:drop-shadow(0 0 6px rgba(0,170,255,0.6));"
@@ -559,7 +538,12 @@ button:active{transform:scale(0.97);}
 </div>
 
 <script>
-// ===== PNG IMAGES (filenames — place PNGs next to this HTML file) =====
+// ===== КОНФИГ ЧАТА =====
+const CHAT_SERVER = 'https://naebalovobot-server.onrender.com';
+let chatMessages = [];
+let chatServerConnected = false;
+
+// ===== PNG IMAGES =====
 const IMGS = {
   knight:    '1000087238.jpg',
   hog_trio:  '1000087235.jpg',
@@ -577,21 +561,15 @@ const IMGS = {
   lucky_cat: '1000087222.jpg',
 };
 
-function imgTag(key, size=120) {
-  return `<img src="${IMGS[key]}" class="drop-img" style="max-height:${size}px;" onerror="this.style.display='none'">`;
-}
-function imgTagSmall(key) {
-  return `<img src="${IMGS[key]}" style="width:36px;height:36px;object-fit:contain;" onerror="this.style.display='none'">`;
-}
-function imgTagInv(key) {
-  return `<img src="${IMGS[key]}" style="width:40px;height:40px;object-fit:contain;" onerror="this.style.display='none'">`;
-}
+function imgTag(key,size=120){return`<img src="${IMGS[key]}" class="drop-img" style="max-height:${size}px;" onerror="this.style.display='none'">`;}
+function imgTagSmall(key){return`<img src="${IMGS[key]}" style="width:36px;height:36px;object-fit:contain;" onerror="this.style.display='none'">`;}
+function imgTagInv(key){return`<img src="${IMGS[key]}" style="width:40px;height:40px;object-fit:contain;" onerror="this.style.display='none'">`;}
 
 // ===== ПРЕДМЕТЫ МАГАЗИНА =====
 const ITEMS = [
   {id:'lube',     name:'ВАЗЕЛИНЧИК',    icon:'🧴', desc:'Скользко как совесть',          price:300,   rarity:'common',      income:50},
   {id:'gayhat',   name:'ШАПКА ГАЧА',    icon:'🎩', desc:'Носи с гордостью',              price:500,   rarity:'common',      income:100},
-  {id:'flag',     name:'ФЛАГ ГАЧИ',     icon:'🚩', desc:'Развевается в жопе',            price:600,   rarity:'common',      income:150},
+  {id:'flag',     name:'РЕДФЛАГ',       icon:'🚩', desc:'Развевается в жопе',            price:600,   rarity:'common',      income:150},
   {id:'dildo_s',  name:'МИНИ ДИЛДО',    icon:'🥒', desc:'Для начинающих',                price:750,   rarity:'common',      income:200},
   {id:'carrot',   name:'МОРКОВОЧКА',    imgKey:'carrot',  desc:'Сочная и толстая',       price:400,   rarity:'common',      income:80},
   {id:'sword',    name:'МЕЧ БИШОПА',    icon:'⚔️', desc:'Из самого Рима',                price:2000,  rarity:'rare',        income:500},
@@ -601,36 +579,57 @@ const ITEMS = [
   {id:'crown',    name:'КОРОНА АНУСА',  icon:'👑', desc:'Для королей',                   price:6000,  rarity:'epic',        income:3000},
   {id:'cyber',    name:'КИБЕР-ФИМОЗ',   icon:'🤖', desc:'Технологии будущего',           price:8000,  rarity:'epic',        income:5000},
   {id:'hog_trio', name:'ТРИ ВСАДНИКА',  imgKey:'hog_trio',desc:'ХОГ РАИДЕР ТРИО',       price:7000,  rarity:'epic',        income:4000},
-  {id:'lucky_cat',name:'МАНЭКИ-НЭКО',   imgKey:'lucky_cat',desc:'Аниме кот удачи',      price:6500,  rarity:'epic',        income:3500},
+  {id:'lucky_cat',name:'ТУРБО БАБКА',   imgKey:'lucky_cat',desc:'отлижи бабке',          price:6500,  rarity:'epic',        income:3500},
   {id:'aot',      name:'КРЫЛЬЯ СВОБОДЫ',icon:'🦅', desc:'Разведчики вперёд',             price:7500,  rarity:'epic',        income:4500},
   {id:'dragon',   name:'ДРАКОН ДИЛДО',  icon:'🐉', desc:'Легендарный артефакт',          price:20000, rarity:'legendary',   income:15000},
-  {id:'knight',   name:'РЫЦАРЬ РАДУГИ', imgKey:'knight',  desc:'С радужным мечом',      price:60000, rarity:'legendary',   income:50000},
-  {id:'cat_snail',name:'КОТ-УЛИТКА',    imgKey:'cat_snail',desc:'Медленно но верно',    price:15000, rarity:'legendary',   income:10000},
-  {id:'chibi',    name:'ЧИБИ КИЦУНЭ',   imgKey:'chibi',   desc:'Ушки, хвостик, всё',   price:25000, rarity:'legendary',   income:18000},
-  {id:'anime_girl',name:'АНИМЕ ТЯН',    imgKey:'anime_girl',desc:'Крайне редкий дроп',  price:500000,rarity:'ultralegend', income:200000},
-  {id:'daun',     name:'ДАУН ДОЛБАЕБ',  imgKey:'daun',    desc:'Проклятый предмет',     price:400000,rarity:'cursed',      income:0},
+  {id:'knight',   name:'МЕГА ГЕЙ',      imgKey:'knight',  desc:'С радужным...',          price:60000, rarity:'legendary',   income:50000},
+  {id:'cat_snail',name:'МУСЯ',          imgKey:'cat_snail',desc:'Ох бля....',            price:15000, rarity:'legendary',   income:10000},
+  {id:'chibi',    name:'МАМБА',         imgKey:'chibi',   desc:'Мамба хуямба',           price:25000, rarity:'legendary',   income:18000},
+  {id:'anime_girl',name:'Т.М.ОПЕРА',    imgKey:'anime_girl',desc:'Крайне редкий дроп',  price:500000,rarity:'ultralegend', income:200000},
+  {id:'daun',     name:'ДАУН ТЫ ДОЛБАЕБ¿',imgKey:'daun', desc:'Проклятый предмет',      price:400000,rarity:'cursed',      income:0},
   {id:'mineta',   name:'ТЕОРЕМА МИНЕТА',imgKey:'mineta',  desc:'РЕШАЙ ЧЕРЕЗ ТЕОРЕМУ',   price:800000,rarity:'ultralegend', income:500000},
   {id:'money_cup',name:'РОЯЛТИ ХУЁЯЛТИ',imgKey:'money_cup',desc:'Отсылка на Кизару',    price:999999,rarity:'divine',      income:1000000},
-  {id:'syn_sluhi',name:'СЫН ШЛЮХИ',     imgKey:'syn_sluhi',desc:'Трофей позора',        price:100,   rarity:'meme',        income:0},
-  {id:'secret',   name:'🔥 СЕКРЕТ ЧАСА', icon:'❓', desc:'1 час в начале месяца!',       price:9999,  rarity:'secret',      income:100000, timed:true},
+  {id:'syn_sluhi',name:'СЫН ШЛЮХИ',    imgKey:'syn_sluhi',desc:'Трофей',               price:100,   rarity:'meme',        income:0},
+  {id:'secret',   name:'🔥 СЕКРЕТ',     icon:'❓', desc:'1 час в начале месяца!',        price:9999,  rarity:'secret',      income:100000, timed:true},
 ];
+
+// ===== MERGE CONFIG =====
+const RARITY_ORDER = ['common','rare','epic','legendary','ultralegend','divine'];
+// Сколько предметов нужно для прокачки
+const MERGE_COSTS = {
+  'common': 100,
+  'rare': 70,
+  'epic': 40,
+  'legendary': 20,
+  'ultralegend': 4
+};
+const RARITY_COLORS = {
+  common:'#0a0', rare:'#00aaff', epic:'#aa00ff',
+  legendary:'#ff8800', ultralegend:'#ff00ff', cursed:'#f00',
+  divine:'#ff0', secret:'#f00', meme:'#ff00ff'
+};
+const RARITY_NAMES = {
+  common:'ОБЫЧНЫЙ', rare:'РЕДКИЙ', epic:'ЭПИК',
+  legendary:'ЛЕГЕНДАРНЫЙ', ultralegend:'УЛЬТРА', divine:'DIVINE',
+  cursed:'ПРОКЛЯТЫЙ', secret:'СЕКРЕТ', meme:'МЕМ'
+};
 
 // ===== ДРОПЫ ПРИ СПИНЕ =====
 const SPIN_DROPS = [
   {id:'carrot_drop',    imgKey:'carrot',    name:'МОРКОВКА',         weight:300, amount:150,       amountClass:'positive'},
-  {id:'chibi_drop',     imgKey:'chibi',     name:'ЧИБИ КИЦУНЭ',      weight:200, amount:700,       amountClass:'positive'},
-  {id:'hog_drop',       imgKey:'hog_trio',  name:'ТРИ ВСАДНИКА',     weight:150, amount:5000,      amountClass:'positive'},
-  {id:'cat_snail_drop', imgKey:'cat_snail', name:'КОТ-УЛИТКА',       weight:100, amount:10000,     amountClass:'positive'},
+  {id:'chibi_drop',     imgKey:'chibi',     name:'МАМБА',            weight:200, amount:700,       amountClass:'positive'},
+  {id:'hog_drop',       imgKey:'hog_trio',  name:'СЕРЬЕЗНЫЕ РЕБЯТА', weight:150, amount:5000,      amountClass:'positive'},
+  {id:'cat_snail_drop', imgKey:'cat_snail', name:'МУСЯ',             weight:100, amount:10000,     amountClass:'positive'},
   {id:'einstein_drop',  imgKey:'einstein',  name:'K=FC² ШТРАФ',      weight:120, amount:-1200,     amountClass:'negative', allowDebt:true},
   {id:'brainrot_drop',  imgKey:'brainrot',  name:'БРЕЙНРОТ КОТ',     weight:130, amountFunc:()=>Math.random()<0.5?1000:-1000, amountClass:'dynamic', allowDebt:true},
   {id:'syn_drop',       imgKey:'syn_sluhi', name:'СЫН ШЛЮХИ',        weight:0,   amount:0,         amountClass:'negative', loseTrophy:true, addToInv:'syn_sluhi'},
   {id:'gem_drop',       imgKey:'gem',       name:'КРИСТАЛЛ',          weight:15,  amount:500000,    amountClass:'positive'},
-  {id:'anime_drop',     imgKey:'anime_girl',name:'АНИМЕ ТЯН',         weight:1,   amount:1000000,   amountClass:'ultra',    addToInv:'anime_girl'},
-  {id:'lucky_drop',     imgKey:'lucky_cat', name:'МАНЭКИ-НЭКО',       weight:1,   amount:1000000,   amountClass:'ultra',    addToInv:'lucky_cat'},
-  {id:'mineta_drop',    imgKey:'mineta',    name:'ТЕОРЕМА МИНЕТА',     weight:1,   amount:10000000,  amountClass:'ultra',    addToInv:'mineta'},
-  {id:'daun_drop',      imgKey:'daun',      name:'ДАУН ДОЛБАЕБ',      weight:1,   amountFunc:()=>Math.random()<0.5?1000000:-1000000, amountClass:'cursed', allowDebt:true, addToInv:'daun'},
-  {id:'knight_drop',    imgKey:'knight',    name:'МЕГА ГЕЙ',           weight:0,   amount:60000,    amountClass:'ultra',    addToInv:'knight', specialSpin:10},
-  {id:'divine_drop',    imgKey:'money_cup', name:'РОЯЛТИ ХУЁЯЛТИ',     weight:0.0001, amount:100000000, amountClass:'divine', addToInv:'money_cup'},
+  {id:'anime_drop',     imgKey:'anime_girl',name:'Т.М.ОПЕРА',         weight:1,   amount:1000000,   amountClass:'ultra',    addToInv:'anime_girl'},
+  {id:'lucky_drop',     imgKey:'lucky_cat', name:'ТУРБО БАБКА',       weight:1,   amount:1000000,   amountClass:'ultra',    addToInv:'lucky_cat'},
+  {id:'mineta_drop',    imgKey:'mineta',    name:'ТЕОРЕМА МИНЕТА',    weight:1,   amount:10000000,  amountClass:'ultra',    addToInv:'mineta'},
+  {id:'daun_drop',      imgKey:'daun',      name:'ДАУН ТЫ ДОЛБАЕБ¿', weight:1,   amountFunc:()=>Math.random()<0.5?1000000:-1000000, amountClass:'cursed', allowDebt:true, addToInv:'daun'},
+  {id:'knight_drop',    imgKey:'knight',    name:'МЕГА ГЕЙ',          weight:0,   amount:60000,     amountClass:'ultra',    addToInv:'knight', specialSpin:10},
+  {id:'divine_drop',    imgKey:'money_cup', name:'РОЯЛТИ ХУЁЯЛТИ',    weight:0.0001, amount:100000000, amountClass:'divine', addToInv:'money_cup'},
 ];
 
 const WALLETS = {
@@ -734,16 +733,9 @@ function claimReward(i){
 }
 
 // ===== SPIN DROP SYSTEM =====
-function pickDrop(isWin, isLoss) {
-  if(spinCount===10){
-    return SPIN_DROPS.find(d=>d.specialSpin===10);
-  }
-  if(isLoss){
-    lossCount++;
-    if(lossCount%20===0){
-      return SPIN_DROPS.find(d=>d.loseTrophy);
-    }
-  }
+function pickDrop(isWin,isLoss){
+  if(spinCount===10) return SPIN_DROPS.find(d=>d.specialSpin===10);
+  if(isLoss){lossCount++;if(lossCount%20===0)return SPIN_DROPS.find(d=>d.loseTrophy);}
   const pool=SPIN_DROPS.filter(d=>!d.loseTrophy&&!d.specialSpin&&d.weight>0);
   const totalWeight=pool.reduce((s,d)=>s+d.weight,0);
   let rnd=Math.random()*totalWeight;
@@ -756,23 +748,12 @@ function showDropResult(drop){
   let amount=0;
   if(typeof drop.amountFunc==='function') amount=drop.amountFunc();
   else amount=drop.amount||0;
-
-  if(amount!==0){
-    balance+=amount;
-    if(!drop.allowDebt&&balance<0) balance=0;
-    updateBalance();
-  }
-
+  if(amount!==0){balance+=amount;if(!drop.allowDebt&&balance<0)balance=0;updateBalance();}
   if(drop.addToInv&&currentUser){
-    if(!currentUser.inventory.includes(drop.addToInv)){
-      currentUser.inventory.push(drop.addToInv);
-      updatePassiveInfo();startPassiveIncome();
-    }
+    if(!currentUser.inventory.includes(drop.addToInv)){currentUser.inventory.push(drop.addToInv);updatePassiveInfo();startPassiveIncome();}
   }
-
   let cls=drop.amountClass||'positive';
   if(cls==='dynamic'||cls==='cursed') cls=amount>=0?'positive':'negative';
-
   const amountStr=amount>0?'+'+amount.toLocaleString()+'♂':amount!==0?amount.toLocaleString()+'♂':'';
   d.innerHTML=`
     ${imgTag(drop.imgKey)}
@@ -780,7 +761,6 @@ function showDropResult(drop){
     ${drop.loseTrophy?'<div style="color:#f00;font-size:12px;margin-top:4px;">ТРОФЕЙ ПОЗОРА В ИНВЕНТАРЬ!</div>':''}
     ${drop.addToInv&&!drop.loseTrophy?'<div style="color:#ff0;font-size:11px;margin-top:4px;">→ ДОБАВЛЕНО В ИНВЕНТАРЬ!</div>':''}
   `;
-  // Картинка останется на экране
   setTimeout(()=>{if(!d.querySelector('.drop-img'))d.innerHTML='<div style="color:#0a0;font-size:16px;">КРУТИ ЕЩЁ!</div>';isSpinning=false;},8000);
 }
 
@@ -804,23 +784,21 @@ function switchPanelTab(tab,el){
 }
 
 // ===== ЧАТ =====
-const demoMessages=[
-];
-
 function renderChat(){
   const c=document.getElementById('chatMessages');
-  if(!demoMessages.length) {
+  if(!chatMessages.length){
     c.innerHTML='<div style="color:#0a0;font-size:11px;padding:20px;text-align:center;">💬 ЧАТ ПУСТ\nПиши первым!</div>';
     return;
   }
-  c.innerHTML=demoMessages.map(m=>`
+  c.innerHTML=chatMessages.map(m=>`
     <div class="chat-msg" style="display:flex;gap:8px;align-items:flex-start;">
-      <div style="width:32px;height:32px;border-radius:50%;background:${m.avatar};display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">
-        ${m.avatarEmoji}
+      <div style="width:32px;height:32px;border-radius:50%;background:${m.avatar||'#0f0'};display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">
+        ${m.avatarEmoji||'👤'}
       </div>
       <div style="flex:1;">
         <div style="display:flex;gap:8px;align-items:center;">
           <span class="msg-user" style="color:#ff0;font-size:11px;font-weight:bold;">${m.user}</span>
+          ${m.source==='telegram'?'<span style="color:#00aaff;font-size:9px;font-style:italic;">📱 Telegram</span>':''}
           <span class="msg-time" style="color:#0a0;font-size:9px;">[${m.time}]</span>
         </div>
         <div class="msg-text" style="color:#0f0;word-break:break-word;margin-top:3px;">${m.text}</div>
@@ -830,50 +808,65 @@ function renderChat(){
   c.scrollTop=c.scrollHeight;
 }
 
-function sendChat(){
+async function loadChatMessages(){
+  try{
+    const response=await fetch(`${CHAT_SERVER}/api/messages`);
+    if(!response.ok) throw new Error('Server error');
+    chatMessages=await response.json();
+    chatServerConnected=true;
+    document.getElementById('chatStatus').textContent='(online)';
+    document.getElementById('chatStatus').style.color='#0f0';
+    renderChat();
+  }catch(error){
+    chatServerConnected=false;
+    document.getElementById('chatStatus').textContent='(offline)';
+    document.getElementById('chatStatus').style.color='#f00';
+    loadChatFromStorage();
+  }
+}
+
+async function sendChat(){
   const input=document.getElementById('chatInput');
   const text=input.value.trim();
   if(!text)return;
-  
-  if(!currentUser){
-    alert('⚠️ Войди в аккаунт чтобы писать в чат!');
-    return;
-  }
-  
-  const now=new Date();
-  const time=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
-  
-  const userAvatar = currentUser.avatar || '👤';
-  const userAvatarColor = currentUser.avatarColor || '#0f0';
-  
-  demoMessages.push({
-    user: currentUser.name.toUpperCase(),
-    text: text,
-    time: time,
-    avatar: userAvatarColor,
-    avatarEmoji: userAvatar,
-    userId: currentUser.name
-  });
-  
-  // Синхронизируем между вкладками
-  localStorage.setItem('nab_chat_messages', JSON.stringify(demoMessages));
-  
-  if(demoMessages.length > 100) demoMessages.shift(); // Максимум 100 сообщений
-  
+  if(!currentUser){alert('⚠️ Войди в аккаунт чтобы писать в чат!');return;}
   input.value='';
-  renderChat();
+  input.disabled=true;
+  try{
+    const response=await fetch(`${CHAT_SERVER}/api/send-message`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        username:currentUser.name,
+        text:text,
+        avatar:currentUser.avatar||'👤',
+        avatarColor:currentUser.avatarColor||'#0f0'
+      })
+    });
+    if(response.ok){
+      const data=await response.json();
+      chatMessages.push(data.message);
+      localStorage.setItem('nab_chat_messages',JSON.stringify(chatMessages));
+      renderChat();
+    }
+  }catch(error){
+    // fallback to local
+    const now=new Date();
+    const time=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+    chatMessages.push({user:currentUser.name.toUpperCase(),text:text,time:time,avatar:currentUser.avatarColor||'#0f0',avatarEmoji:currentUser.avatar||'👤'});
+    localStorage.setItem('nab_chat_messages',JSON.stringify(chatMessages));
+    if(chatMessages.length>100)chatMessages.shift();
+    renderChat();
+  }finally{
+    input.disabled=false;
+    input.focus();
+  }
 }
 
-// Загружаем сообщения из localStorage при загрузке
-function loadChatFromStorage() {
-  const stored = localStorage.getItem('nab_chat_messages');
-  if(stored) {
-    try {
-      demoMessages = JSON.parse(stored);
-    } catch(e) {
-      demoMessages = [];
-    }
-  }
+function loadChatFromStorage(){
+  const stored=localStorage.getItem('nab_chat_messages');
+  if(stored){try{chatMessages=JSON.parse(stored);}catch(e){chatMessages=[];}}
+  renderChat();
 }
 
 // ===== ТОП =====
@@ -892,13 +885,66 @@ function getItemIcon(it){
   if(it.imgKey) return`<img src="${IMGS[it.imgKey]}" style="width:40px;height:40px;object-fit:contain;" onerror="this.style.display='none'">`;
   return it.icon||'?';
 }
+
+// Подсчёт дублей в инвентаре
+function getInventoryCounts(){
+  const inv=currentUser?.inventory||[];
+  const counts={};
+  inv.forEach(id=>{counts[id]=(counts[id]||0)+1;});
+  return counts;
+}
+
+// Прокачка предмета прямо из карточки инвентаря
+function upgradeItemDirect(itemId){
+  if(!currentUser){alert('ВОЙДИ В АККАУНТ!');return;}
+  const item=ITEMS.find(i=>i.id===itemId);
+  if(!item)return;
+  const cost=MERGE_COSTS[item.rarity];
+  if(!cost){alert('❌ МАКСИМАЛЬНАЯ РЕДКОСТЬ! Некуда прокачивать.');return;}
+  const counts=getInventoryCounts();
+  const count=counts[itemId]||0;
+  if(count<cost){alert(`❌ Нужно ${cost}x ${item.name}\nУ тебя только: ${count}`);return;}
+  const nextRarityIdx=RARITY_ORDER.indexOf(item.rarity)+1;
+  if(nextRarityIdx>=RARITY_ORDER.length){alert('❌ МАКСИМУМ!');return;}
+  const nextRarity=RARITY_ORDER[nextRarityIdx];
+  let nextItem=ITEMS.find(i=>i.rarity===nextRarity&&!i.timed);
+  if(!nextItem){alert('❌ Нет предмета следующей редкости');return;}
+  // Убираем cost штук предмета
+  for(let i=0;i<cost;i++){
+    const idx=currentUser.inventory.indexOf(itemId);
+    if(idx>-1)currentUser.inventory.splice(idx,1);
+  }
+  currentUser.inventory.push(nextItem.id);
+  saveUser();updatePassiveInfo();startPassiveIncome();
+  renderPanelInv();
+  alert(`✅ ПРОКАЧАНО!\n${cost}x ${RARITY_NAMES[item.rarity]} ${item.name}\n↓\n${RARITY_NAMES[nextRarity]} ${nextItem.name}`);
+}
+
 function renderPanelInv(){
   const grid=document.getElementById('panelInvGrid');
   const inv=currentUser?.inventory||[];
   if(!inv.length){grid.innerHTML='<div style="color:#0a0;font-size:11px;padding:10px;grid-column:span 3;">🚫 ИНВЕНТАРЬ ПУСТ</div>';return;}
-  grid.innerHTML=inv.map(id=>{
+  const counts=getInventoryCounts();
+  const shown=[];
+  const uniqueIds=[...new Set(inv)];
+  grid.innerHTML=uniqueIds.map(id=>{
     const it=ITEMS.find(i=>i.id===id);if(!it)return'';
-    return`<div class="panel-inv-item"><div class="pii">${getItemIcon(it)}</div><div class="pin">${it.name}</div><div class="pip">${it.income?'+'+it.income+'♂/ч':it.rarity==='cursed'?'💀ПРОКЛЯТ':'🏆ТРОФЕЙ'}</div></div>`;
+    const count=counts[id]||1;
+    const cost=MERGE_COSTS[it.rarity];
+    const canUpgrade=cost&&count>=cost;
+    const nextRarityIdx=RARITY_ORDER.indexOf(it.rarity)+1;
+    const nextRarity=nextRarityIdx<RARITY_ORDER.length?RARITY_ORDER[nextRarityIdx]:null;
+    const col=RARITY_COLORS[it.rarity]||'#0f0';
+    const upgradeInfo=cost?`<div style="color:#0a0;font-size:8px;">${count}/${cost} для прокачки</div>`:'<div style="color:#ff0;font-size:8px;">MAX</div>';
+    const upgradeBtn=cost&&nextRarity?`<button class="upgrade-btn ${it.rarity}${canUpgrade?'':' disabled'}" onclick="upgradeItemDirect('${id}')" style="${canUpgrade?'':'opacity:0.4;cursor:not-allowed;'}" ${canUpgrade?'':'disabled'}>⬆ → ${RARITY_NAMES[nextRarity]}</button>`:`<button class="upgrade-btn max" disabled>👑 MAX</button>`;
+    return`<div class="panel-inv-item" style="border-color:${col};position:relative;">
+      ${count>1?`<div style="position:absolute;top:3px;right:3px;background:${col};color:#000;font-size:8px;padding:1px 4px;font-weight:bold;">x${count}</div>`:''}
+      <div class="pii">${getItemIcon(it)}</div>
+      <div class="pin" style="color:${col}">${it.name}</div>
+      <div class="pip">${it.income?'+'+it.income+'♂/ч':it.rarity==='cursed'?'💀ПРОКЛЯТ':'🏆ТРОФЕЙ'}</div>
+      ${upgradeInfo}
+      ${upgradeBtn}
+    </div>`;
   }).join('');
 }
 
@@ -906,7 +952,6 @@ function renderPanelInv(){
 let panelShopFilter='all';
 function switchShopTab(tab,el){
   document.querySelectorAll('.panel-shop-tab').forEach(t=>{t.style.background='#000';});
-  el.style.background=el.style.borderColor||'#0f0';el.style.color='#000';
   document.getElementById('shopTabRegular').style.display=tab==='regular'?'block':'none';
   document.getElementById('shopTabSecret').style.display=tab==='secret'?'block':'none';
   if(tab==='secret')renderSecretShop();
@@ -927,7 +972,7 @@ function renderSecretShop(){
 }
 function panelFilterShop(f,el){
   panelShopFilter=f;
-  document.querySelectorAll('#panelShopFilterBtns button').forEach(b=>{b.style.background='#000';});
+  document.querySelectorAll('#panelShopFilterBtns button').forEach(b=>{b.style.background='#000';b.style.color=b.style.borderColor||'#0f0';});
   el.style.background=el.style.color||'#0f0';el.style.color='#000';
   renderPanelShop(f);
 }
@@ -935,9 +980,8 @@ function renderPanelShop(filter){
   const owned=currentUser?.inventory||[];
   let items=ITEMS.filter(i=>!i.timed);
   if(filter&&filter!=='all')items=items.filter(i=>i.rarity===filter);
-  const rarityColors={common:'#0a0',rare:'#00aaff',epic:'#aa00ff',legendary:'#ff8800',ultralegend:'#ff00ff',cursed:'#f00',divine:'#ff0',secret:'#f00',meme:'#ff00ff'};
   document.getElementById('panelShopGrid').innerHTML=items.map(it=>{
-    const isOwned=owned.includes(it.id);const col=rarityColors[it.rarity]||'#0f0';
+    const isOwned=owned.includes(it.id);const col=RARITY_COLORS[it.rarity]||'#0f0';
     const iconHtml=it.imgKey?`<img src="${IMGS[it.imgKey]}" style="width:36px;height:36px;object-fit:contain;">`:it.icon;
     return`<div class="market-item" style="border-color:${col};${isOwned?'opacity:0.7;cursor:default':''}" onclick="${isOwned?'':'panelBuyItem(\''+it.id+'\')'}" >
       <div class="mi-icon">${iconHtml}</div>
@@ -1217,86 +1261,50 @@ function confirmPay(){
   setTimeout(()=>{balance+=100;updateBalance();d.textContent='+100♂ ADDED!';setTimeout(()=>{d.classList.remove('blink');d.textContent='КРУТИ ЕЩЁ!';},1500);},3000);
 }
 
-// ===== AUTO-UPDATE СИСТЕМА =====
-const GAME_VERSION = '1.13';
-const VERSION_CHECK_URL = 'https://esterro1.github.io/kazino-version.json';
-
-async function checkForUpdates() {
-  try {
-    const response = await fetch(VERSION_CHECK_URL);
-    const data = await response.json();
-    
-    if(data.version > GAME_VERSION) {
-      showUpdateNotification(data.version, data.downloadUrl);
-    }
-  } catch(e) {
-    console.log('Update check failed (offline?)');
-  }
+// ===== AUTO-UPDATE =====
+const GAME_VERSION='1.14';
+const VERSION_CHECK_URL='https://esterro1.github.io/kazino-version.json';
+async function checkForUpdates(){
+  try{
+    const response=await fetch(VERSION_CHECK_URL);
+    const data=await response.json();
+    if(data.version>GAME_VERSION)showUpdateNotification(data.version,data.downloadUrl);
+  }catch(e){}
 }
-
-function showUpdateNotification(newVersion, downloadUrl) {
-  const banner = document.createElement('div');
-  banner.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(90deg, #ff0, #ffaa00);
-    color: #000;
-    padding: 12px;
-    text-align: center;
-    z-index: 9998;
-    font-family: 'Share Tech Mono', monospace;
-    font-weight: bold;
-  `;
-  banner.innerHTML = `
-    🔄 ДОСТУПНО ОБНОВЛЕНИЕ v${newVersion}!
-    <button onclick="location.reload()" style="margin-left:10px;padding:6px 12px;background:#000;color:#ff0;border:1px solid #ff0;cursor:pointer;font-family:'Share Tech Mono',monospace;">ОБНОВИТЬ</button>
-  `;
-  document.body.insertBefore(banner, document.body.firstChild);
+function showUpdateNotification(newVersion,downloadUrl){
+  const banner=document.createElement('div');
+  banner.style.cssText='position:fixed;top:0;left:0;right:0;background:linear-gradient(90deg,#ff0,#ffaa00);color:#000;padding:12px;text-align:center;z-index:9998;font-family:Share Tech Mono,monospace;font-weight:bold;';
+  banner.innerHTML=`🔄 ДОСТУПНО ОБНОВЛЕНИЕ v${newVersion}! <button onclick="location.reload()" style="margin-left:10px;padding:6px 12px;background:#000;color:#ff0;border:1px solid #ff0;cursor:pointer;font-family:Share Tech Mono,monospace;">ОБНОВИТЬ</button>`;
+  document.body.insertBefore(banner,document.body.firstChild);
 }
-
-// Проверяем обновления при загрузке
-window.addEventListener('load', () => {
-  setTimeout(checkForUpdates, 1000);
-});
 
 // ===== ЗВУКИ =====
-const sounds = {
-  tap: new Audio('gacha-tap.mp3'),
-  spin: new Audio('zvuk_kazino.mp3')
+const sounds={
+  tap:new Audio('gacha-tap.mp3'),
+  spin:new Audio('zvuk_kazino.mp3')
 };
-
-// Fallback звуки если файлы не найдены
-function generateTapSound() {
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.connect(gain);
-  gain.connect(ctx.destination);
-  osc.frequency.value = 1000;
-  osc.type = 'sine';
-  gain.gain.setValueAtTime(0.3, ctx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-  osc.start(ctx.currentTime);
-  osc.stop(ctx.currentTime + 0.1);
+function generateTapSound(){
+  try{
+    const ctx=new(window.AudioContext||window.webkitAudioContext)();
+    const osc=ctx.createOscillator();const gain=ctx.createGain();
+    osc.connect(gain);gain.connect(ctx.destination);
+    osc.frequency.value=1000;osc.type='sine';
+    gain.gain.setValueAtTime(0.3,ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.1);
+    osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.1);
+  }catch(e){}
 }
-
-function playSound(name) {
-  if(sounds[name]) {
-    sounds[name].currentTime = 0;
-    const promise = sounds[name].play();
-    if(promise !== undefined) {
-      promise.catch(() => {
-        if(name === 'tap') generateTapSound();
-      });
-    }
+function playSound(name){
+  if(sounds[name]){
+    sounds[name].currentTime=0;
+    const promise=sounds[name].play();
+    if(promise!==undefined){promise.catch(()=>{if(name==='tap')generateTapSound();});}
   }
 }
 
 // ===== SPIN =====
-const WIN_P=["пол члена семъи","пидрила но виграл","хуетолог","спинер","везунчик"];
-const LOSE_P=["слил","лошок","сасе","членосос","уэбище","подсосал"];
+const WIN_P=["это","фан","игра","не связана с казино","просто"];
+const LOSE_P=["игорай","в","удовольствие","радость","от","лудомании"];
 const SPECIAL_TEXT={15:"ПОТУЖНО",30:"ВЕЗУНЧИК",35:"УФФ ДЕНЬГИ",40:"ПОЧТИ НАЕБАЛ КАЗИК!!",55:"ТА ТЫ ШО АХУЭЛ!!!"};
 
 function spin(){
@@ -1321,18 +1329,10 @@ function showResult(){
   if(SPECIAL_TEXT[spinCount]){textResult=SPECIAL_TEXT[spinCount];balance+=BET*5;won=true;}
   else if(Math.random()<0.1){textResult=WIN_P[Math.floor(Math.random()*WIN_P.length)];balance+=BET*3;won=true;}
   else{textResult=LOSE_P[Math.floor(Math.random()*LOSE_P.length)];}
-
   if(won)wins++;
-
   const drop=pickDrop(won,!won);
-  if(drop){
-    showDropResult(drop);
-  } else {
-    const d=document.getElementById('display');
-    d.textContent=textResult;d.classList.add('blink');
-    setTimeout(()=>d.classList.remove('blink'),1000);
-  }
-
+  if(drop){showDropResult(drop);}
+  else{const d=document.getElementById('display');d.textContent=textResult;d.classList.add('blink');setTimeout(()=>d.classList.remove('blink'),1000);}
   updateBalance();saveUser();
 }
 
@@ -1356,23 +1356,23 @@ function tickTimer(){
 setInterval(tickTimer,1000);tickTimer();
 
 // ===== КОНТЕЙНЕРЫ =====
-const CONTAINERS = [
-  {id:'basic', name:'ОБЫЧНЫЙ КОНТЕЙНЕР', img:'container.jpg', price:1000000, color:'#ff8800',
-   desc:'3 предмета + каждый 100й гарантированная легендарка'},
+const CONTAINERS=[
+  {id:'basic',name:'средний контейнер',img:'container.jpg',price:1000000,color:'#ff8800',
+   desc:'3 предмета + каждый 100й гарантированная легендарка(наверное)'},
 ];
 
-const CONTAINER_POOL_COMMON = ['lube','gayhat','flag','dildo_s','carrot','bottle'];
-const CONTAINER_POOL_RARE   = ['sword','horse','dildo_g','gem','money_cup_item'];
-const CONTAINER_POOL_EPIC   = ['crown','cyber','hog_trio','lucky_cat','aot'];
-const CONTAINER_POOL_LEGEND = ['dragon','knight','cat_snail','chibi'];
-const CONTAINER_POOL_ULTRA  = ['anime_girl','mineta','daun','money_cup'];
+const CONTAINER_POOL_COMMON=['lube','gayhat','flag','dildo_s','carrot'];
+const CONTAINER_POOL_RARE  =['sword','horse','dildo_g','gem'];
+const CONTAINER_POOL_EPIC  =['crown','cyber','hog_trio','lucky_cat','aot'];
+const CONTAINER_POOL_LEGEND=['dragon','knight','cat_snail','chibi'];
+const CONTAINER_POOL_ULTRA =['anime_girl','mineta','daun','money_cup'];
 
-let containerOpenCount = 0;
-let isContainerAnimating = false;
+let containerOpenCount=0;
+let isContainerAnimating=false;
 
-function openContainerMenu() {
-  const el = document.getElementById('containerList');
-  el.innerHTML = CONTAINERS.map(c => `
+function openContainerMenu(){
+  const el=document.getElementById('containerList');
+  el.innerHTML=CONTAINERS.map(c=>`
     <div style="border:2px solid ${c.color};padding:14px;margin-bottom:10px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:12px;" onclick="buyContainer('${c.id}')">
       <img src="${c.img}" style="width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 0 6px ${c.color});" onerror="this.style.display='none'">
       <div style="flex:1;text-align:left;">
@@ -1386,316 +1386,244 @@ function openContainerMenu() {
   om('containerModal');
 }
 
-function buyContainer(id) {
-  const c = CONTAINERS.find(x => x.id === id);
-  if(!c) return;
-  if(balance < c.price) {
-    alert('НЕМА БАБОК! Нужно ' + c.price.toLocaleString() + '♂\nИди в МАЙНИНГ зарабатывать!');
-    cm('containerModal');
-    openMiningMenu();
-    return;
+function buyContainer(id){
+  const c=CONTAINERS.find(x=>x.id===id);
+  if(!c)return;
+  if(balance<c.price){
+    alert('НЕМА БАБОК! Нужно '+c.price.toLocaleString()+'♂\nИди в МАЙНИНГ зарабатывать!');
+    cm('containerModal');openMiningMenu();return;
   }
-  balance -= c.price;
-  updateBalance();
-  saveUser();
-  cm('containerModal');
-  startContainerOpen(c);
+  balance-=c.price;updateBalance();saveUser();
+  cm('containerModal');startContainerOpen(c);
 }
 
-function startContainerOpen(c) {
-  isContainerAnimating = true;
-  containerOpenCount++;
+function startContainerOpen(c){
+  isContainerAnimating=true;containerOpenCount++;
   om('containerOpenModal');
-
-  const vid = document.getElementById('containerVideo');
-  const rewardsEl = document.getElementById('containerRewards');
-  const vidWrap = document.getElementById('containerVidWrap');
-  rewardsEl.innerHTML = '';
-  rewardsEl.style.display = 'none';
-  vidWrap.style.display = 'flex';
-
-  vid.src = 'container_open.mp4';
-  vid.currentTime = 0;
+  const vid=document.getElementById('containerVideo');
+  const rewardsEl=document.getElementById('containerRewards');
+  const vidWrap=document.getElementById('containerVidWrap');
+  rewardsEl.innerHTML='';rewardsEl.style.display='none';vidWrap.style.display='flex';
+  vid.src='container_open.mp4';vid.currentTime=0;
   vid.play().catch(()=>{});
-
-  vid.onended = () => {
-    vid.pause();
-    vidWrap.style.display = 'none';
-    rewardsEl.style.display = 'block';
-    showContainerRewards(c);
-    isContainerAnimating = false;
-  };
-
-  vid.onerror = () => {
-    vidWrap.innerHTML = `<div id="cssContainerAnim" style="width:140px;height:140px;margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center;">
+  vid.onended=()=>{vid.pause();vidWrap.style.display='none';rewardsEl.style.display='block';showContainerRewards(c);isContainerAnimating=false;};
+  vid.onerror=()=>{
+    vidWrap.innerHTML=`<div style="width:140px;height:140px;margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center;">
       <img src="${c.img}" style="width:100px;height:100px;object-fit:contain;animation:containerShake 0.15s infinite;" onerror="this.style.display='none'">
       <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(255,136,0,0.4),transparent);animation:containerGlow 0.3s infinite alternate;border-radius:50%;"></div>
     </div>`;
-    setTimeout(() => {
-      vidWrap.style.display = 'none';
-      rewardsEl.style.display = 'block';
-      showContainerRewards(c);
-      isContainerAnimating = false;
-    }, 2500);
+    setTimeout(()=>{vidWrap.style.display='none';rewardsEl.style.display='block';showContainerRewards(c);isContainerAnimating=false;},2500);
   };
 }
 
-function pickContainerItem(isGuaranteedLegend) {
-  const rnd = Math.random();
-  let pool;
-  if(isGuaranteedLegend) {
-    pool = CONTAINER_POOL_LEGEND;
-  } else if(rnd < 0.001) {
-    pool = CONTAINER_POOL_ULTRA;
-  } else if(rnd < 0.02) {
-    pool = CONTAINER_POOL_LEGEND;
-  } else if(rnd < 0.10) {
-    pool = CONTAINER_POOL_EPIC;
-  } else if(rnd < 0.30) {
-    pool = CONTAINER_POOL_RARE;
-  } else {
-    pool = CONTAINER_POOL_COMMON;
-  }
-  return pool[Math.floor(Math.random() * pool.length)];
+function pickContainerItem(isGuaranteedLegend){
+  const rnd=Math.random();let pool;
+  if(isGuaranteedLegend){pool=CONTAINER_POOL_LEGEND;}
+  else if(rnd<0.001){pool=CONTAINER_POOL_ULTRA;}
+  else if(rnd<0.02){pool=CONTAINER_POOL_LEGEND;}
+  else if(rnd<0.10){pool=CONTAINER_POOL_EPIC;}
+  else if(rnd<0.30){pool=CONTAINER_POOL_RARE;}
+  else{pool=CONTAINER_POOL_COMMON;}
+  return pool[Math.floor(Math.random()*pool.length)];
 }
 
-function showContainerRewards(c) {
-  const isGuaranteed = containerOpenCount % 100 === 0;
-  const count = isGuaranteed ? 1 : 3;
-  const rewardsEl = document.getElementById('containerRewards');
+function showContainerRewards(c){
+  const isGuaranteed=containerOpenCount%100===0;
+  const count=isGuaranteed?1:3;
+  const rewardsEl=document.getElementById('containerRewards');
+  let drops=[];
+  for(let i=0;i<count;i++)drops.push(pickContainerItem(isGuaranteed));
 
-  let drops = [];
-  for(let i = 0; i < count; i++) {
-    drops.push(pickContainerItem(isGuaranteed));
-  }
-
-  if(isGuaranteed) {
-    rewardsEl.innerHTML = `<div style="color:#ff0;font-size:14px;margin-bottom:10px;animation:blink 0.5s infinite;">🎉 ГАРАНТИРОВАННАЯ ЛЕГЕНДАРКА! 🎉</div>`;
+  if(isGuaranteed){
+    rewardsEl.innerHTML=`<div style="color:#ff0;font-size:14px;margin-bottom:10px;animation:blink 0.5s infinite;">🎉 ГАРАНТИРОВАННАЯ ЛЕГЕНДАРКА! 🎉</div>`;
   } else {
-    rewardsEl.innerHTML = `<div style="color:#ff8800;font-size:12px;margin-bottom:10px;">📦 ВЫПАЛО ${count} ПРЕДМЕТА:</div>`;
+    rewardsEl.innerHTML=`<div style="color:#ff8800;font-size:12px;margin-bottom:10px;">📦 ВЫПАЛО ${count} ПРЕДМЕТА:</div>`;
   }
 
-  drops.forEach((itemId, idx) => {
-    setTimeout(() => {
-      const it = ITEMS.find(i => i.id === itemId);
-      if(!it) return;
-      const iconHtml = it.imgKey
-        ? `<img src="${IMGS[it.imgKey]}" style="width:60px;height:60px;object-fit:contain;">`
-        : `<span style="font-size:40px">${it.icon}</span>`;
-      const rarityColors = {common:'#0a0',rare:'#00aaff',epic:'#aa00ff',legendary:'#ff8800',ultralegend:'#ff00ff',cursed:'#f00',divine:'#ff0',meme:'#ff00ff'};
-      const col = rarityColors[it.rarity] || '#0f0';
-      const div = document.createElement('div');
-      div.style.cssText = `border:2px solid ${col};padding:10px;margin:6px 0;background:rgba(0,0,0,0.8);animation:fadeIn 0.4s ease;display:flex;align-items:center;gap:10px;`;
-      div.innerHTML = `${iconHtml}<div style="text-align:left;flex:1;"><div style="color:${col};font-size:12px;font-family:'Share Tech Mono',monospace">${it.name}</div><div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace">${it.rarity.toUpperCase()}</div><div style="color:#ff0;font-size:9px;font-family:'Share Tech Mono',monospace">${it.income?'+'+it.income+'♂/ч':'ТРОФЕЙ'}</div></div><div style="color:#0f0;font-size:18px">✓</div>`;
+  drops.forEach((itemId,idx)=>{
+    setTimeout(()=>{
+      const it=ITEMS.find(i=>i.id===itemId);if(!it)return;
+      const iconHtml=it.imgKey?`<img src="${IMGS[it.imgKey]}" style="width:60px;height:60px;object-fit:contain;">`:
+        `<span style="font-size:40px">${it.icon}</span>`;
+      const col=RARITY_COLORS[it.rarity]||'#0f0';
+
+      // Проверяем дубль
+      let isDuplicate=false;
+      if(currentUser&&currentUser.inventory.includes(itemId)){isDuplicate=true;}
+
+      // Информация о прокачке
+      const cost=MERGE_COSTS[it.rarity];
+      const nextRarityIdx=RARITY_ORDER.indexOf(it.rarity)+1;
+      const nextRarity=nextRarityIdx<RARITY_ORDER.length?RARITY_ORDER[nextRarityIdx]:null;
+
+      // Добавляем в инвентарь (дубль тоже добавляем, нужен для прокачки)
+      if(currentUser){
+        currentUser.inventory.push(itemId);
+      }
+
+      // Считаем после добавления
+      const counts=getInventoryCounts();
+      const currentCount=counts[itemId]||1;
+      const canUpgrade=cost&&currentCount>=cost&&nextRarity;
+
+      let upgradeInfoHtml='';
+      if(cost&&nextRarity){
+        upgradeInfoHtml=`<div style="color:#0a0;font-size:9px;margin-top:3px;">${currentCount}/${cost} для прокачки до ${RARITY_NAMES[nextRarity]}</div>`;
+        if(isDuplicate){
+          upgradeInfoHtml=`<div style="color:#ff8800;font-size:9px;margin-top:3px;">⚠ ДУБЛЬ! ${currentCount}/${cost} для → ${RARITY_NAMES[nextRarity]}</div>`+upgradeInfoHtml;
+        }
+      } else if(!nextRarity){
+        upgradeInfoHtml='<div style="color:#ff0;font-size:9px;margin-top:3px;">👑 MAX РЕДКОСТЬ</div>';
+      }
+
+      let upgradeBtnHtml='';
+      if(cost&&nextRarity){
+        upgradeBtnHtml=`<button onclick="upgradeItemDirect('${itemId}')" style="margin-top:5px;padding:4px 10px;font-size:9px;font-family:'Share Tech Mono',monospace;cursor:pointer;border:1px solid ${col};color:${col};background:#000;${canUpgrade?'':'opacity:0.4;cursor:not-allowed;'}" ${canUpgrade?'':'disabled'}>⬆ ПРОКАЧАТЬ → ${RARITY_NAMES[nextRarity]}</button>`;
+      }
+
+      const div=document.createElement('div');
+      div.style.cssText=`border:2px solid ${col};padding:10px;margin:6px 0;background:rgba(0,0,0,0.8);animation:fadeIn 0.4s ease;`;
+      div.innerHTML=`
+        <div style="display:flex;align-items:center;gap:10px;">
+          ${iconHtml}
+          <div style="text-align:left;flex:1;">
+            <div style="color:${col};font-size:12px;font-family:'Share Tech Mono',monospace;">${it.name}</div>
+            <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">${RARITY_NAMES[it.rarity]||it.rarity.toUpperCase()}</div>
+            <div style="color:#ff0;font-size:9px;font-family:'Share Tech Mono',monospace;">${it.income?'+'+it.income+'♂/ч':'ТРОФЕЙ'}</div>
+            ${upgradeInfoHtml}
+          </div>
+          <div style="color:#0f0;font-size:18px">✓</div>
+        </div>
+        ${upgradeBtnHtml?`<div style="text-align:center;">${upgradeBtnHtml}</div>`:''}
+      `;
       rewardsEl.appendChild(div);
 
-      if(currentUser && !currentUser.inventory.includes(itemId)) {
-        currentUser.inventory.push(itemId);
-      } else if(currentUser) {
-        balance += Math.floor(it.price * 0.3);
-        updateBalance();
+      // Если дубль — выдать компенсацию (30% цены)
+      if(isDuplicate){
+        const comp=Math.floor(it.price*0.3);
+        if(comp>0){balance+=comp;updateBalance();}
       }
       saveUser();
-    }, idx * 800);
+    },idx*800);
   });
 }
 
-const PROMOS = {
-  'GaY': {amount: 100000000, desc: 'ТЕСТОВЫЙ ПРОМОКОД'}
-};
-
-function openPromoModal() {
+// ===== ПРОМОКОДЫ =====
+function openPromoModal(){
   playSound('tap');
-  if(!currentUser) {
-    alert('⚠️ Сначала войди в аккаунт!');
-    return;
-  }
-  const input = prompt('Введи промокод:');
-  if(!input) return;
-  
-  const code = input.trim().toLowerCase();
-  console.log('Код:', code);
-  
-  // Проверяем промокоды (всё в нижнем регистре)
-  if(code === 'gay' || code === 'gay100') {
-    balance += 100000000;
-    updateBalance();
-    saveUser();
-    alert('✅ ПРОМОКОД АКТИВИРОВАН!\n+100,000,000♂');
-  } else if(code === 'test') {
-    balance += 1000000;
-    updateBalance();
-    saveUser();
-    alert('✅ ПРОМОКОД АКТИВИРОВАН!\n+1,000,000♂');
+  if(!currentUser){alert('⚠️ Сначала войди в аккаунт!');return;}
+  const input=prompt('Введи промокод:');
+  if(!input)return;
+  const code=input.trim().toLowerCase();
+  if(code==='gay'||code==='gay100'){
+    balance+=100000000;updateBalance();saveUser();alert('✅ ПРОМОКОД АКТИВИРОВАН!\n+100,000,000♂');
+  } else if(code==='test'){
+    balance+=1000000;updateBalance();saveUser();alert('✅ ПРОМОКОД АКТИВИРОВАН!\n+1,000,000♂');
   } else {
-    alert('❌ Неверный промокод\n\nДоступные:\n• gay\n• test');
+    alert('❌ Неверный промокод');
   }
 }
 
-// ===== СЛИЯНИЕ ПРЕДМЕТОВ =====
-const RARITY_ORDER = ['common', 'rare', 'epic', 'legendary', 'ultralegend', 'divine'];
-const MERGE_COSTS = {
-  'common': 100,
-  'rare': 50,
-  'epic': 20,
-  'legendary': 10,
-  'ultralegend': 4
-};
-
-function openMergeModal() {
+// ===== СЛИЯНИЕ ПРЕДМЕТОВ (из профиля) =====
+function openMergeModal(){
   playSound('tap');
-  if(!currentUser || !currentUser.inventory.length) {
-    alert('⚠️ Инвентарь пуст!');
+  if(!currentUser||!currentUser.inventory.length){alert('⚠️ Инвентарь пуст!');return;}
+  const counts=getInventoryCounts();
+  const mergeable=[];
+  Object.entries(counts).forEach(([id,count])=>{
+    const item=ITEMS.find(i=>i.id===id);if(!item)return;
+    const cost=MERGE_COSTS[item.rarity];
+    if(cost&&count>=cost)mergeable.push({id,item,count,cost});
+  });
+  if(!mergeable.length){
+    alert('❌ Нет предметов для слияния.\nНужно иметь:\n100x обычных | 70x редких | 40x эпиков | 20x легендарных | 4x ультра');
     return;
   }
-
-  const itemCounts = {};
-  currentUser.inventory.forEach(id => {
-    itemCounts[id] = (itemCounts[id] || 0) + 1;
-  });
-
-  const mergeable = [];
-  Object.entries(itemCounts).forEach(([id, count]) => {
-    const item = ITEMS.find(i => i.id === id);
-    if(!item) return;
-    const cost = MERGE_COSTS[item.rarity];
-    if(cost && count >= cost) {
-      mergeable.push({ id, item, count, cost });
-    }
-  });
-
-  if(!mergeable.length) {
-    alert('❌ Нет предметов для слияния.\nНужно иметь:\n100x обычных | 50x редких | 20x эпиков | 10x легендарных | 4x ультра');
-    return;
-  }
-
-  let html = '<div style="font-size:11px;color:#0a0;margin-bottom:10px;">Выбери предмет для прокачки:</div>';
-  mergeable.forEach(m => {
-    const nextRarity = RARITY_ORDER[RARITY_ORDER.indexOf(m.item.rarity) + 1] || 'MAX';
-    html += `<div onclick="mergeItems('${m.id}')" style="border:1px solid #0a0;padding:10px;margin:5px 0;cursor:pointer;background:#000;transition:all 0.2s;" onmouseover="this.style.borderColor='#0f0'" onmouseout="this.style.borderColor='#0a0'">
+  let html='<div style="font-size:11px;color:#0a0;margin-bottom:10px;">Выбери предмет для прокачки:</div>';
+  mergeable.forEach(m=>{
+    const nextRarity=RARITY_ORDER[RARITY_ORDER.indexOf(m.item.rarity)+1]||'MAX';
+    html+=`<div onclick="mergeItems('${m.id}')" style="border:1px solid #0a0;padding:10px;margin:5px 0;cursor:pointer;background:#000;transition:all 0.2s;" onmouseover="this.style.borderColor='#0f0'" onmouseout="this.style.borderColor='#0a0'">
       <div style="color:#ff0;font-size:11px;">⬆️ ${m.item.name}</div>
-      <div style="color:#0a0;font-size:9px;margin-top:3px;">${m.cost}x ${m.item.rarity.toUpperCase()} → ${nextRarity.toUpperCase()} (у тебя: ${m.count})</div>
+      <div style="color:#0a0;font-size:9px;margin-top:3px;">${m.cost}x ${RARITY_NAMES[m.item.rarity]} → ${RARITY_NAMES[nextRarity]||nextRarity.toUpperCase()} (у тебя: ${m.count})</div>
     </div>`;
   });
-
-  const modal = document.createElement('div');
-  modal.className = 'modal open';
-  modal.id = 'mergeModal';
-  modal.innerHTML = `
-    <div class="modal-content" style="max-width:400px;">
-      <span class="modal-close" onclick="cm('mergeModal')">✕</span>
-      <h2>⬆️ ПРОКАЧКА ПРЕДМЕТОВ</h2>
-      ${html}
-    </div>
-  `;
+  const existingModal=document.getElementById('mergeModal');
+  if(existingModal)existingModal.remove();
+  const modal=document.createElement('div');
+  modal.className='modal open';modal.id='mergeModal';
+  modal.innerHTML=`<div class="modal-content" style="max-width:400px;"><span class="modal-close" onclick="cm('mergeModal')">✕</span><h2>⬆️ ПРОКАЧКА ПРЕДМЕТОВ</h2>${html}</div>`;
   document.body.appendChild(modal);
 }
 
-function mergeItems(itemId) {
-  const item = ITEMS.find(i => i.id === itemId);
-  const cost = MERGE_COSTS[item.rarity];
-  if(!cost) { alert('❌ Максимум редкости!'); return; }
-
-  const count = currentUser.inventory.filter(i => i === itemId).length;
-  if(count < cost) { alert(`❌ Нужно ${cost}, у тебя ${count}`); return; }
-
-  for(let i = 0; i < cost; i++) {
-    const idx = currentUser.inventory.indexOf(itemId);
-    if(idx > -1) currentUser.inventory.splice(idx, 1);
-  }
-
-  const nextRarityIdx = RARITY_ORDER.indexOf(item.rarity) + 1;
-  if(nextRarityIdx >= RARITY_ORDER.length) { alert('❌ МАКСИМУМ!'); return; }
-
-  const nextRarity = RARITY_ORDER[nextRarityIdx];
-  let nextItem = ITEMS.find(i => i.rarity === nextRarity && i.name.toLowerCase().includes(item.name.split(' ')[0].toLowerCase()));
-  if(!nextItem) nextItem = ITEMS.find(i => i.rarity === nextRarity && !i.timed);
-
-  if(nextItem) {
+function mergeItems(itemId){
+  const item=ITEMS.find(i=>i.id===itemId);
+  const cost=MERGE_COSTS[item.rarity];
+  if(!cost){alert('❌ Максимум редкости!');return;}
+  const count=currentUser.inventory.filter(i=>i===itemId).length;
+  if(count<cost){alert(`❌ Нужно ${cost}, у тебя ${count}`);return;}
+  for(let i=0;i<cost;i++){const idx=currentUser.inventory.indexOf(itemId);if(idx>-1)currentUser.inventory.splice(idx,1);}
+  const nextRarityIdx=RARITY_ORDER.indexOf(item.rarity)+1;
+  if(nextRarityIdx>=RARITY_ORDER.length){alert('❌ МАКСИМУМ!');return;}
+  const nextRarity=RARITY_ORDER[nextRarityIdx];
+  let nextItem=ITEMS.find(i=>i.rarity===nextRarity&&!i.timed);
+  if(nextItem){
     currentUser.inventory.push(nextItem.id);
-    saveUser();
-    updatePassiveInfo();
-    startPassiveIncome();
+    saveUser();updatePassiveInfo();startPassiveIncome();
     cm('mergeModal');
     alert(`✅ ПРОКАЧЕНО!\n${cost}x ${item.name}\n↓\n${nextItem.name}`);
   }
 }
-let miningPower = 1;
-let miningTotal = 0;
-let miningCombo = 0;
-let miningComboTimer = null;
-let miningAnimTimer = null;
 
-function openMiningMenu() {
-  updateMiningUI();
-  om('miningModal');
+// ===== МАЙНИНГ =====
+let miningPower=1,miningTotal=0,miningCombo=0,miningComboTimer=null;
+
+function openMiningMenu(){updateMiningUI();om('miningModal');}
+function updateMiningUI(){
+  document.getElementById('miningBalance').textContent=balance.toLocaleString();
+  document.getElementById('miningPower').textContent=miningPower;
+  document.getElementById('miningTotal').textContent=miningTotal.toLocaleString();
+  document.getElementById('miningCombo').textContent=miningCombo+'x';
+  const debtEl=document.getElementById('miningDebtStatus');
+  if(balance<0){debtEl.style.display='block';debtEl.textContent='⚠ ДОЛГ: '+balance.toLocaleString()+'♂ — МАЙНИ ЧТОБЫ ОТДАТЬ!';}
+  else debtEl.style.display='none';
 }
-
-function updateMiningUI() {
-  document.getElementById('miningBalance').textContent = balance.toLocaleString();
-  document.getElementById('miningPower').textContent = miningPower;
-  document.getElementById('miningTotal').textContent = miningTotal.toLocaleString();
-  document.getElementById('miningCombo').textContent = miningCombo + 'x';
-  const debtEl = document.getElementById('miningDebtStatus');
-  if(balance < 0) {
-    debtEl.style.display = 'block';
-    debtEl.textContent = '⚠ ДОЛГ: ' + balance.toLocaleString() + '♂ — МАЙНИ ЧТОБЫ ОТДАТЬ!';
-  } else {
-    debtEl.style.display = 'none';
-  }
+function doMine(){
+  const earned=miningPower*miningCombo;
+  balance+=earned;miningTotal+=earned;
+  updateBalance();updateMiningUI();saveUser();
+  miningCombo=Math.min(miningCombo+1,10);
+  if(miningComboTimer)clearTimeout(miningComboTimer);
+  miningComboTimer=setTimeout(()=>{miningCombo=1;updateMiningUI();},2000);
+  const pick=document.getElementById('miningPickImg');
+  pick.style.transform='rotate(-30deg) scale(1.2)';pick.style.filter='drop-shadow(0 0 12px #00aaff)';
+  setTimeout(()=>{pick.style.transform='rotate(0deg) scale(1)';pick.style.filter='drop-shadow(0 0 6px rgba(0,170,255,0.6))';},150);
+  const flash=document.getElementById('miningFlash');
+  flash.textContent='+'+earned+'♂';flash.style.opacity='1';flash.style.transform='translateY(0px)';
+  setTimeout(()=>{flash.style.opacity='0';flash.style.transform='translateY(-30px)';},600);
 }
-
-function doMine() {
-  const earned = miningPower * miningCombo;
-  balance += earned;
-  miningTotal += earned;
-  updateBalance();
-  updateMiningUI();
-  saveUser();
-
-  miningCombo = Math.min(miningCombo + 1, 10);
-  if(miningComboTimer) clearTimeout(miningComboTimer);
-  miningComboTimer = setTimeout(() => { miningCombo = 1; updateMiningUI(); }, 2000);
-
-  const pick = document.getElementById('miningPickImg');
-  pick.style.transform = 'rotate(-30deg) scale(1.2)';
-  pick.style.filter = 'drop-shadow(0 0 12px #00aaff)';
-  setTimeout(() => {
-    pick.style.transform = 'rotate(0deg) scale(1)';
-    pick.style.filter = 'drop-shadow(0 0 6px rgba(0,170,255,0.6))';
-  }, 150);
-
-  const flash = document.getElementById('miningFlash');
-  flash.textContent = '+' + earned + '♂';
-  flash.style.opacity = '1';
-  flash.style.transform = 'translateY(0px)';
-  setTimeout(() => {
-    flash.style.opacity = '0';
-    flash.style.transform = 'translateY(-30px)';
-  }, 600);
-}
-
-function upgradeMining() {
-  const cost = miningPower * 500;
-  if(balance < cost) { alert('НЕМА БАБОК! Нужно ' + cost + '♂'); return; }
-  balance -= cost;
-  miningPower++;
-  updateBalance();
-  updateMiningUI();
-  document.getElementById('upgradeCostDisplay').textContent = (miningPower * 500).toLocaleString();
-  saveUser();
-  alert('✓ КИРКА ПРОКАЧАНА! Сила: ' + miningPower + '\nСледующее: ' + (miningPower*500) + '♂');
+function upgradeMining(){
+  const cost=miningPower*500;
+  if(balance<cost){alert('НЕМА БАБОК! Нужно '+cost+'♂');return;}
+  balance-=cost;miningPower++;updateBalance();updateMiningUI();
+  document.getElementById('upgradeCostDisplay').textContent=(miningPower*500).toLocaleString();
+  saveUser();alert('✓ КИРКА ПРОКАЧАНА! Сила: '+miningPower+'\nСледующее: '+(miningPower*500)+'♂');
 }
 
 initSession();
 
+// ===== ЗАГРУЗКА ЧАТА ПРИ СТАРТЕ =====
+window.addEventListener('load',()=>{
+  setTimeout(checkForUpdates,1000);
+  loadChatMessages();
+  setInterval(loadChatMessages,5000);
+});
+
 // ===== ЗВУК НА ВСЕ КНОПКИ =====
-document.addEventListener('click', function(e) {
-  if(e.target.tagName === 'BUTTON' || e.target.classList.contains('topbar-btn') || e.target.classList.contains('chat-send') || e.target.classList.contains('auth-submit')) {
+document.addEventListener('click',function(e){
+  if(e.target.tagName==='BUTTON'||e.target.classList.contains('topbar-btn')||e.target.classList.contains('chat-send')||e.target.classList.contains('auth-submit')){
     playSound('tap');
   }
-}, true);
+},true);
 </script>
-
 </body>
 </html>
