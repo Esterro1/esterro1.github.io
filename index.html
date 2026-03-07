@@ -321,6 +321,22 @@ button:active{transform:scale(0.97);}
     <button class="payment-btn" onclick="openPayment()">💸 ДОДЭП (10₴)</button>
   </div>
 </div>
+
+<!-- ДВА РЕЖИМА -->
+<div style="width:95%;max-width:820px;margin:10px auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+  <div onclick="openContainerMenu()" style="border:2px solid #ff8800;background:#000;padding:14px 10px;cursor:pointer;text-align:center;transition:all 0.2s;position:relative;box-shadow:0 0 10px rgba(255,136,0,0.2);" onmouseover="this.style.background='rgba(255,136,0,0.08)'" onmouseout="this.style.background='#000'">
+    <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#000;padding:0 8px;font-size:9px;color:#ff8800;white-space:nowrap;font-family:'Share Tech Mono',monospace;">[ КОНТЕЙНЕРЫ ]</div>
+    <img src="1000091988.png" style="width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(255,136,0,0.6));margin-top:6px;" onerror="this.innerHTML='📦';this.style.fontSize='48px'">
+    <div style="color:#ff8800;font-size:12px;margin-top:6px;font-family:'Share Tech Mono',monospace;">📦 ОТКРЫТЬ</div>
+    <div style="color:#0a0;font-size:9px;margin-top:3px;font-family:'Share Tech Mono',monospace;">от 1,000,000♂</div>
+  </div>
+  <div onclick="openMiningMenu()" style="border:2px solid #00aaff;background:#000;padding:14px 10px;cursor:pointer;text-align:center;transition:all 0.2s;position:relative;box-shadow:0 0 10px rgba(0,170,255,0.2);" onmouseover="this.style.background='rgba(0,170,255,0.08)'" onmouseout="this.style.background='#000'">
+    <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#000;padding:0 8px;font-size:9px;color:#00aaff;white-space:nowrap;font-family:'Share Tech Mono',monospace;">[ МАЙНИНГ ]</div>
+    <img src="1000091986.png" style="width:70px;height:70px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(0,170,255,0.6));margin-top:6px;" onerror="this.innerHTML='⛏';this.style.fontSize='48px'">
+    <div style="color:#00aaff;font-size:12px;margin-top:6px;font-family:'Share Tech Mono',monospace;">⛏ ДОБЫВАТЬ</div>
+    <div style="color:#0a0;font-size:9px;margin-top:3px;font-family:'Share Tech Mono',monospace;">тапай = бабки</div>
+  </div>
+</div>
 </div>
 
 <!-- LEVEL MODAL -->
@@ -1138,7 +1154,301 @@ function tickTimer(){
 }
 setInterval(tickTimer,1000);tickTimer();
 
+// ===== КОНТЕЙНЕРЫ =====
+const CONTAINERS = [
+  {id:'basic', name:'ОБЫЧНЫЙ КОНТЕЙНЕР', img:'1000091988.png', price:1000000, color:'#ff8800',
+   desc:'3 предмета + каждый 100й гарантированная легендарка'},
+];
+
+// Пул предметов для контейнера
+const CONTAINER_POOL_COMMON = ['lube','gayhat','flag','dildo_s','carrot','bottle'];
+const CONTAINER_POOL_RARE   = ['sword','horse','dildo_g','gem','money_cup_item'];
+const CONTAINER_POOL_EPIC   = ['crown','cyber','hog_trio','lucky_cat','aot'];
+const CONTAINER_POOL_LEGEND = ['dragon','knight','cat_snail','chibi'];
+const CONTAINER_POOL_ULTRA  = ['anime_girl','mineta','daun','money_cup'];
+
+let containerOpenCount = 0;
+let isContainerAnimating = false;
+
+function openContainerMenu() {
+  // Рендер контейнеров
+  const el = document.getElementById('containerList');
+  el.innerHTML = CONTAINERS.map(c => `
+    <div style="border:2px solid ${c.color};padding:14px;margin-bottom:10px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:12px;" onclick="buyContainer('${c.id}')">
+      <img src="${c.img}" style="width:60px;height:60px;object-fit:contain;filter:drop-shadow(0 0 6px ${c.color});" onerror="this.style.display='none'">
+      <div style="flex:1;text-align:left;">
+        <div style="color:${c.color};font-size:13px;font-family:'Share Tech Mono',monospace;">${c.name}</div>
+        <div style="color:#0a0;font-size:10px;margin-top:4px;font-family:'Share Tech Mono',monospace;">${c.desc}</div>
+        <div style="color:#ff0;font-size:14px;margin-top:4px;font-family:'Share Tech Mono',monospace;">${c.price.toLocaleString()}♂</div>
+      </div>
+      <div style="color:#0f0;font-size:22px;">▶</div>
+    </div>
+  `).join('');
+  om('containerModal');
+}
+
+function buyContainer(id) {
+  const c = CONTAINERS.find(x => x.id === id);
+  if(!c) return;
+  if(balance < c.price) {
+    alert('НЕМА БАБОК! Нужно ' + c.price.toLocaleString() + '♂\nИди в МАЙНИНГ зарабатывать!');
+    cm('containerModal');
+    openMiningMenu();
+    return;
+  }
+  balance -= c.price;
+  updateBalance();
+  saveUser();
+  cm('containerModal');
+  startContainerOpen(c);
+}
+
+function startContainerOpen(c) {
+  isContainerAnimating = true;
+  containerOpenCount++;
+  om('containerOpenModal');
+
+  const vid = document.getElementById('containerVideo');
+  const rewardsEl = document.getElementById('containerRewards');
+  const vidWrap = document.getElementById('containerVidWrap');
+  rewardsEl.innerHTML = '';
+  rewardsEl.style.display = 'none';
+  vidWrap.style.display = 'block';
+
+  vid.src = 'container_open.mp4';
+  vid.currentTime = 0;
+  vid.play().catch(()=>{});
+
+  vid.onended = () => {
+    vid.pause();
+    vidWrap.style.display = 'none';
+    rewardsEl.style.display = 'block';
+    showContainerRewards(c);
+    isContainerAnimating = false;
+  };
+
+  // Если видео не найдено — CSS анимация
+  vid.onerror = () => {
+    vidWrap.innerHTML = `<div id="cssContainerAnim" style="width:140px;height:140px;margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center;">
+      <img src="${c.img}" style="width:100px;height:100px;object-fit:contain;animation:containerShake 0.15s infinite;" onerror="this.style.display='none'">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(255,136,0,0.4),transparent);animation:containerGlow 0.3s infinite alternate;border-radius:50%;"></div>
+    </div>`;
+    setTimeout(() => {
+      vidWrap.style.display = 'none';
+      rewardsEl.style.display = 'block';
+      showContainerRewards(c);
+      isContainerAnimating = false;
+    }, 2500);
+  };
+}
+
+function pickContainerItem(isGuaranteedLegend) {
+  const rnd = Math.random();
+  let pool;
+  if(isGuaranteedLegend) {
+    pool = CONTAINER_POOL_LEGEND;
+  } else if(rnd < 0.001) {
+    pool = CONTAINER_POOL_ULTRA;
+  } else if(rnd < 0.02) {
+    pool = CONTAINER_POOL_LEGEND;
+  } else if(rnd < 0.10) {
+    pool = CONTAINER_POOL_EPIC;
+  } else if(rnd < 0.30) {
+    pool = CONTAINER_POOL_RARE;
+  } else {
+    pool = CONTAINER_POOL_COMMON;
+  }
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function showContainerRewards(c) {
+  const isGuaranteed = containerOpenCount % 100 === 0;
+  const count = isGuaranteed ? 1 : 3;
+  const rewardsEl = document.getElementById('containerRewards');
+
+  let drops = [];
+  for(let i = 0; i < count; i++) {
+    drops.push(pickContainerItem(isGuaranteed));
+  }
+
+  if(isGuaranteed) {
+    rewardsEl.innerHTML = `<div style="color:#ff0;font-size:14px;margin-bottom:10px;animation:blink 0.5s infinite;">🎉 ГАРАНТИРОВАННАЯ ЛЕГЕНДАРКА! 🎉</div>`;
+  } else {
+    rewardsEl.innerHTML = `<div style="color:#ff8800;font-size:12px;margin-bottom:10px;">📦 ВЫПАЛО ${count} ПРЕДМЕТА:</div>`;
+  }
+
+  // Показываем предметы по очереди с задержкой
+  drops.forEach((itemId, idx) => {
+    setTimeout(() => {
+      const it = ITEMS.find(i => i.id === itemId);
+      if(!it) return;
+      const iconHtml = it.imgKey
+        ? `<img src="${IMGS[it.imgKey]}" style="width:60px;height:60px;object-fit:contain;">`
+        : `<span style="font-size:40px">${it.icon}</span>`;
+      const rarityColors = {common:'#0a0',rare:'#00aaff',epic:'#aa00ff',legendary:'#ff8800',ultralegend:'#ff00ff',cursed:'#f00',divine:'#ff0',meme:'#ff00ff'};
+      const col = rarityColors[it.rarity] || '#0f0';
+      const div = document.createElement('div');
+      div.style.cssText = `border:2px solid ${col};padding:10px;margin:6px 0;background:rgba(0,0,0,0.8);animation:fadeIn 0.4s ease;display:flex;align-items:center;gap:10px;`;
+      div.innerHTML = `${iconHtml}<div style="text-align:left;flex:1;"><div style="color:${col};font-size:12px;font-family:'Share Tech Mono',monospace">${it.name}</div><div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace">${it.rarity.toUpperCase()}</div><div style="color:#ff0;font-size:9px;font-family:'Share Tech Mono',monospace">${it.income?'+'+it.income+'♂/ч':'ТРОФЕЙ'}</div></div><div style="color:#0f0;font-size:18px">✓</div>`;
+      rewardsEl.appendChild(div);
+
+      // Добавляем в инвентарь
+      if(currentUser && !currentUser.inventory.includes(itemId)) {
+        currentUser.inventory.push(itemId);
+      } else if(currentUser) {
+        // Уже есть — даём немного бабок вместо
+        balance += Math.floor(it.price * 0.3);
+        updateBalance();
+      }
+      saveUser();
+    }, idx * 800);
+  });
+}
+
+// ===== МАЙНИНГ =====
+let miningPower = 1;
+let miningTotal = 0;
+let miningCombo = 0;
+let miningComboTimer = null;
+let miningAnimTimer = null;
+
+function openMiningMenu() {
+  updateMiningUI();
+  om('miningModal');
+}
+
+function updateMiningUI() {
+  document.getElementById('miningBalance').textContent = balance.toLocaleString();
+  document.getElementById('miningPower').textContent = miningPower;
+  document.getElementById('miningTotal').textContent = miningTotal.toLocaleString();
+  document.getElementById('miningCombo').textContent = miningCombo + 'x';
+  const debtEl = document.getElementById('miningDebtStatus');
+  if(balance < 0) {
+    debtEl.style.display = 'block';
+    debtEl.textContent = '⚠ ДОЛГ: ' + balance.toLocaleString() + '♂ — МАЙНИ ЧТОБЫ ОТДАТЬ!';
+  } else {
+    debtEl.style.display = 'none';
+  }
+}
+
+function doMine() {
+  const earned = miningPower * miningCombo;
+  balance += earned;
+  miningTotal += earned;
+  updateBalance();
+  updateMiningUI();
+  saveUser();
+
+  // Комбо
+  miningCombo = Math.min(miningCombo + 1, 10);
+  if(miningComboTimer) clearTimeout(miningComboTimer);
+  miningComboTimer = setTimeout(() => { miningCombo = 1; updateMiningUI(); }, 2000);
+
+  // Анимация кирки
+  const pick = document.getElementById('miningPickImg');
+  pick.style.transform = 'rotate(-30deg) scale(1.2)';
+  pick.style.filter = 'drop-shadow(0 0 12px #00aaff)';
+  setTimeout(() => {
+    pick.style.transform = 'rotate(0deg) scale(1)';
+    pick.style.filter = 'drop-shadow(0 0 6px rgba(0,170,255,0.6))';
+  }, 150);
+
+  // Показываем +N
+  const flash = document.getElementById('miningFlash');
+  flash.textContent = '+' + earned + '♂';
+  flash.style.opacity = '1';
+  flash.style.transform = 'translateY(0px)';
+  setTimeout(() => {
+    flash.style.opacity = '0';
+    flash.style.transform = 'translateY(-30px)';
+  }, 600);
+}
+
+function upgradeMining() {
+  const cost = miningPower * 500;
+  if(balance < cost) { alert('НЕМА БАБОК! Нужно ' + cost + '♂'); return; }
+  balance -= cost;
+  miningPower++;
+  updateBalance();
+  updateMiningUI();
+  document.getElementById('upgradeCostDisplay').textContent = (miningPower * 500).toLocaleString();
+  saveUser();
+  alert('✓ КИРКА ПРОКАЧАНА! Сила: ' + miningPower + '\nСледующее: ' + (miningPower*500) + '♂');
+}
+
 initSession();
 </script>
+<!-- CONTAINER MENU MODAL -->
+<div class="modal" id="containerModal">
+  <div class="modal-content" style="max-width:400px;">
+    <span class="modal-close" onclick="cm('containerModal')">✕</span>
+    <h2>📦 КОНТЕЙНЕРЫ</h2>
+    <div style="color:#0a0;font-size:11px;margin-bottom:14px;">Каждый 100й — гарантированная легендарка!</div>
+    <div id="containerList"></div>
+  </div>
+</div>
+
+<!-- CONTAINER OPEN MODAL -->
+<div class="modal" id="containerOpenModal">
+  <div class="modal-content" style="max-width:420px;text-align:center;">
+    <span class="modal-close" onclick="cm('containerOpenModal')">✕</span>
+    <h2>📦 ОТКРЫТИЕ...</h2>
+    <div id="containerVidWrap" style="margin:10px 0;">
+      <video id="containerVideo" style="width:100%;max-height:280px;border:2px solid #ff8800;" playsinline muted></video>
+    </div>
+    <div id="containerRewards" style="display:none;text-align:left;max-height:50vh;overflow-y:auto;"></div>
+    <button onclick="cm('containerOpenModal')" style="margin-top:12px;width:100%;padding:12px;border:1px solid #0f0;color:#0f0;background:#000;font-family:'Share Tech Mono',monospace;font-size:14px;cursor:pointer;">✓ ЗБС!</button>
+  </div>
+</div>
+
+<!-- MINING MODAL -->
+<div class="modal" id="miningModal">
+  <div class="modal-content" style="max-width:400px;text-align:center;">
+    <span class="modal-close" onclick="cm('miningModal')">✕</span>
+    <h2 style="color:#00aaff;">⛏ МАЙНИНГ</h2>
+    <div id="miningDebtStatus" style="display:none;color:#f00;font-size:11px;margin-bottom:8px;animation:blink 0.5s infinite;"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;">
+      <div style="border:1px solid #00aaff;padding:8px;text-align:center;">
+        <div style="color:#ff0;font-size:16px;" id="miningBalance">0</div>
+        <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">БАЛАНС ♂</div>
+      </div>
+      <div style="border:1px solid #00aaff;padding:8px;text-align:center;">
+        <div style="color:#ff0;font-size:16px;" id="miningPower">1</div>
+        <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">СИЛА</div>
+      </div>
+      <div style="border:1px solid #00aaff;padding:8px;text-align:center;">
+        <div style="color:#ff00ff;font-size:16px;" id="miningCombo">1x</div>
+        <div style="color:#0a0;font-size:9px;font-family:'Share Tech Mono',monospace;">КОМБО</div>
+      </div>
+    </div>
+    <!-- ТАПАЛКА -->
+    <div style="position:relative;display:inline-block;margin:10px 0;">
+      <img id="miningPickImg" src="1000091986.png" 
+        style="width:120px;height:120px;object-fit:contain;cursor:pointer;transition:all 0.15s;filter:drop-shadow(0 0 6px rgba(0,170,255,0.6));"
+        onclick="doMine()"
+        onerror="this.style.fontSize='80px';this.outerHTML='<div onclick=doMine() style=font-size:80px;cursor:pointer;transition:all 0.15s;>⛏</div>'">
+      <div id="miningFlash" style="position:absolute;top:-20px;left:50%;transform:translateX(-50%);color:#0f0;font-size:18px;font-weight:bold;font-family:Share Tech Mono,monospace;opacity:0;transition:all 0.6s;pointer-events:none;">+1♂</div>
+    </div>
+    <div style="color:#0a0;font-size:11px;margin:6px 0;font-family:'Share Tech Mono',monospace;">ТАПАЙ НА КИРКУ!</div>
+    <div style="color:#0a0;font-size:10px;margin-bottom:10px;font-family:'Share Tech Mono',monospace;">Быстро тапай — комбо x10 = x10 монет!</div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <div style="border:1px solid #0a0;padding:6px 12px;font-size:11px;color:#0a0;font-family:'Share Tech Mono',monospace;">НАМАЙНЕНО: <span id="miningTotal" style="color:#ff0;">0</span>♂</div>
+    </div>
+    <button onclick="upgradeMining()" style="margin-top:12px;width:100%;padding:11px;border:1px solid #00aaff;color:#00aaff;background:#000;font-family:'Share Tech Mono',monospace;font-size:13px;cursor:pointer;">
+      ⬆ ПРОКАЧАТЬ КИРКУ (<span id="upgradeCostDisplay">500</span>♂)
+    </button>
+  </div>
+</div>
+
+<style>
+@keyframes containerShake {
+  0%,100%{transform:rotate(-3deg) scale(1.05);}
+  50%{transform:rotate(3deg) scale(1.1);}
+}
+@keyframes containerGlow {
+  from{opacity:0.3;}to{opacity:0.8;}
+}
+</style>
+
 </body>
 </html>
